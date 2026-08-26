@@ -1,0 +1,44 @@
+{
+  "name": "SaveFlow Billing Analysis Specialist",
+  "version": "1.0.0",
+  "description": "Analyzes billing health, invoice overdue status, contract renewal timeline, and payment anomalies.",
+  "components": [
+    {
+      "id": "billing_input",
+      "provider": "webhook",
+      "config": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "invoice_status": { "type": "string" },
+            "overdue_days": { "type": "integer" },
+            "renewal_date": { "type": "string" },
+            "payment_history_score": { "type": "number" }
+          },
+          "required": ["invoice_status"]
+        }
+      }
+    },
+    {
+      "id": "billing_agent",
+      "provider": "agent_llm",
+      "config": {
+        "system_prompt": "You are the Billing Health Specialist for NovaCloud SaaS. Evaluate payment status, overdue invoices, and renewal proximity. Output JSON with billing_health (0-100), risk_factors array, and renewal_risk flag.",
+        "temperature": 0.2
+      },
+      "input": [
+        { "lane": "data", "from": "billing_input" }
+      ]
+    },
+    {
+      "id": "billing_output",
+      "provider": "response",
+      "config": {
+        "laneName": "billing_analysis"
+      },
+      "input": [
+        { "lane": "text", "from": "billing_agent" }
+      ]
+    }
+  ]
+}

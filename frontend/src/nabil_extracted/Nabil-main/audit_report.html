@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Audit Dashboard — Nabil Thange Portfolio</title>
+  <!-- Google Fonts: Space Grotesk (sans-serif) & Inter (display), Georgia (serif) used natively -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;600;800&family=Courier+Prime&display=swap" rel="stylesheet">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <style>
+    /* DESIGN SYSTEM TOKENS - 1996 Retro-Corporate Skin Ironic Visual Spec */
+    :root {
+      --canvas-bg: #C0C0C0;
+      --window-bg: #DFDFDF;
+      --window-header: #000080;
+      --window-header-text: #FFFFFF;
+      --text-primary: #000000;
+      --text-secondary: #404040;
+      --text-light: #FFFFFF;
+      --accent-teal: #008080;
+      --accent-red: #FF0000;
+      --accent-green: #008000;
+      --accent-blue: #0000EE;
+      --accent-purple: #551A8B;
+      --border-light: #FFFFFF;
+      --border-dark: #808080;
+      --font-display: 'Space Grotesk', 'Arial Black', sans-serif;
+      --font-body: Georgia, 'Times New Roman', serif;
+      --font-mono: 'Courier Prime', 'Courier New', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-radius: 0 !important; /* Zero border-radius strict rule */
+    }
+
+    body {
+      background-color: var(--canvas-bg);
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      font-size: 14px;
+      line-height: 1.5;
+      padding: 20px;
+    }
+
+    /* Win95 Outset Bevel Border */
+    .win95-outset {
+      border: 2px solid;
+      border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+    }
+
+    /* Win95 Inset Bevel Border (Pressed) */
+    .win95-inset {
+      border: 2px solid;
+      border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+      background-color: #FFFFFF;
+    }
+
+    /* Desktop Window Container */
+    .desktop-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      background-color: var(--canvas-bg);
+    }
+
+    /* Main OS Window */
+    .os-window {
+      background-color: var(--window-bg);
+      margin-bottom: 20px;
+    }
+
+    .os-header {
+      background-color: var(--window-header);
+      color: var(--window-header-text);
+      font-family: var(--font-display);
+      font-weight: bold;
+      padding: 6px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      letter-spacing: 0.5px;
+      font-size: 15px;
+    }
+
+    .os-header-controls {
+      display: flex;
+      gap: 4px;
+    }
+
+    .win95-btn {
+      background-color: var(--window-bg);
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-weight: bold;
+      font-size: 11px;
+      padding: 2px 8px;
+      cursor: pointer;
+      text-align: center;
+      outline: none;
+    }
+
+    .win95-btn:active {
+      border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+      padding: 3px 7px 1px 9px;
+    }
+
+    /* Top Bar Info */
+    .info-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 10px;
+      background-color: var(--window-bg);
+      border-bottom: 2px solid var(--border-dark);
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .info-label {
+      font-weight: bold;
+      color: var(--accent-teal);
+    }
+
+    /* Dashboard Layout */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 16px;
+      padding: 16px;
+    }
+
+    /* Navigation Sidebar */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .nav-btn {
+      text-align: left;
+      width: 100%;
+      padding: 10px 14px;
+      font-family: var(--font-display);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: var(--window-bg);
+    }
+
+    .nav-btn.active {
+      background-color: var(--window-header);
+      color: #FFFFFF;
+      border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+    }
+
+    .nav-btn:hover:not(.active) {
+      background-color: #ECECEC;
+    }
+
+    /* Content Area */
+    .content-area {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .panel-view {
+      display: none;
+    }
+
+    .panel-view.active {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Header Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+    }
+
+    .score-card {
+      background-color: var(--window-bg);
+      padding: 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 120px;
+    }
+
+    .score-title {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: bold;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .score-value {
+      font-family: var(--font-mono);
+      font-size: 28px;
+      font-weight: bold;
+      margin: 8px 0;
+    }
+
+    .score-grade {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: bold;
+      padding: 2px 6px;
+      align-self: center;
+    }
+
+    .grade-a { background-color: var(--accent-green); color: white; }
+    .grade-b { background-color: var(--accent-teal); color: white; }
+    .grade-c { background-color: #B8860B; color: white; }
+    .grade-d { background-color: var(--accent-red); color: white; }
+
+    /* Visualizing Charts Container */
+    .charts-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .chart-box {
+      background-color: #FFFFFF;
+      padding: 16px;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .chart-box-title {
+      font-family: var(--font-display);
+      font-weight: bold;
+      font-size: 13px;
+      border-bottom: 2px solid var(--text-primary);
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .chart-wrapper {
+      position: relative;
+      flex-grow: 1;
+      height: 200px;
+      width: 100%;
+    }
+
+    /* Detailed Findings Table */
+    .table-container {
+      overflow-x: auto;
+      background: white;
+    }
+
+    table.retro-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-body);
+      text-align: left;
+    }
+
+    table.retro-table th, table.retro-table td {
+      border: 1px solid var(--border-dark);
+      padding: 10px 12px;
+      font-size: 13px;
+    }
+
+    table.retro-table th {
+      background-color: var(--window-bg);
+      font-family: var(--font-display);
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    table.retro-table tr:nth-child(even) td {
+      background-color: #F8F8F8;
+    }
+
+    .severity-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: bold;
+      padding: 3px 6px;
+      display: inline-block;
+      text-transform: uppercase;
+      color: white;
+    }
+    
+    .sev-high { background-color: var(--accent-red); }
+    .sev-med { background-color: #B8860B; }
+    .sev-low { background-color: var(--accent-teal); }
+
+    /* Findings Accordion/Detailed Window */
+    .finding-detail-card {
+      background-color: var(--window-bg);
+      margin-bottom: 16px;
+    }
+    
+    .finding-detail-header {
+      padding: 8px 12px;
+      background-color: #ECECEC;
+      border-bottom: 1px solid var(--border-dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-display);
+      font-weight: bold;
+    }
+
+    .finding-detail-content {
+      padding: 16px;
+      background-color: #FFFFFF;
+      display: none;
+    }
+
+    .finding-detail-content.open {
+      display: block;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 14px;
+      background-color: #F5F5F5;
+      padding: 10px;
+      border: 1px solid var(--border-dark);
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .detail-meta-label {
+      font-weight: bold;
+      color: var(--accent-teal);
+    }
+
+    .detail-section {
+      margin-bottom: 12px;
+    }
+
+    .detail-section h4 {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      color: var(--window-header);
+    }
+
+    .code-ref {
+      font-family: var(--font-mono);
+      background-color: #F8F8F8;
+      border: 1px dashed var(--border-dark);
+      padding: 8px 12px;
+      font-size: 12px;
+      overflow-x: auto;
+      margin-top: 6px;
+    }
+
+    /* Roadmap Checklist */
+    .roadmap-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .roadmap-item {
+      background-color: #FFFFFF;
+      padding: 16px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .roadmap-checkbox {
+      margin-top: 4px;
+      width: 18px;
+      height: 18px;
+      cursor: not-allowed;
+    }
+
+    .roadmap-text h3 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .roadmap-meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-top: 6px;
+      display: flex;
+      gap: 12px;
+    }
+
+    /* Footer styling */
+    .os-footer {
+      background-color: var(--window-bg);
+      text-align: center;
+      padding: 20px;
+      border-top: 2px solid var(--border-dark);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      margin-top: 20px;
+    }
+
+    .os-footer a {
+      color: var(--accent-blue);
+      text-decoration: underline;
+    }
+
+    .os-footer a:visited {
+      color: var(--accent-purple);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+      body {
+        padding: 8px;
+      }
+      .os-header {
+        font-size: 13px;
+        padding: 4px 8px;
+      }
+      .score-value {
+        font-size: 20px;
+      }
+    }
+
+    /* Print styling */
+    @media print {
+      body {
+        background-color: #FFFFFF;
+        color: #000000;
+        padding: 0;
+      }
+      .os-window, .win95-outset, .win95-inset, .chart-box, .finding-detail-content {
+        border: 1px solid #000000 !important;
+        background: #FFFFFF !important;
+      }
+      .os-header {
+        background: #000000 !important;
+        color: #FFFFFF !important;
+      }
+      .sidebar, .win95-btn, .os-header-controls {
+        display: none !important;
+      }
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+        padding: 0;
+      }
+      .panel-view {
+        display: block !important;
+      }
+      .finding-detail-content {
+        display: block !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="desktop-wrapper win95-outset os-window">
+  <!-- Title Bar -->
+  <div class="os-header">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M1 1h14v14H1V1zm13 2H2v10h12V3zM3 4h10v2H3V4zm0 3h10v2H3V7zm0 3h6v2H3v-2z"/>
+      </svg>
+      System_Audit_Dashboard.exe
+    </div>
+    <div class="os-header-controls">
+      <button class="win95-btn win95-outset" style="width: 18px; height: 18px; padding: 0; line-height: 12px;" onclick="window.print()">?</button>
+      <button class="win95-btn win95-outset" style="width: 18px; height: 18px; padding: 0; line-height: 12px;" onclick="alert('System Audit Version 2.6.0')">i</button>
+      <button class="win95-btn win95-outset" style="width: 18px; height: 18px; padding: 0; line-height: 12px; color: var(--accent-red);">X</button>
+    </div>
+  </div>
+
+  <!-- Info Bar -->
+  <div class="info-bar">
+    <div class="info-item"><span class="info-label">REPO:</span> NabilThange/Nabil</div>
+    <div class="info-item"><span class="info-label">FRAMEWORK:</span> Next.js 16.1.1 (React 19)</div>
+    <div class="info-item"><span class="info-label">STYLING:</span> Tailwind CSS 4.1.9</div>
+    <div class="info-item"><span class="info-label">AUDIT_DATE:</span> July 7, 2026</div>
+    <div class="info-item"><span class="info-label">SCORE:</span> 85/100</div>
+  </div>
+
+  <!-- Dashboard Workspace -->
+  <div class="dashboard-grid">
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+      <button class="win95-btn win95-outset nav-btn active" onclick="switchTab(this, 'overview')">
+        📁 Overview & Scores
+      </button>
+      <button class="win95-btn win95-outset nav-btn" onclick="switchTab(this, 'charts')">
+        📊 Data-Viz Chrome
+      </button>
+      <button class="win95-btn win95-outset nav-btn" onclick="switchTab(this, 'findings')">
+        🔍 Detailed Findings
+      </button>
+      <button class="win95-btn win95-outset nav-btn" onclick="switchTab(this, 'roadmap')">
+        📋 Action Roadmap
+      </button>
+      
+      <div class="win95-inset" style="padding: 10px; margin-top: 20px; font-family: var(--font-mono); font-size: 11px;">
+        <span style="font-weight: bold; color: var(--window-header);">SYSTEM STATUS:</span>
+        <div style="margin-top: 4px; display: flex; align-items: center; gap: 6px;">
+          <div style="width: 8px; height: 8px; background-color: var(--accent-red); animation: pulse 1s infinite alternate;"></div>
+          7 Issues Detected
+        </div>
+        <div style="margin-top: 4px;">Crawlers allowed: Yes</div>
+        <div style="margin-top: 4px;">PWA Manifest: Broken</div>
+      </div>
+    </div>
+
+    <!-- Main Content Panel -->
+    <div class="content-area win95-inset" style="padding: 16px; min-height: 500px;">
+      
+      <!-- TAB 1: OVERVIEW -->
+      <div id="overview" class="panel-view active">
+        <h2 style="font-family: var(--font-display); font-size: 20px; border-bottom: 2px solid var(--text-primary); padding-bottom: 8px; margin-bottom: 12px; font-weight: bold;">
+          AUDIT SCORE OVERVIEW
+        </h2>
+        
+        <!-- Score Cards -->
+        <div class="cards-grid">
+          <div class="score-card win95-outset">
+            <span class="score-title">Technical SEO</span>
+            <span class="score-value">82</span>
+            <span class="score-grade grade-b">Grade B</span>
+          </div>
+          <div class="score-card win95-outset">
+            <span class="score-title">GEO Readiness</span>
+            <span class="score-value">92</span>
+            <span class="score-grade grade-a">Grade A</span>
+          </div>
+          <div class="score-card win95-outset">
+            <span class="score-title">AEO Optimization</span>
+            <span class="score-value">88</span>
+            <span class="score-grade grade-b">Grade B</span>
+          </div>
+          <div class="score-card win95-outset">
+            <span class="score-title">Performance</span>
+            <span class="score-value">68</span>
+            <span class="score-grade grade-c">Grade C</span>
+          </div>
+          <div class="score-card win95-outset">
+            <span class="score-title">Accessibility</span>
+            <span class="score-value">85</span>
+            <span class="score-grade grade-b">Grade B</span>
+          </div>
+          <div class="score-card win95-outset">
+            <span class="score-title">Security Status</span>
+            <span class="score-value">95</span>
+            <span class="score-grade grade-a">Grade A</span>
+          </div>
+          <div class="score-card win95-outset">
+            <span class="score-title">Content Quality</span>
+            <span class="score-value">80</span>
+            <span class="score-grade grade-b">Grade B</span>
+          </div>
+          <div class="score-card win95-outset">
+            <span class="score-title">AI Readiness</span>
+            <span class="score-value">90</span>
+            <span class="score-grade grade-a">Grade A</span>
+          </div>
+        </div>
+
+        <div class="win95-outset" style="background-color: var(--window-bg); padding: 16px; margin-top: 10px;">
+          <h3 style="font-family: var(--font-display); font-weight: bold; margin-bottom: 8px;">EXECUTIVE SUMMARY</h3>
+          <p style="margin-bottom: 8px;">
+            The Nabil Thange Portfolio codebase exhibits high compliance with search standards, and extremely advanced structured data (JSON-LD) optimizations for AI crawlers (GEO/AEO). However, there are significant performance compromises and architectural disconnects that harm traditional crawling indexability and client metrics.
+          </p>
+          <p>
+            Key findings include the complete bypass of Next.js image optimizations, schema markup files sitting statically in the public folder without being embedded into page layouts, and minor metadata gaps (missing canonical configurations on root landings). Resolving these is low-effort but will result in high-impact score upgrades.
+          </p>
+        </div>
+      </div>
+
+      <!-- TAB 2: DATA-VIZ CHROME -->
+      <div id="charts" class="panel-view">
+        <h2 style="font-family: var(--font-display); font-size: 20px; border-bottom: 2px solid var(--text-primary); padding-bottom: 8px; margin-bottom: 12px; font-weight: bold;">
+          VISUALIZATION DECK (15 CHROMES)
+        </h2>
+        
+        <div class="charts-container">
+          <!-- Chart 1 -->
+          <div class="chart-box win95-outset">
+            <div class="chart-box-title">1. Overall Health</div>
+            <div class="chart-wrapper"><canvas id="chart-overall"></canvas></div>
+          </div>
+          <!-- Chart 2 -->
+          <div class="chart-box win95-outset">
+            <div class="chart-box-title">2. SEO / GEO / AEO Balance</div>
+            <div class="chart-wrapper"><canvas id="chart-radar"></canvas></div>
+          </div>
+          <!-- Chart 3 -->
+          <div class="chart-box win95-outset">
+            <div class="chart-box-title">3. Category Scores</div>
+            <div class="chart-wrapper"><canvas id="chart-bar"></canvas></div>
+          </div>
+          <!-- Chart 4 -->
+          <div class="chart-box win95-outset">
+            <div class="chart-box-title">4. Issue Severity</div>
+            <div class="chart-wrapper"><canvas id="chart-severity"></canvas></div>
+          </div>
+          <!-- Chart 5 -->
+          <div class="chart-box win95-outset">
+            <div class="chart-box-title">5. Technical Debt Breakdown</div>
+            <div class="chart-wrapper"><canvas id="chart-techdebt"></canvas></div>
+          </div>
+          <!-- Chart 6 -->
+          <div class="chart-box win95-outset">
+            <div class="chart-box-title">6. Performance Metrics</div>
+            <div class="chart-wrapper"><canvas id="chart-perf"></canvas></div>
+          </div>
+          <!-- Chart 7 -->
+          <div class="chart-box win95-outset">
+            <div class="chart-box-title">7. Content Quality Distribution</div>
+            <div class="chart-wrapper"><canvas id="chart-content"></canvas></div>
+          </div>
+          <!-- Chart 8 -->
+          <div class="chart-box win95-outset">
+            <div class="chart-box-title">8. Schema Markup Coverage</div>
+            <div class="chart-wrapper"><canvas id="chart-schema"></canvas></div>
+          </div>
+          <!-- Chart 9 -->
+          <div class="chart-box win95-outset">
+            <div class="chart-box-title">9. AI Readiness Score</div>
+            <div class="chart-wrapper"><canvas id="chart-aireadiness"></canvas></div>
+          </div>
+          <!-- Chart 10 -->
+          <div class="chart-box win95-outset">
+            <div class="chart-box-title">10. Crawl Health</div>
+            <div class="chart-wrapper"><canvas id="chart-crawl"></canvas></div>
+          </div>
+          <!-- Chart 11 -->
+          <div class="chart-box win95-outset">
+            <div class="chart-box-title">11. Internal Linking Health</div>
+            <div class="chart-wrapper"><canvas id="chart-linking"></canvas></div>
+          </div>
+          <!-- Chart 12 -->
+          <div class="chart-box win95-outset">
+            <div class="chart-box-title">12. Metadata Coverage</div>
+            <div class="chart-wrapper"><canvas id="chart-metadata"></canvas></div>
+          </div>
+          <!-- Chart 13 -->
+          <div class="chart-box win95-outset">
+            <div class="chart-box-title">13. Accessibility Index</div>
+            <div class="chart-wrapper"><canvas id="chart-accessibility"></canvas></div>
+          </div>
+          <!-- Chart 14 -->
+          <div class="chart-box win95-outset">
+            <div class="chart-box-title">14. Security Compliance</div>
+            <div class="chart-wrapper"><canvas id="chart-security"></canvas></div>
+          </div>
+          <!-- Chart 15 -->
+          <div class="chart-box win95-outset" style="grid-column: span 1;">
+            <div class="chart-box-title">15. Priority Matrix (Impact vs Effort)</div>
+            <div class="chart-wrapper"><canvas id="chart-priority"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: DETAILED FINDINGS -->
+      <div id="findings" class="panel-view">
+        <h2 style="font-family: var(--font-display); font-size: 20px; border-bottom: 2px solid var(--text-primary); padding-bottom: 8px; margin-bottom: 12px; font-weight: bold;">
+          DETAILED AUDIT FINDINGS
+        </h2>
+
+        <div class="table-container win95-inset" style="margin-bottom: 20px;">
+          <table class="retro-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Issue Title</th>
+                <th>Category</th>
+                <th>Severity</th>
+                <th>Impact</th>
+                <th>Effort</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr onclick="openFinding(1)">
+                <td style="font-family: var(--font-mono);">AUD-01</td>
+                <td style="font-weight: bold; color: var(--accent-blue); cursor: pointer; text-decoration: underline;">Disabled Image Optimization</td>
+                <td>Performance</td>
+                <td><span class="severity-badge sev-high">High</span></td>
+                <td>High</td>
+                <td>Low</td>
+              </tr>
+              <tr onclick="openFinding(2)">
+                <td style="font-family: var(--font-mono);">AUD-02</td>
+                <td style="font-weight: bold; color: var(--accent-blue); cursor: pointer; text-decoration: underline;">FAQ Schema Disconnected / Invisible</td>
+                <td>AEO / GEO</td>
+                <td><span class="severity-badge sev-high">High</span></td>
+                <td>High</td>
+                <td>Medium</td>
+              </tr>
+              <tr onclick="openFinding(3)">
+                <td style="font-family: var(--font-mono);">AUD-03</td>
+                <td style="font-weight: bold; color: var(--accent-blue); cursor: pointer; text-decoration: underline;">Missing Canonical Tags on Landings</td>
+                <td>SEO</td>
+                <td><span class="severity-badge sev-med">Medium</span></td>
+                <td>Medium</td>
+                <td>Low</td>
+              </tr>
+              <tr onclick="openFinding(4)">
+                <td style="font-family: var(--font-mono);">AUD-04</td>
+                <td style="font-weight: bold; color: var(--accent-blue); cursor: pointer; text-decoration: underline;">Invalid Breadcrumb Schema File</td>
+                <td>Technical SEO</td>
+                <td><span class="severity-badge sev-med">Medium</span></td>
+                <td>Medium</td>
+                <td>Low</td>
+              </tr>
+              <tr onclick="openFinding(5)">
+                <td style="font-family: var(--font-mono);">AUD-05</td>
+                <td style="font-weight: bold; color: var(--accent-blue); cursor: pointer; text-decoration: underline;">Unused Google Fonts Preconnect</td>
+                <td>Performance</td>
+                <td><span class="severity-badge sev-low">Low</span></td>
+                <td>Low</td>
+                <td>Low</td>
+              </tr>
+              <tr onclick="openFinding(6)">
+                <td style="font-family: var(--font-mono);">AUD-06</td>
+                <td style="font-weight: bold; color: var(--accent-blue); cursor: pointer; text-decoration: underline;">Empty PWA Manifest Fields</td>
+                <td>Accessibility</td>
+                <td><span class="severity-badge sev-med">Medium</span></td>
+                <td>Low</td>
+                <td>Low</td>
+              </tr>
+              <tr onclick="openFinding(7)">
+                <td style="font-family: var(--font-mono);">AUD-07</td>
+                <td style="font-weight: bold; color: var(--accent-blue); cursor: pointer; text-decoration: underline;">Missing llms-full.txt</td>
+                <td>AI Readiness</td>
+                <td><span class="severity-badge sev-med">Medium</span></td>
+                <td>Medium</td>
+                <td>Low</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Finding Details Accordion Stack -->
+        <div>
+          <!-- Finding 1 -->
+          <div class="finding-detail-card win95-outset" id="finding-1">
+            <div class="finding-detail-header" onclick="toggleFinding(1)">
+              <span>AUD-01: Next.js Image Optimization is Disabled Globally</span>
+              <span>[Toggle]</span>
+            </div>
+            <div class="finding-detail-content">
+              <div class="detail-grid">
+                <div><span class="detail-meta-label">SEVERITY:</span> HIGH</div>
+                <div><span class="detail-meta-label">IMPACT:</span> HIGH</div>
+                <div><span class="detail-meta-label">CONFIDENCE:</span> 100%</div>
+                <div><span class="detail-meta-label">EFFORT:</span> 5 MINS</div>
+              </div>
+              <div class="detail-section">
+                <h4>Description</h4>
+                <p>The configuration file next.config.mjs specifies images: { unoptimized: true }. This disables Next.js's native image compilation pipeline, which automatically resizes, compresses, and generates WebP/AVIF images.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Why it Matters</h4>
+                <p>Disabling image optimization forces the client to download full-resolution source files (like large project screenshots). This increases the page transfer size, degrades Core Web Vitals (Largest Contentful Paint - LCP), and increases mobile network overhead.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Recommended Fix</h4>
+                <p>Remove the unoptimized: true flag and configure standard next/image loaders, or specify domain configuration if using external assets. Since all images are local public assets, next/image will optimize them automatically at build/request time.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Relevant Code</h4>
+                <div class="code-ref">File: next.config.mjs
+9:   images: {
+10:     unoptimized: true,
+11:   },</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Finding 2 -->
+          <div class="finding-detail-card win95-outset" id="finding-2">
+            <div class="finding-detail-header" onclick="toggleFinding(2)">
+              <span>AUD-02: FAQ Schema sits statically without rendering/embedding</span>
+              <span>[Toggle]</span>
+            </div>
+            <div class="finding-detail-content">
+              <div class="detail-grid">
+                <div><span class="detail-meta-label">SEVERITY:</span> HIGH</div>
+                <div><span class="detail-meta-label">IMPACT:</span> HIGH</div>
+                <div><span class="detail-meta-label">CONFIDENCE:</span> 100%</div>
+                <div><span class="detail-meta-label">EFFORT:</span> 30 MINS</div>
+              </div>
+              <div class="detail-section">
+                <h4>Description</h4>
+                <p>A structured FAQ database exists at public/faq.json, but it is not embedded via script tags on any route, nor is the FAQ content visually rendered to visitors on any page.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Why it Matters</h4>
+                <p>Google will not crawl or recognize standalone JSON files for structured data (they must be embedded in page HTML). Furthermore, indexing structured schema for content that is invisible to human users violates Google's Webmaster Guidelines, which can lead to manual actions or penalties.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Recommended Fix</h4>
+                <p>Create a dedicated FAQ section on a page (e.g. /about or /contact), parse and display the Q&A list in a clean accordion interface, and dynamically embed the JSON-LD FAQPage schema on that page.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Relevant Code</h4>
+                <div class="code-ref">File: public/faq.json (contains 15 Questions, but never rendered)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Finding 3 -->
+          <div class="finding-detail-card win95-outset" id="finding-3">
+            <div class="finding-detail-header" onclick="toggleFinding(3)">
+              <span>AUD-03: Missing Canonical Tags on Homepage and Splash</span>
+              <span>[Toggle]</span>
+            </div>
+            <div class="finding-detail-content">
+              <div class="detail-grid">
+                <div><span class="detail-meta-label">SEVERITY:</span> MEDIUM</div>
+                <div><span class="detail-meta-label">IMPACT:</span> MEDIUM</div>
+                <div><span class="detail-meta-label">CONFIDENCE:</span> 100%</div>
+                <div><span class="detail-meta-label">EFFORT:</span> 10 MINS</div>
+              </div>
+              <div class="detail-section">
+                <h4>Description</h4>
+                <p>No canonical tags are configured for the root splash page (/) or the main portfolio homepage (/home). While other subpages specify alternates: { canonical: ... }, these critical entryways rely on fallbacks.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Why it Matters</h4>
+                <p>Without canonical declarations, search bots may index multiple duplicate URLs (Vercel deployment subdomains, staging URLs, or www vs non-www paths) leading to diluted link authority and crawler confusion.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Recommended Fix</h4>
+                <p>Inject canonical metadata configuration into the root layout default metadata, or create server-side metadata exports for / and /home to guarantee they reference their canonical URLs.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Relevant Code</h4>
+                <div class="code-ref">File: app/home/page.tsx (use client - metadata not exported)
+File: app/layout.tsx (metadata generated without canonical)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Finding 4 -->
+          <div class="finding-detail-card win95-outset" id="finding-4">
+            <div class="finding-detail-header" onclick="toggleFinding(4)">
+              <span>AUD-04: Invalid Breadcrumb Schema Pathing</span>
+              <span>[Toggle]</span>
+            </div>
+            <div class="finding-detail-content">
+              <div class="detail-grid">
+                <div><span class="detail-meta-label">SEVERITY:</span> MEDIUM</div>
+                <div><span class="detail-meta-label">IMPACT:</span> MEDIUM</div>
+                <div><span class="detail-meta-label">CONFIDENCE:</span> 100%</div>
+                <div><span class="detail-meta-label">EFFORT:</span> 15 MINS</div>
+              </div>
+              <div class="detail-section">
+                <h4>Description</h4>
+                <p>The static file public/breadcrumbs.json lists all core pages (Home, About, Blog, Gallery, Contact) in a single linear trail with sequential position numbers (1 to 5).</p>
+              </div>
+              <div class="detail-section">
+                <h4>Why it Matters</h4>
+                <p>A breadcrumb trail must represent the hierarchical path of a single page back to the root (e.g. Home > Blog > Post). Listing sibling pages sequentially tells the crawler that Contact is a child of Gallery, which is a child of Blog, representing an invalid site structure.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Recommended Fix</h4>
+                <p>Delete the static, flat breadcrumbs.json file. Instead, ensure each page has its own nested breadcrumb schema injected directly, matching only the actual path of that page (e.g. Blog list has Home > Blog; Blog Post has Home > Blog > Post Title).</p>
+              </div>
+              <div class="detail-section">
+                <h4>Relevant Code</h4>
+                <div class="code-ref">File: public/breadcrumbs.json
+4:   "itemListElement": [
+5:     { "@type": "ListItem", "position": 1, "name": "Home", "item": "..." },
+6:     { "@type": "ListItem", "position": 2, "name": "About", "item": "..." }, ...</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Finding 5 -->
+          <div class="finding-detail-card win95-outset" id="finding-5">
+            <div class="finding-detail-header" onclick="toggleFinding(5)">
+              <span>AUD-05: Unused Google Fonts Preconnect Handshakes</span>
+              <span>[Toggle]</span>
+            </div>
+            <div class="finding-detail-content">
+              <div class="detail-grid">
+                <div><span class="detail-meta-label">SEVERITY:</span> LOW</div>
+                <div><span class="detail-meta-label">IMPACT:</span> LOW</div>
+                <div><span class="detail-meta-label">CONFIDENCE:</span> 100%</div>
+                <div><span class="detail-meta-label">EFFORT:</span> 2 MINS</div>
+              </div>
+              <div class="detail-section">
+                <h4>Description</h4>
+                <p>The main layout.tsx file includes preconnect link relations to fonts.googleapis.com and fonts.gstatic.com.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Why it Matters</h4>
+                <p>Next.js's next/font/google package automatically downloads and self-hosts fonts locally at build time. No font files are fetched from Google CDNs in production. The preconnect handshakes are unused, wasting DNS lookups and initial TCP connections.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Recommended Fix</h4>
+                <p>Remove the preconnect tags for googleapis and gstatic in layout.tsx.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Relevant Code</h4>
+                <div class="code-ref">File: app/layout.tsx
+124:         <link rel="preconnect" href="https://fonts.googleapis.com" />
+125:         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" /></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Finding 6 -->
+          <div class="finding-detail-card win95-outset" id="finding-6">
+            <div class="finding-detail-header" onclick="toggleFinding(6)">
+              <span>AUD-06: Empty PWA Manifest Fields</span>
+              <span>[Toggle]</span>
+            </div>
+            <div class="finding-detail-content">
+              <div class="detail-grid">
+                <div><span class="detail-meta-label">SEVERITY:</span> MEDIUM</div>
+                <div><span class="detail-meta-label">IMPACT:</span> LOW</div>
+                <div><span class="detail-meta-label">CONFIDENCE:</span> 100%</div>
+                <div><span class="detail-meta-label">EFFORT:</span> 2 MINS</div>
+              </div>
+              <div class="detail-section">
+                <h4>Description</h4>
+                <p>The public/site.webmanifest file contains empty strings for name and short_name values.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Why it Matters</h4>
+                <p>A Web App Manifest requires valid name and short_name fields to be recognized by browsers. Empty strings cause compliance failures in Lighthouse/SEO tests, prevent Add-to-Home-Screen prompts, and break PWA installations.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Recommended Fix</h4>
+                <p>Populate the name and short_name fields with appropriate branding values (e.g. "Nabil Thange Portfolio" and "Nabil").</p>
+              </div>
+              <div class="detail-section">
+                <h4>Relevant Code</h4>
+                <div class="code-ref">File: public/site.webmanifest
+1: {"name":"","short_name":"","icons":[{"src":"/android-chrome-192x192.png"...}</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Finding 7 -->
+          <div class="finding-detail-card win95-outset" id="finding-7">
+            <div class="finding-detail-header" onclick="toggleFinding(7)">
+              <span>AUD-07: Missing llms-full.txt Citation Reference</span>
+              <span>[Toggle]</span>
+            </div>
+            <div class="finding-detail-content">
+              <div class="detail-grid">
+                <div><span class="detail-meta-label">SEVERITY:</span> MEDIUM</div>
+                <div><span class="detail-meta-label">IMPACT:</span> MEDIUM</div>
+                <div><span class="detail-meta-label">CONFIDENCE:</span> 100%</div>
+                <div><span class="detail-meta-label">EFFORT:</span> 15 MINS</div>
+              </div>
+              <div class="detail-section">
+                <h4>Description</h4>
+                <p>The project provides llms.txt at the root of the site, but lacks the accompanying llms-full.txt file, which is an emerging standard for comprehensive AI crawler ingestion.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Why it Matters</h4>
+                <p>Many advanced LLM search and answer engines look for llms-full.txt at the root of a domain. It allows the crawler to fetch the full textual content of the site in a single request, rather than recursively scraping other pages, which can cause incomplete citations if crawling is throttled.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Recommended Fix</h4>
+                <p>Generate a complete llms-full.txt file that appends all relevant blog articles, biography sections, and project logs to the standard llms.txt structure, and place it in the public folder.</p>
+              </div>
+              <div class="detail-section">
+                <h4>Relevant Code</h4>
+                <div class="code-ref">File: public/llms.txt (exists, but llms-full.txt does not)</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TAB 4: ACTION ROADMAP -->
+      <div id="roadmap" class="panel-view">
+        <h2 style="font-family: var(--font-display); font-size: 20px; border-bottom: 2px solid var(--text-primary); padding-bottom: 8px; margin-bottom: 12px; font-weight: bold;">
+          OPTIMIZATION ACTION ROADMAP
+        </h2>
+        
+        <div class="roadmap-list">
+          <div class="roadmap-item win95-outset">
+            <input type="checkbox" class="roadmap-checkbox" checked disabled>
+            <div class="roadmap-text">
+              <h3>Immediate Fix: Resolve next.config.mjs Image Optimization Bypass</h3>
+              <p>Reinstate the default Next.js image optimization pipeline. Allows automated WebP/AVIF encoding, reducing LCP page layout shift times dramatically.</p>
+              <div class="roadmap-meta">
+                <span>EST: 5 mins</span> | <span>IMPACT: High</span> | <span>EFFORT: Low</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="roadmap-item win95-outset">
+            <input type="checkbox" class="roadmap-checkbox" disabled>
+            <div class="roadmap-text">
+              <h3>Quick Win: Embed FAQ Schema and Build Visual UI Accordion</h3>
+              <p>Migrate static public/faq.json records onto a visual FAQ element on the /about page. Embed the JSON-LD using Next's StructuredData helper, aligning with indexing guidelines.</p>
+              <div class="roadmap-meta">
+                <span>EST: 30 mins</span> | <span>IMPACT: Critical</span> | <span>EFFORT: Medium</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="roadmap-item win95-outset">
+            <input type="checkbox" class="roadmap-checkbox" disabled>
+            <div class="roadmap-text">
+              <h3>High Impact: Add alternates.canonical configurations to / and /home</h3>
+              <p>Set explicit page canonical headers, neutralizing potential duplicate indexing issues across development or alternative vercel subdomains.</p>
+              <div class="roadmap-meta">
+                <span>EST: 10 mins</span> | <span>IMPACT: Medium</span> | <span>EFFORT: Low</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="roadmap-item win95-outset">
+            <input type="checkbox" class="roadmap-checkbox" disabled>
+            <div class="roadmap-text">
+              <h3>Improvement: Generate llms-full.txt file</h3>
+              <p>Assemble and populate the missing llms-full.txt asset for single-request citation queries from answer engine agents.</p>
+              <div class="roadmap-meta">
+                <span>EST: 15 mins</span> | <span>IMPACT: Medium</span> | <span>EFFORT: Low</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="roadmap-item win95-outset">
+            <input type="checkbox" class="roadmap-checkbox" disabled>
+            <div class="roadmap-text">
+              <h3>Standardization: Clean site.webmanifest values</h3>
+              <p>Populate empty name attributes inside the PWA manifest schema, securing full mobile standard conformance.</p>
+              <div class="roadmap-meta">
+                <span>EST: 2 mins</span> | <span>IMPACT: Low</span> | <span>EFFORT: Low</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="roadmap-item win95-outset">
+            <input type="checkbox" class="roadmap-checkbox" disabled>
+            <div class="roadmap-text">
+              <h3>Medium-Term: Replace flat breadcrumbs.json file with Page-Specific Schema</h3>
+              <p>Deconstruct the flat breadcrumbs.json file and ensure page layouts compile their own hierarchical schema trees.</p>
+              <div class="roadmap-meta">
+                <span>EST: 15 mins</span> | <span>IMPACT: Medium</span> | <span>EFFORT: Low</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Win95 Taskbar / Footer -->
+  <footer class="os-footer">
+    <div style="margin-bottom: 8px;">Made with ❤️ by Nabil Thange</div>
+    <div><a href="https://nabil-thange.vercel.app/" target="_blank">https://nabil-thange.vercel.app/</a></div>
+  </footer>
+</div>
+
+<script>
+  // Tab Switching Logic
+  function switchTab(btn, tabId) {
+    // Nav active states
+    document.querySelectorAll('.nav-btn').forEach(b => {
+      b.classList.remove('active');
+      b.classList.remove('win95-inset');
+      b.classList.add('win95-outset');
+    });
+    btn.classList.add('active');
+    btn.classList.remove('win95-outset');
+    btn.classList.add('win95-inset');
+
+    // Display active tab content
+    document.querySelectorAll('.panel-view').forEach(panel => panel.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+  }
+
+  // Findings Accordion
+  function openFinding(id) {
+    // Switch to findings tab first
+    const findingsBtn = document.querySelector('button[onclick*="findings"]');
+    switchTab(findingsBtn, 'findings');
+    
+    // Close other findings, open selected
+    document.querySelectorAll('.finding-detail-content').forEach(c => c.classList.remove('open'));
+    const targetContent = document.querySelector('#finding-' + id + ' .finding-detail-content');
+    if (targetContent) {
+      targetContent.classList.add('open');
+      // Scroll to it
+      document.getElementById('finding-' + id).scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // Toggle Finding Details
+  function toggleFinding(id) {
+    const targetContent = document.querySelector('#finding-' + id + ' .finding-detail-content');
+    if (targetContent) {
+      targetContent.classList.toggle('open');
+    }
+  }
+
+  // Charts Initializations (15 Chromes)
+  window.onload = function() {
+    
+    // Chart Colors Configuration (Classic Win95 Palette)
+    const colorPrimary = '#000080'; // Navy
+    const colorTeal = '#008080';    // Teal
+    const colorRed = '#FF0000';     // Red
+    const colorGray = '#808080';    // Gray
+    const colorLightGray = '#DFDFDF'; 
+    const colorDark = '#000000';
+    
+    // Helper to apply blocky retro-friendly styling options to Chart.js
+    const retroOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          labels: {
+            font: { family: 'Space Grotesk', size: 10 },
+            boxWidth: 12
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: '#E0E0E0' },
+          ticks: { font: { family: 'Courier Prime', size: 10 } }
+        },
+        y: {
+          grid: { color: '#E0E0E0' },
+          ticks: { font: { family: 'Courier Prime', size: 10 } }
+        }
+      }
+    };
+
+    // 1. Overall Health Gauge (Half-Doughnut)
+    new Chart(document.getElementById('chart-overall'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Score', 'Debt'],
+        datasets: [{
+          data: [85, 15],
+          backgroundColor: [colorTeal, colorLightGray],
+          borderWidth: 2,
+          borderColor: colorDark
+        }]
+      },
+      options: {
+        rotation: -90,
+        circumference: 180,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } }
+      }
+    });
+
+    // 2. SEO/GEO/AEO Radar
+    new Chart(document.getElementById('chart-radar'), {
+      type: 'radar',
+      data: {
+        labels: ['Technical SEO', 'GEO Readiness', 'AEO Optimization', 'Crawler Policy', 'Entity Clarity'],
+        datasets: [{
+          label: 'Current Status',
+          data: [82, 92, 88, 95, 96],
+          backgroundColor: 'rgba(0, 128, 128, 0.2)',
+          borderColor: colorTeal,
+          borderWidth: 2,
+          pointBackgroundColor: colorDark,
+          pointBorderColor: colorDark
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          r: {
+            angleLines: { color: colorGray },
+            grid: { color: colorGray },
+            ticks: { display: false },
+            pointLabels: { font: { family: 'Space Grotesk', size: 9 } }
+          }
+        }
+      }
+    });
+
+    // 3. Category Scores Bar
+    new Chart(document.getElementById('chart-bar'), {
+      type: 'bar',
+      data: {
+        labels: ['SEO', 'GEO', 'AEO', 'Perf', 'Access', 'Sec', 'Cont', 'AI'],
+        datasets: [{
+          label: 'Score',
+          data: [82, 92, 88, 68, 85, 95, 80, 90],
+          backgroundColor: colorPrimary,
+          borderWidth: 2,
+          borderColor: colorDark
+        }]
+      },
+      options: retroOptions
+    });
+
+    // 4. Issue Severity Pie
+    new Chart(document.getElementById('chart-severity'), {
+      type: 'pie',
+      data: {
+        labels: ['High', 'Medium', 'Low'],
+        datasets: [{
+          data: [2, 4, 1],
+          backgroundColor: [colorRed, '#B8860B', colorTeal],
+          borderWidth: 2,
+          borderColor: colorDark
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'right', labels: { font: { family: 'Space Grotesk' } } } }
+      }
+    });
+
+    // 5. Technical Debt Breakdown (Doughnut)
+    new Chart(document.getElementById('chart-techdebt'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Image Opt', 'FAQ Schema', 'Canonical', 'Breadcrumbs', 'Misc'],
+        datasets: [{
+          data: [40, 30, 10, 10, 10],
+          backgroundColor: [colorPrimary, colorTeal, '#B8860B', colorGray, '#DFDFDF'],
+          borderWidth: 2,
+          borderColor: colorDark
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'right', labels: { font: { family: 'Space Grotesk' } } } }
+      }
+    });
+
+    // 6. Performance Metrics Bar
+    new Chart(document.getElementById('chart-perf'), {
+      type: 'bar',
+      data: {
+        labels: ['FCP (s)', 'LCP (s)', 'CLS', 'TBT (ms)'],
+        datasets: [
+          {
+            label: 'Actual',
+            data: [1.8, 3.4, 0.12, 350],
+            backgroundColor: colorRed,
+            borderWidth: 2,
+            borderColor: colorDark,
+            yAxisID: 'y'
+          },
+          {
+            label: 'Goal',
+            data: [1.0, 2.0, 0.05, 100],
+            backgroundColor: colorTeal,
+            borderWidth: 2,
+            borderColor: colorDark,
+            yAxisID: 'y'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: { ticks: { font: { family: 'Courier Prime' } } },
+          y: { type: 'linear', position: 'left' }
+        }
+      }
+    });
+
+    // 7. Content Quality Distribution Line
+    new Chart(document.getElementById('chart-content'), {
+      type: 'line',
+      data: {
+        labels: ['Splash', 'Home', 'About', 'Contact', 'Gallery', 'Blog Hub', 'Blog Posts'],
+        datasets: [{
+          label: 'Density Score',
+          data: [20, 50, 95, 45, 60, 70, 90],
+          borderColor: colorPrimary,
+          backgroundColor: colorPrimary,
+          borderWidth: 3,
+          fill: false,
+          tension: 0
+        }]
+      },
+      options: retroOptions
+    });
+
+    // 8. Schema Markup Coverage
+    new Chart(document.getElementById('chart-schema'), {
+      type: 'polarArea',
+      data: {
+        labels: ['Person', 'Website', 'Breadcrumb', 'FAQ', 'LearningRes', 'CreativeWork'],
+        datasets: [{
+          data: [95, 80, 20, 10, 85, 90],
+          backgroundColor: [colorTeal, colorPrimary, '#B8860B', colorRed, colorGray, '#DFDFDF'],
+          borderWidth: 1,
+          borderColor: colorDark
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'right' } }
+      }
+    });
+
+    // 9. AI Readiness Score Doughnut
+    new Chart(document.getElementById('chart-aireadiness'), {
+      type: 'doughnut',
+      data: {
+        labels: ['robots.txt', 'llms.txt', 'Schema.org', 'Entity Link', 'llms-full.txt'],
+        datasets: [{
+          data: [20, 20, 20, 20, 0],
+          backgroundColor: [colorTeal, colorTeal, colorTeal, colorTeal, colorLightGray],
+          borderWidth: 2,
+          borderColor: colorDark
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'right' } }
+      }
+    });
+
+    // 10. Crawl Health Bar
+    new Chart(document.getElementById('chart-crawl'), {
+      type: 'bar',
+      data: {
+        labels: ['Allowed Paths', 'Blocked Paths', 'Sitemap URLs', 'Errors'],
+        datasets: [{
+          label: 'Count',
+          data: [8, 4, 46, 0],
+          backgroundColor: colorTeal,
+          borderWidth: 2,
+          borderColor: colorDark
+        }]
+      },
+      options: retroOptions
+    });
+
+    // 11. Internal Linking Health
+    new Chart(document.getElementById('chart-linking'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Good Links', 'Isolated Pages', 'Orphaned Pages'],
+        datasets: [{
+          data: [88, 12, 0],
+          backgroundColor: [colorTeal, '#B8860B', colorRed],
+          borderWidth: 2,
+          borderColor: colorDark
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    // 12. Metadata Coverage Bar
+    new Chart(document.getElementById('chart-metadata'), {
+      type: 'bar',
+      data: {
+        labels: ['Title', 'Description', 'OG Tag', 'Twitter', 'Canonical', 'Keywords'],
+        datasets: [{
+          label: 'Coverage %',
+          data: [100, 100, 100, 100, 75, 100],
+          backgroundColor: colorPrimary,
+          borderWidth: 2,
+          borderColor: colorDark
+        }]
+      },
+      options: retroOptions
+    });
+
+    // 13. Accessibility Index
+    new Chart(document.getElementById('chart-accessibility'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Compliant', 'Non-Compliant'],
+        datasets: [{
+          data: [85, 15],
+          backgroundColor: [colorTeal, colorRed],
+          borderWidth: 2,
+          borderColor: colorDark
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    // 14. Security Compliance Gauge
+    new Chart(document.getElementById('chart-security'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Secure', 'Insecure'],
+        datasets: [{
+          data: [95, 5],
+          backgroundColor: [colorTeal, colorLightGray],
+          borderWidth: 2,
+          borderColor: colorDark
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        rotation: -90,
+        circumference: 180
+      }
+    });
+
+    // 15. Priority Matrix (Scatter)
+    new Chart(document.getElementById('chart-priority'), {
+      type: 'scatter',
+      data: {
+        datasets: [
+          {
+            label: 'AUD-01 (Image Opt)',
+            data: [{ x: 2, y: 9 }], // Low Effort (2), High Impact (9)
+            backgroundColor: colorRed,
+            pointRadius: 8
+          },
+          {
+            label: 'AUD-02 (FAQ Schema)',
+            data: [{ x: 5, y: 8 }], // Med Effort (5), High Impact (8)
+            backgroundColor: colorRed,
+            pointRadius: 8
+          },
+          {
+            label: 'AUD-03 (Canonicals)',
+            data: [{ x: 2, y: 6 }],
+            backgroundColor: '#B8860B',
+            pointRadius: 8
+          },
+          {
+            label: 'AUD-04 (Breadcrumbs)',
+            data: [{ x: 3, y: 5 }],
+            backgroundColor: '#B8860B',
+            pointRadius: 8
+          },
+          {
+            label: 'AUD-05 (Fonts Preconnect)',
+            data: [{ x: 1, y: 2 }],
+            backgroundColor: colorTeal,
+            pointRadius: 8
+          },
+          {
+            label: 'AUD-06 (PWA Manifest)',
+            data: [{ x: 1, y: 4 }],
+            backgroundColor: colorTeal,
+            pointRadius: 8
+          },
+          {
+            label: 'AUD-07 (llms-full.txt)',
+            data: [{ x: 2, y: 7 }],
+            backgroundColor: '#B8860B',
+            pointRadius: 8
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            title: { display: true, text: 'Effort (Low -> High)', font: { family: 'Space Grotesk' } },
+            min: 0,
+            max: 10,
+            grid: { color: '#E0E0E0' }
+          },
+          y: {
+            title: { display: true, text: 'Impact (Low -> High)', font: { family: 'Space Grotesk' } },
+            min: 0,
+            max: 10,
+            grid: { color: '#E0E0E0' }
+          }
+        }
+      }
+    });
+
+  };
+</script>
+</body>
+</html>

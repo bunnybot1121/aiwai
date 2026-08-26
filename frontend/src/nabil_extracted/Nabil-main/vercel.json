@@ -1,0 +1,186 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/:path*.(jpg|jpeg|png|gif|webp|svg|ico)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/:path*.(js|css|woff|woff2|ttf|otf)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "destination": "https://nabil-thange.vercel.app/:path*",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "nabilthange.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://nabil-thange.vercel.app/:path*",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "nabil-thange-portfolio.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://nabil-thange.vercel.app/:path*",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "nabilthange-portfolio.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://nabil-thange.vercel.app/:path*",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "nabil-thange-dev.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://nabil-thange.vercel.app/:path*",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "nabilthange-dev.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://nabil-thange.vercel.app/:path*",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "nabill.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://nabil-thange.vercel.app/:path*",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "nabilt.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://nabil-thange.vercel.app/:path*",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "nn.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://nabil-thange.vercel.app/:path*",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "nabt.vercel.app"
+        }
+      ]
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://nabil-thange.vercel.app/:path*",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "nnn.vercel.app"
+        }
+      ]
+    }
+  ],
+  "rewrites": [],
+  "regions": [
+    "iad1"
+  ],
+  "framework": "nextjs"
+}

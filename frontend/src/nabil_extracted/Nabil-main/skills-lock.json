@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "skills": {
+    "SEO Optimizer": {
+      "source": "davila7/claude-code-templates",
+      "sourceType": "github",
+      "computedHash": "1ad7ac7488d2050dfd7d64c592a64f86f8ec9a1a871b571544b1a997031c3f38"
+    },
+    "ai-seo": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "computedHash": "35de7c3ba587734c72508d0df02829080aec70fd3fe963318822ed825bb21103"
+    },
+    "blog-seo-check": {
+      "source": "agricidaniel/claude-blog",
+      "sourceType": "github",
+      "skillPath": "skills/blog-seo-check/SKILL.md",
+      "computedHash": "58c364816b818f6eaf78d409a935a24f4f4c32f548b4ef3d0da7e3e50f04077f"
+    },
+    "blog-writing-guide": {
+      "source": "getsentry/skills",
+      "sourceType": "github",
+      "skillPath": "skills/blog-writing-guide/SKILL.md",
+      "computedHash": "b9a6d5585a901191cd159575eea1a192285055fef17294975fbe42019cf060d3"
+    },
+    "geo-fundamentals": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "9947da5cbedf47098493d507756c2ac90207b974d5c39c2400d767083e714712"
+    },
+    "google-official-seo-guide": {
+      "source": "littleben/awesomeagentskills",
+      "sourceType": "github",
+      "computedHash": "795417f9bac75e83cd03e9ffaef54543dee5b4b454f50e83295956c20a91ba16"
+    },
+    "nextjs-seo": {
+      "source": "laguagu/claude-code-nextjs-skills",
+      "sourceType": "github",
+      "computedHash": "803d6f6e0f808265a410020752517c0c70b7aec0329f665e280e6d4f203617fc"
+    },
+    "seo": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "computedHash": "680cc12a17e9308b4592a2751db51615c618993f75362cb8e64207f6355a8c63"
+    },
+    "seo-aeo-best-practices": {
+      "source": "sanity-io/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/seo-aeo-best-practices/SKILL.md",
+      "computedHash": "b6b2dd3af3c92f82f04b830dab2cc323f299d7c2e57f7d3619a5886caa7eeb08"
+    },
+    "seo-aeo-geo-master": {
+      "source": "Just-mpm/ConformAI",
+      "sourceType": "github",
+      "computedHash": "d24ffba800c9d0910b93e964ea561ae0a2af59bd44f0dd2359430315669f9060"
+    },
+    "seo-audit": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/seo-audit/SKILL.md",
+      "computedHash": "606da61224d9d5687020816292c88152a7fcb27ce375b22f92f429e074f07f34"
+    },
+    "seo-fundamentals": {
+      "source": "davila7/claude-code-templates",
+      "sourceType": "github",
+      "computedHash": "72650aab70956ffb5ebac7877d6631356900da0ab33e50499312a4b1c3c0aa5d"
+    },
+    "seo-geo": {
+      "source": "resciencelab/opc-skills",
+      "sourceType": "github",
+      "skillPath": "skills/seo-geo/SKILL.md",
+      "computedHash": "1d38520f453282af8712874c360e3e34a379827f737fb536bd45055e2d60d964"
+    },
+    "seo-keyword-research": {
+      "source": "Manuelvillarvieites/n8n-and-claude",
+      "sourceType": "github",
+      "computedHash": "86fe1d30ad6d407531fb0f893b608d60a2b805ff16895542d2a3c546cabf9768"
+    },
+    "seo-sitemap": {
+      "source": "agricidaniel/claude-seo",
+      "sourceType": "github",
+      "skillPath": "skills/seo-sitemap/SKILL.md",
+      "computedHash": "47d818d8eec4d5c3634dade80bb18aa5d87ec9416910d29c54f81f7ed416bc6e"
+    }
+  }
+}

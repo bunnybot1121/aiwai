@@ -1,0 +1,268 @@
+/* TEAM */
+
+Developer & Designer: Nabil Thange
+Full Name: Nabil Salim Thange
+Role: Full-Stack Developer & AI Integration Specialist
+Current Position: Frontend AI Development Intern @ FlyRank AI (Feb 2026 - Present)
+Location: Navi Mumbai, Maharashtra, India
+Age: 19 years old
+Education: Saraswati College of Engineering, Navi Mumbai
+Degree: B.E. Computer Engineering (3rd Year) | CGPA: 9.3/10
+Email: thangenabil@gmail.com
+Phone: +91 97570 45188
+Website: https://nabil-thange.vercel.app
+Contact: https://nabil-thange.vercel.app/contact
+
+/* ACHIEVEMENTS */
+
+IIT Hyderabad Hackathon: Winner (Sentient) - ₹60,000+ prize, Special Valor Award, campus invitation
+HackHazards 2025: Winner (NbAIl - AI Voice Assistant)
+Gitskinz: Creator (2,000+ MAU, 70+ templates, zero paid marketing)
+Hackathons: 40+ participations (ISRO, OpenAI, IIT Goa, Bolt, etc.)
+Current: Frontend AI Development Intern @ FlyRank AI (Feb 2026 - Present)
+Internships: Tata Group - Tata iQ (Data), Deloitte Australia (Cybersecurity)
+Academic: 9.3 CGPA (1st year B.Tech)
+
+/* CERTIFICATIONS */
+
+ISRO: Machine Learning Certification (Bharati Antariksh Hackathon)
+Microsoft: SQL Developer Certification
+Google: Gemini API Certification
+
+/* HACKATHON HIGHLIGHTS */
+
+Major Wins:
+- HackHazards '25 (Winner)
+
+Top Tier Participations:
+- Raise Your Hack (World's Biggest AI Hackathon)
+- Quantum Hacks (World's Largest Hackathon by Bolt)
+- Bharati Antariksh Hackathon (ISRO)
+- IIT Goa CultRang '26 – HackOverFlow
+- Trae AI IDE: Zero Limits Hackathon
+- NxtWave by OpenAI
+- The AI Championship
+- UIDAI Data Hackathon 2025
+- AMD Slingshot AI for Bharat
+- Grizzly Hacks Fall 2025
+- CODE CRAFTER 3.0 & CODE ROYAL
+- PromptWars: Virtual
+- Gen AI Exchange Program
+
+College Events:
+- SAAVISHKAR, SCOE AVISHKAR, AXION (Saraswati College)
+- Techtashan, Nexus, Galaxium v1
+
+Total Events: 40+ hackathons, competitions, workshops
+
+/* SITE TECHNOLOGY */
+
+Standards: HTML5, CSS3, JavaScript ES6+, TypeScript
+Framework: Next.js 16.1.1 (React 19, App Router)
+3D Graphics: Three.js, React Three Fiber
+Animation: Framer Motion, GSAP
+Styling: Tailwind CSS 4.1.9, Custom CSS
+Fonts: Geist, Space Grotesk
+
+Backend: Node.js, Supabase, PostgreSQL
+AI Integration: OpenAI, LangChain, Groq
+Deployment: Vercel (Continuous Deployment)
+Version Control: Git, GitHub
+CDN: Vercel Edge Network
+
+/* DEVELOPMENT TOOLS */
+
+Code Editor: VS Code, Cursor AI
+AI Assistants: GitHub Copilot, Claude, ChatGPT
+Design: Figma, Canva
+3D Modeling: Blender, AutoCAD
+Testing: Jest, React Testing Library
+Package Manager: npm, pnpm
+
+/* FRONTEND STACK */
+
+UI Library: React 19 (Server Components)
+Framework: Next.js 16 with App Router
+Styling: Tailwind CSS 4.1.9
+Animation: Framer Motion, GSAP
+3D: Three.js (r168), React Three Fiber
+UI Components: Custom-built, Radix UI primitives
+Icons: Lucide React
+Typography: Geist Sans, Space Grotesk
+
+/* BACKEND & DATA */
+
+Runtime: Node.js
+Database: Supabase (PostgreSQL)
+Authentication: OAuth, JWT
+API: RESTful, GraphQL-ready
+File Storage: Vercel Blob
+Caching: Redis (when needed)
+
+/* AI & ML STACK */
+
+LLMs: OpenAI GPT-4, Claude, Groq
+Framework: LangChain, LangGraph
+Embeddings: text-embedding-3-small
+Vector DB: Pinecone, Chroma
+Voice: Web Speech API, custom integrations
+Tools: Python ML libraries, Jupyter
+
+/* DEPLOYMENT */
+
+Hosting: Vercel
+Domain: nabil-thange.vercel.app
+SSL: Automatic (Let's Encrypt via Vercel)
+CDN: Global Edge Network
+Analytics: Vercel Analytics
+Monitoring: Vercel Speed Insights
+
+/* PERFORMANCE */
+
+Core Web Vitals: Optimized
+Lighthouse Score: 95+ on all metrics
+Image Optimization: Next.js Image component
+Code Splitting: Automatic (Next.js)
+Server Components: React 19 SSR
+Caching Strategy: ISR + Edge caching
+
+/* SEO & DISCOVERABILITY */
+
+Meta Tags: Comprehensive OpenGraph + Twitter Cards
+Structured Data: JSON-LD (Person, Organization, Portfolio)
+Sitemap: Dynamic XML sitemap
+Robots.txt: AI crawler-friendly
+RSS Feed: Blog updates feed
+llms.txt: AI discovery file
+humans.txt: This file
+about.txt: Plain text bio
+
+/* SOCIAL PROFILES */
+
+LinkedIn: https://www.linkedin.com/in/nabil-thange/
+GitHub: https://github.com/NabilThange
+Twitter/X: https://x.com/THEONLYNABIL
+Instagram: https://www.instagram.com/nabil_thange/
+Dev.to: https://dev.to/nabil_thange
+Devpost: https://devpost.com/thangenabil
+Medium: https://medium.com/@thangenabil
+HuggingFace: https://huggingface.co/Nabil-Oc
+Kaggle: https://www.kaggle.com/nabilthange
+Stack Overflow: https://stackoverflow.com/users/32129529/nabil-thange
+lablab.ai: https://lablab.ai/u/@NabilT
+
+/* INSPIRATION & THANKS */
+
+Community: React, Next.js, Three.js communities
+Design Inspiration: Brutalist web design, Swiss design
+AI Community: OpenAI, Anthropic, open-source contributors
+Mentors: Self-taught + developer community support
+Tools: Vercel team, Tailwind team, React Three Fiber creators
+
+Special Thanks:
+- Next.js team for incredible DX
+- Vercel for seamless deployment
+- Three.js community for 3D web magic
+- Open-source contributors worldwide
+- HackHazards organizers (2025 win)
+- Saraswati College of Engineering faculty
+
+/* PROJECT SHOWCASE */
+
+Featured Projects on this site:
+1. Gitskinz - GitHub profile generator (60+ templates)
+2. NbAIl - AI voice assistant (HackHazards 2025 Winner)
+3. Style - AI fashion design tool
+4. Techwiser CMS - Custom content management
+
+Blog Topics:
+- Full-stack development
+- AI integration and LLMs
+- Freelance development in India
+- Mumbai tech scene
+- Production AI architecture
+- Hackathon strategies
+
+/* KEYWORDS */
+
+Full-Stack Developer Mumbai, React Developer Mumbai, Next.js Developer India,
+AI Developer Mumbai, Freelance Developer Mumbai, Web Developer Mumbai,
+Software Engineer Mumbai, Navi Mumbai Developer, Kharghar Developer,
+Saraswati College Engineering, Computer Engineering Mumbai,
+AI Integration Specialist, LangChain Developer, Three.js Developer,
+Voice AI Developer, Generative AI Mumbai, Machine Learning Engineer,
+HackHazards Winner, Gitskinz Creator, Vibe Coder, Creative Technologist India
+
+/* AVAILABILITY */
+
+Status: Open for freelance projects
+Location: Mumbai, India (Remote worldwide)
+Hourly Rate: ₹1,800-₹3,000/hour
+Project Rate: ₹1,50,000-₹15,00,000+
+Response Time: Within 24 hours
+Preferred Contact: Email or website form
+
+/* PHILOSOPHY */
+
+"Build products people want, not just impressive tech demos."
+
+Approach:
+- Product-first development (solve real problems)
+- Pragmatic tech choices (proven over trendy)
+- AI as accelerator (enhance, not replace thinking)
+- Remote-friendly workflows (async, transparent)
+- Learn by building (iterate based on feedback)
+
+/* LAST UPDATE */
+
+Date: February 2026
+Version: 3.0
+Site Status: Active Development
+Accepting Projects: Yes
+Blog Status: Actively Publishing
+Portfolio Status: Updated Monthly
+
+/* SITE STATS */
+
+Build Time: <30 seconds (Turbopack)
+Deploy Time: ~2 minutes (Vercel)
+Bundle Size: Optimized with code splitting
+Performance: 95+ Lighthouse score
+Accessibility: WCAG 2.1 AA compliant
+SEO Score: 100 (Lighthouse)
+
+/* COPYRIGHT */
+
+© 2025-2026 Nabil Thange. All rights reserved.
+Code: Custom-built (not templated)
+Content: Original writing and projects
+Design: Custom brutalist aesthetic
+Built with ❤️ in Mumbai, India
+
+/* TECHNICAL NOTES */
+
+This site uses:
+- Server Components (React 19) for performance
+- Edge Runtime for global speed
+- Incremental Static Regeneration for content
+- Optimistic UI updates for interactions
+- Custom shaders for 3D effects
+- AI-powered features (experimental)
+
+No tracking beyond Vercel Analytics.
+No third-party advertising.
+No data selling or sharing.
+Privacy-first approach.
+
+/* CONTACT */
+
+For projects, collaborations, or just to say hi:
+Email: thangenabil@gmail.com
+Form: https://nabil-thange.vercel.app/contact
+LinkedIn: https://www.linkedin.com/in/nabil-thange/
+
+Typical response time: Within 24 hours
+Best time to reach: IST business hours (flexible)
+Languages: English, Hindi, Marathi
+
+/* END */

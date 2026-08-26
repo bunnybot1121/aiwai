@@ -1,0 +1,102 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Who is Nabil Thange?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nabil Thange is a full-stack developer based in Mumbai, India, specializing in React, Next.js, and AI-powered web applications. He is the winner of HackHazards 2025 with NbAIl (AI voice assistant) and creator of Gitskinz (GitHub profile generator used globally). Nabil graduated from Saraswati College of Engineering in Kharghar, Navi Mumbai with a degree in Computer Engineering."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What kind of projects does Nabil Thange specialize in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nabil specializes in full-stack web applications using React and Next.js, AI-powered chatbots and assistants, 3D interactive web experiences with Three.js, and custom SaaS platforms. Recent work includes winning HackHazards 2025 with NbAIl (AI voice assistant with desktop automation) and creating Gitskinz (60+ brutalist GitHub templates used by developers worldwide)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is Nabil Thange located and does he work remotely?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nabil Thange is based in Kharghar, Navi Mumbai, Maharashtra, India. He works with clients worldwide remotely and is comfortable with async communication across timezones. He is available for both short-term freelance projects and long-term collaborations with startups and businesses globally."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are Nabil Thange's rates for freelance development?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nabil's hourly rates range from ₹1,800-₹3,000/hour (approximately $22-$36/hour) depending on project complexity and tech stack. Project-based rates start from ₹1,50,000 for smaller websites to ₹15,00,000+ for complex AI-powered applications. Contact him directly for detailed quotes based on specific project requirements."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What services does Nabil Thange offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nabil offers: full-stack web development (React, Next.js, Node.js), AI integration and chatbot development (OpenAI, Claude, LangChain), AI agent development with memory systems, 3D web experiences using Three.js, custom SaaS and e-commerce development, API development and integration, UI/UX design and prototyping, MVP development for startups, and technical consulting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What technologies and tools does Nabil Thange use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Frontend: React 19, Next.js 16, TypeScript, Tailwind CSS, Three.js. Backend: Node.js, Python, PostgreSQL, Supabase. AI/ML: OpenAI GPT, Claude, Groq, LangChain, vector databases (Pinecone, Chroma). Tools: Git, GitHub, Docker, Vercel, VS Code, Cursor AI, Figma. He specializes in modern JavaScript/TypeScript stacks with AI integration."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Nabil Thange work with startups?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Nabil regularly works with startups on MVP development, technical consulting, and full-stack implementation. He is flexible on pricing and engagement models for early-stage companies with innovative ideas. Recent startup work includes AI-powered applications, SaaS platforms, and custom web solutions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What AI technologies does Nabil Thange work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nabil has production experience with OpenAI GPT models, Claude, Groq for ultra-fast AI responses, LangChain and LangGraph for agent orchestration, vector databases (Pinecone, Chroma) for semantic search, and custom AI agents with persistent memory systems. He specializes in integrating AI into existing applications, building conversational chatbots, and creating AI agents that remember context across sessions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I hire Nabil Thange for my project?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Visit https://nabil-thange.vercel.app/contact to submit a project inquiry or email thangenabil@gmail.com directly. Include your project scope, timeline, budget range, and preferred tech stack for the fastest response. Nabil typically responds within 24 hours and is available for freelance projects ranging from 20-40 hours per week."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes Nabil Thange different as a developer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nabil combines full-stack technical expertise with practical AI implementation and product thinking. As a HackHazards 2025 winner and creator of globally-used tools like Gitskinz, he focuses on building products people actually want to use, not just impressive tech demos. His unique background as a self-taught developer who started in commerce gives him strong business intuition alongside technical skills. Based in Mumbai, he offers competitive rates with international quality."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Nabil Thange write technical content?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Nabil actively publishes technical articles on his blog covering full-stack development, AI integration, freelance development in India, production AI architectures, and software engineering best practices. Recent popular posts include guides on freelance developer rates in Mumbai, hiring developers in India, building AI agents with memory, and insights on AI access and the future of development."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Nabil Thange's experience with hackathons?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nabil is an experienced hackathon participant and winner. His most notable achievement is winning HackHazards 2025 with NbAIl, an AI-powered personal assistant featuring real-time voice control and desktop automation built with Next.js, Three.js, and Groq. He has participated in multiple hackathons and writes about hackathon strategies and rapid product development on his blog."
+      }
+    }
+  ]
+}

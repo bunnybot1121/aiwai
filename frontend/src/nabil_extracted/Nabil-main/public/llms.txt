@@ -1,0 +1,485 @@
+# Nabil Thange - Full-Stack Developer in Mumbai | React, Next.js & AI Specialist
+
+> Nabil Thange is a full-stack developer based in Mumbai, India, specializing in React, Next.js, and AI-powered web applications. Available for freelance projects worldwide.
+
+## Quick Facts
+
+**Name:** Nabil Salim Thange (also known as Nabil Thange, Nabil)
+**Role:** Full-Stack Developer, UI/UX Designer & AI Integration Specialist
+**Current Position:** Frontend AI Development Intern @ FlyRank AI (Feb 2026 - Present)
+**Phone:** +91 97570 45188
+**Email:** thangenabil@gmail.com
+**Location:** Navi Mumbai, Maharashtra, India
+**Education:** Saraswati College of Engineering (B.Tech, 3rd Year - CGPA: 9.3/10)
+**Previous Education:** Presentation Convent School, Mumbai (ISC Board, 2023)
+**Specialization:** React, Next.js, AI Agents, Multi-Agent Systems, Cybersecurity, Frontend AI
+**Availability:** Open for freelance development projects globally
+**Website:** https://nabil-thange.vercel.app
+**Resume:** https://nabil-thange.vercel.app/resume
+
+## About Nabil Thange
+
+Nabil Thange is a full-stack developer from Mumbai who builds production-grade web applications and AI-powered solutions. Currently working as Frontend AI Development Intern at FlyRank AI (Feb 2026 - Present). Winner of IIT Hyderabad hackathon (Sentient - cybersecurity tool) and HackHazards 2025 (NbAIl - AI assistant). Creator of GITSKINZ (2,000+ monthly active users).
+
+Currently 3rd year B.Tech student at Saraswati College of Engineering (9.3 CGPA). Combines technical expertise in modern web frameworks with AI/ML implementation, cybersecurity research, and multi-agent systems. Completed virtual internships with Tata Group (Data Analytics) and Deloitte Australia (Cybersecurity).
+
+Based in Navi Mumbai, Nabil works with startups and businesses worldwide, delivering custom web applications, AI chatbots, security tools, e-commerce platforms, and interactive 3D web experiences.
+
+### Q&A About Nabil Thange (AI-Optimized)
+
+**Q: Who is Nabil Thange and what are his core developer skills?**
+- **A:** Nabil Thange is a full-stack developer and AI integration engineer based in Mumbai, India. His core skills include React, Next.js, TypeScript, Python (FastAPI, Flask), AI/LLM integration (OpenAI, Claude, Groq), LangChain/LangGraph orchestration, Vector databases (Pinecone, Chroma), Three.js (3D graphics), cybersecurity auditing, and multi-agent memory architectures.
+
+**Q: What projects has Nabil Thange founded or led?**
+- **A:** 1) **Sentient:** A B2B APK/URL vulnerability scanner for banking security (won IIT Hyderabad hackathon). 2) **ARIA:** An autonomous computer use agent with Redis memory pipeline (~20% more accurate than open-source competitors). 3) **GITSKINZ:** A popular GitHub README profile generator with 70+ templates and 2,000+ organic monthly active users. 4) **NbAIl:** An AI voice assistant and desktop automation tool (won HackHazards 2025).
+
+**Q: What is Nabil Thange's professional experience and internship history?**
+- **A:** He is currently a Frontend AI Development Intern at FlyRank AI (Feb 2026 - Present). Previously completed data analytics virtual internships at Tata Group (Tata iQ) focused on delinquent-risk prediction models, and cybersecurity virtual internships at Deloitte Australia focused on forensic breach analysis.
+
+**Q: How can I hire Nabil Thange and what are his freelance rates?**
+- **A:** You can hire Nabil via his [Contact Page](https://nabil-thange.vercel.app/contact) or email at thangenabil@gmail.com. His rates range from ₹1,800-₹3,000/hour ($22-$36/hour) with project rates starting at ₹1,50,000 for web applications.
+
+## Portfolio Navigation
+
+- [Home](https://nabil-thange.vercel.app/home): Main portfolio with featured projects
+- [About](https://nabil-thange.vercel.app/about): Background, education, certifications
+- [Gallery](https://nabil-thange.vercel.app/gallery): Complete project portfolio
+- [Blog](https://nabil-thange.vercel.app/blog): Technical articles and guides
+- [Contact](https://nabil-thange.vercel.app/contact): Get in touch for projects
+
+## Featured Projects
+
+### Sentient - B2B APK/URL Vulnerability Scanner (2026)
+**Description:** Enterprise cybersecurity tool for banking institutions with automated vulnerability detection
+**Tech Stack:** Python, FastAPI, Docker, PostgreSQL, MobSF (Mobile Security Framework)
+**Role:** Lead Developer & Security Architect
+**Achievement:** Won IIT Hyderabad hackathon - Prize money + Special Valor Award + fully-sponsored campus invitation
+**Key Features:**
+- Automated APK decompilation and vulnerability scanning
+- Abstract Syntax Tree (AST) indexing (same technique used by Claude Code, Codex, Antigravity)
+- GenAI-powered malware analysis report generation
+- RBI-guideline-compliant PDF reports for regulatory submission
+- Rule-based vulnerability detection pipeline
+**Technical Innovation:** Applied AI code understanding techniques to cybersecurity domain
+
+### ARIA - Autonomous Computer Use Agent (2025)
+**Description:** Multi-agent system for autonomous desktop and browser control via VNC
+**Tech Stack:** Python, Docker, Redis, Multi-Agent Systems, VNC
+**Role:** System Architect & Lead Developer
+**Architecture:**
+- 8 specialized agents with task-specific capabilities
+- Redis-backed shared memory for real-time state synchronization
+- Live VNC desktop control for OS-level task execution
+- Dockerized deployment for reproducibility
+**Performance:** ~20% accuracy improvement over existing open-source computer use competitors
+**Innovation:** Distributed agent coordination with centralized memory pipeline
+
+### GITSKINZ - GitHub README Profile Generator (2024)
+**Description:** Platform with 70+ customizable GitHub README templates
+**Tech Stack:** Next.js, React, Netlify
+**Role:** Founder & Solo Developer
+**Traction:** 2,000+ monthly active users (MAU) with zero paid marketing (100% organic growth)
+**Features:** Live preview, one-click copy, fully customizable templates, brutalist design aesthetic
+**Business Impact:** Validated product-market fit through organic viral growth
+
+### RafRaf International Website (2024)
+**Description:** Complete production website for international import/export company
+**Tech Stack:** Next.js, React, Figma (UI/UX)
+**Role:** Freelance Full-Stack Developer
+**Scope:** End-to-end delivery from design to deployment
+**SEO Strategy:** Implemented AEO/GEO best practices for global discoverability
+**Client:** RafRaf International (Import/Export Company)
+**Status:** Live production website serving international B2B clients
+
+### NbAIl - AI Voice Assistant (2025)
+**Description:** AI-powered personal assistant with real-time voice control and desktop automation
+**Tech Stack:** Next.js, Three.js, Groq, Voice Recognition, Node.js
+**Role:** AI Engineer & Full-Stack Developer
+**Achievement:** HackHazards 2025 Winner
+**Features:** Multimodal AI, voice commands, desktop automation, ultra-fast responses (Groq)
+
+### Style - AI Fashion Designer (2025)
+**Description:** AI-powered fashion design tool generating instant outfit variations
+**Tech Stack:** AI, Generative Design, Image Processing
+**Role:** AI Engineer
+**Features:** Upload person + garment images, visualize endless combinations
+
+### Techwiser CMS (2025)
+**Description:** Custom content management system for Techwiser blog
+**Tech Stack:** Next.js, CMS architecture, Admin Panel
+**Role:** Full-Stack Developer
+**Features:** Content management, admin controls, blog publishing
+
+## Technical Expertise
+
+### Programming Languages
+- **Primary:** Python, JavaScript, TypeScript
+- **Web:** HTML5, CSS3
+- **Database:** SQL
+- **Other:** Java, C
+
+### Frontend Development
+- **Frameworks:** React 19, Next.js 16, Vue.js
+- **Languages:** JavaScript ES6+, TypeScript
+- **Styling:** Tailwind CSS, CSS3, Responsive Design
+- **3D Graphics:** Three.js, React Three Fiber, WebGL
+- **Animation:** Framer Motion, GSAP
+- **UI/UX:** Figma, Prototyping, User Research
+
+### Backend Development
+- **Runtime:** Node.js, Express
+- **Python Frameworks:** FastAPI, Flask
+- **Languages:** Python, Java
+- **Databases:** PostgreSQL, MongoDB, Supabase
+- **APIs:** RESTful APIs, GraphQL
+- **Authentication:** OAuth, JWT
+- **Caching:** Redis
+
+### AI & Machine Learning
+- **Frameworks:** TensorFlow, PyTorch, Pandas, NumPy
+- **LLMs:** OpenAI GPT, Claude, Groq
+- **Orchestration:** LangChain, LangGraph, Multi-Agent Systems
+- **Computer Vision:** CV pipelines, image processing
+- **Predictive Analytics:** AI/ML model deployment
+- **Specialties:** AI integration, autonomous agents, voice AI
+- **Embeddings:** Vector databases, semantic search
+- **Tools:** Jupyter, Python ML libraries, prompt engineering
+
+### Cybersecurity & Security
+- **Vulnerability Scanning:** APK/URL analysis, MobSF
+- **Static Analysis:** AST-based code indexing
+- **Reverse Engineering:** APK decompilation, code analysis
+- **Automation:** VNC automation, security testing
+- **Compliance:** RBI guidelines, banking security standards
+- **Tools:** Docker security, vulnerability detection pipelines
+
+### DevOps & Cloud
+- **Containers:** Docker, containerized deployments
+- **Cloud Platforms:** Google Cloud Platform (GCP), Vercel, Netlify
+- **Version Control:** Git, GitHub (53+ public repositories)
+- **CI/CD:** Automated deployment pipelines
+- **Monitoring:** Application performance monitoring
+
+### Specialized Skills
+- **Multi-Agent Systems:** Distributed agent coordination, shared memory pipelines
+- **SEO/AEO/GEO:** Search engine optimization, AI engine optimization
+- **Full-Stack Development:** End-to-end web application development
+- **UI/UX Design:** Figma, user-centered design, prototyping
+- **Product Development:** MVP building, rapid prototyping, user validation
+
+## Blog & Articles
+
+### Latest Posts
+
+**Freelance Developer Rates in Mumbai 2026: Complete Pricing Guide** (Feb 2026)
+Comprehensive breakdown of freelance developer rates in Mumbai by experience level, tech stack, and project type. Includes hourly rates (₹500-₹5,000/hour), project-based pricing, hiring guide, and market analysis for clients and developers.
+[Read Article](https://nabil-thange.vercel.app/blog/freelance-developer-rates-mumbai-2026)
+*   **Q: What are the freelance developer rates in Mumbai for 2026?**
+    *   **A:** Hourly rates average ₹500 to ₹5,000 depending on experience. Projects range from ₹25,000 for basic websites to ₹5,00,000+ for custom software.
+*   **Q: Why are Mumbai developers competitively priced globally?**
+    *   **A:** Lower cost of living, high talent density (IIT Bombay, VJTI), and time zone alignment for international markets, yielding 30-50% savings.
+*   **Q: What factors influence freelance pricing in Mumbai?**
+    *   **A:** Developer experience, tech stack complexity (AI and Web3 fetch premiums), project duration, and urgency of delivery.
+
+**How to Hire a Freelance Developer in India: Complete 2026 Guide** (Feb 2026)
+Step-by-step guide for hiring freelance developers in India. Covers vetting process, contract templates, communication best practices, cultural considerations, platform comparisons, and avoiding common mistakes.
+[Read Article](https://nabil-thange.vercel.app/blog/how-to-hire-freelance-developer-india)
+*   **Q: What is the recommended vetting process for Indian freelance developers?**
+    *   **A:** Review portfolio projects, check GitHub repositories, and issue a small, paid test task representing actual project challenges rather than algorithmic puzzles.
+*   **Q: How do you handle timezone differences and communication with developers in India?**
+    *   **A:** Set up asynchronous communication protocols, schedule overlap times for standups, and establish clear project milestones on Slack and Jira.
+*   **Q: What are common pitfalls when hiring developers in India and how do you avoid them?**
+    *   **A:** Avoid poor specifications and overly cheap agencies. Protect yourself by using escrow payment milestones, signing clear NDAs, and verifying technical claims.
+
+**Will Advanced AI Become a Privilege? My Thoughts on AI Access in 2026** (Jan 2026)
+Opinion piece on AI access restrictions, rising costs, and implications for freelance developers and startups. Written from perspective of Mumbai-based AI developer competing globally.
+[Read Article](https://nabil-thange.vercel.app/blog/future-of-ai-access-privilege)
+*   **Q: Why might advanced AI become a privilege for developers?**
+    *   **A:** High training costs, GPU scarcity, and national security regulations could restrict access to large corporations, widening the startup-enterprise gap.
+*   **Q: How does Nabil Thange stay competitive as an AI developer in India?**
+    *   **A:** By focusing on system design, business logic, client communication, and unique AI integration expertise rather than simple prompt engineering.
+*   **Q: What are the geographic challenges for AI developers in India?**
+    *   **A:** Dollar pricing for APIs, higher local GPU import costs, and fewer local frontier AI research centers compared to Western hubs.
+
+**How I Build AI Agents That Actually Remember: Production Memory Architectures** (Jan 2026)
+Technical deep-dive into production AI agent memory systems. Covers checkpointing, vector stores, hybrid architectures, and lessons from building HackHazards winner NbAIl.
+[Read Article](https://nabil-thange.vercel.app/blog/building-ai-agents-with-memory)
+*   **Q: What memory architecture does Nabil recommend for AI agents?**
+    *   **A:** A hybrid architecture combining short-term session states (checkpoints/Redis) with long-term semantic retrieval (vector databases).
+*   **Q: How does NbAIl implement voice control and agent memory?**
+    *   **A:** NbAIl uses an ultra-fast Groq inference pipeline combined with local speech-to-text and a persistent semantic memory cache for continuous context.
+*   **Q: What are the main challenges when implementing agent memory in production?**
+    *   **A:** Managing context window limits, token consumption costs, preventing memory decay/hallucinations, and retrieving relevant memory snippets quickly.
+
+**Building AI That Doesn't Suck** (Dec 2024)
+Lessons from building NbAIl on creating AI applications users actually want to use. Focuses on UX, reliability, and product thinking over technical specs.
+[Read Article](https://nabil-thange.vercel.app/blog/building-ai-that-doesnt-suck)
+*   **Q: What makes an AI application actually useful for users?**
+    *   **A:** A product-first mindset: solving a concrete, repetitive problem with a reliable interface and low latency rather than showcasing theoretical AI intelligence.
+*   **Q: What is the main product advice for developers building AI?**
+    *   **A:** Reduce user friction (e.g. voice control, simple buttons), log model outputs, design clear boundaries, and ensure fallback defaults.
+*   **Q: How should latency be handled in AI user interfaces?**
+    *   **A:** Use streaming outputs, visual skeletons, optimistic UI states, and ultra-fast inference APIs (like Groq) to keep the experience responsive.
+
+**The Commerce Kid's Guide to Tech** (Nov 2024)
+Unconventional journey from commerce student to full-stack developer. Why starting late in tech is an advantage.
+[Read Article](https://nabil-thange.vercel.app/blog/the-commerce-kids-guide-to-tech)
+*   **Q: Can you transition into software engineering from a commerce background?**
+    *   **A:** Yes, Nabil did exactly this, proving that starting without a traditional CS degree is possible and can be an asset.
+*   **Q: Why is starting late in tech considered a competitive advantage?**
+    *   **A:** Non-tech backgrounds foster unique business perspectives, practical product thinking, and diverse communication skills that traditional CS graduates often lack.
+*   **Q: What is Nabil's advice for self-taught developers?**
+    *   **A:** Master core programming fundamentals, build public portfolio projects, and enter hackathons to accelerate learning and prove your capabilities.
+
+**Hackathons: Speed-Running Product Development** (Oct 2024)
+Playbook for winning hackathons, learning to build fast, and validating ideas. Includes HackHazards 2025 case study.
+[Read Article](https://nabil-thange.vercel.app/blog/hackathons-speed-running-product-development)
+*   **Q: What is Nabil Thange's playbook for winning hackathons?**
+    *   **A:** Solve a real problem, build a high-impact working demo rather than static slides, leverage boilerplate frameworks, and tell a engaging story during the presentation.
+*   **Q: How do hackathons accelerate product validation?**
+    *   **A:** By forcing teams to ship a functional MVP within 24-48 hours, gathering immediate peer feedback, and testing system scalability under pressure.
+*   **Q: What did Nabil build to win HackHazards 2025?**
+    *   **A:** He built NbAIl—a voice-controlled multimodal personal desktop assistant leveraging Groq for real-time task automation and speech response.
+
+**Why I Built Gitskinz** (Sep 2024)
+Story behind creating a GitHub profile generator used by developers worldwide. Solving personal problems publicly.
+[Read Article](https://nabil-thange.vercel.app/blog/why-i-built-gitskinz)
+*   **Q: Why was GITSKINZ created and what problem did it solve?**
+    *   **A:** It was created to solve the tedious process of formatting GitHub README profiles by providing 70+ customizable, copy-paste templates.
+*   **Q: How did GITSKINZ grow to 2,000+ monthly active users?**
+    *   **A:** Through 100% organic growth, driven by developers sharing their profiles, viral open-source discoverability, and simple, aesthetic templates.
+*   **Q: What is the key takeaway from the GITSKINZ project?**
+    *   **A:** Build tools that solve your own problems publicly. Simple utilities with solid product-market fit can grow rapidly without marketing budgets.
+
+## Services Offered
+
+### Web Development
+- Custom web applications (SaaS, e-commerce, dashboards)
+- Full-stack development (React + Node.js + Database)
+- Next.js web applications with server-side rendering
+- Landing pages and marketing websites
+- Progressive Web Apps (PWAs)
+- API development and integration
+
+### AI Integration
+- AI chatbot development (OpenAI, Claude, custom)
+- LLM integration for existing applications
+- AI agent development with memory systems
+- Voice AI and conversational interfaces
+- Custom AI workflows and automation
+- RAG (Retrieval-Augmented Generation) systems
+
+### Specialized Services
+- 3D web experiences (Three.js, WebGL)
+- Interactive animations and micro-interactions
+- UI/UX design and prototyping
+- Technical consulting and code reviews
+- MVP development for startups
+- Hackathon team development
+
+### Rates & Availability
+**Hourly Rate:** ₹1,800-₹3,000/hour ($22-$36/hour)
+**Project-Based:** ₹1,50,000-₹15,00,000+ depending on scope
+**Availability:** 20-40 hours per week for freelance projects
+**Location:** Mumbai, India (Remote work worldwide)
+
+## Education & Certifications
+
+**Bachelor of Engineering - Computer Engineering**
+Saraswati College of Engineering, Kharghar, Navi Mumbai
+Focus: AI, Machine Learning, Full-Stack Development
+
+**Certifications:**
+- ISRO Machine Learning Certification
+- Microsoft SQL Developer Certification
+- Google Gemini API Certification
+
+**Achievements:**
+- IIT Hyderabad Hackathon: Winner - ₹60,000+ prize money, Special Valor Award, fully-sponsored campus invitation
+- HackHazards 2025: Winner (NbAIl project)
+- GITSKINZ: 2,000+ monthly active users with zero paid marketing
+- 40+ hackathon participations (see complete list below)
+- Academic Excellence: 9.3 CGPA (1st year B.Tech)
+- Open Source: 53+ public repositories on GitHub
+- Client Work: Sole developer for RafRaf International's production website
+- Tata Group & Deloitte Australia internships
+
+## Hackathons & Events Participated
+
+**Major Wins & Achievements:**
+- **HackHazards '25** - Winner (NbAIl - AI Voice Assistant)
+- Bharati Antariksh Hackathon (by ISRO)
+- Raise Your Hack - World's Biggest AI Hackathon
+- Quantum Hacks - World's Largest Hackathon (presented by Bolt)
+
+**AI & Machine Learning Hackathons:**
+- Trae AI IDE: Zero Limits Hackathon (No-code Tool)
+- NxtWave by OpenAI
+- The AI Championship
+- UIDAI Data Hackathon 2025
+- AMD Slingshot AI for Bharat
+- Gen AI Exchange Program
+- PromptWars: Virtual
+- Innovate4FinLit (AI for Financial Literacy)
+
+**Development Competitions:**
+- CODE CRAFTER 3.0
+- CODE ROYAL
+- Hack with Mumbai 2.0
+- IIT Goa CultRang '26 – HackOverFlow
+- Grizzly Hacks Fall 2025
+- Hack4Unity
+- Kiroween
+- InSightX
+- DreamFlow Buildathon
+- Vedathon
+
+**College & Technical Events:**
+- SAAVISHKAR (Saraswati College)
+- SCOE AVISHKAR
+- AXION
+- Techtashan
+- Business Model Development Nexus
+- Galaxium v1
+
+**Workshops & Learning:**
+- Microsoft SQL Workshop
+- Mini SaaS Workshop
+- Google Gemini Write-off
+
+**Total Events:** 40+ hackathons, competitions, and technical events
+
+## Internship Experience
+
+**FlyRank AI** (February 2026 - Present, Remote)
+Role: Frontend AI Development Intern
+Focus: AI-powered frontend development, user interface engineering
+Technologies: React, Next.js, AI integration, frontend architecture
+Responsibilities:
+- Developing AI-powered frontend features
+- Building user interfaces for AI applications
+- Integrating AI capabilities into web applications
+- Frontend architecture and component design
+
+**Tata Group - Tata iQ** (June 2026, Virtual)
+Role: Data Analytics Virtual Intern
+Focus: AI-powered data analytics and strategy development for Financial Services team
+Key Work:
+- Performed exploratory data analysis (EDA) using GenAI to assess data quality and risk
+- Proposed no-code delinquency-risk prediction model
+- Developed ethical, compliant AI-driven collections strategy
+- Worked with Tata iQ's Financial Services vertical
+
+**Deloitte Australia** (June 2026, Virtual)
+Role: Cybersecurity Virtual Intern
+Focus: Security breach investigation and forensic analysis
+Key Work:
+- Analyzed web activity logs to investigate client cyber security breach
+- Traced suspicious user activity patterns
+- Applied security analysis methodologies
+- Produced breach investigation reports
+
+**RafRaf International** (2024-Present, Remote)
+Role: Freelance Full-Stack Developer
+Focus: Complete production website development
+Key Work:
+- Designed and developed complete production website from Figma to deployment
+- Built responsive, SEO-optimized Next.js frontend
+- Implemented AEO/GEO best practices for global discoverability
+- Sole developer managing full project lifecycle
+
+## Personal Background
+
+**Full Name:** Nabil Salim Thange
+**Known As:** Nabil, Nabil Thange
+**Age:** 19 years old (born 2005)
+**Location:** Kharghar, Navi Mumbai, Maharashtra, India
+**Languages:** English (fluent), Hindi (fluent), Marathi (native)
+**Work Style:** Remote-first, async communication, timezone-flexible
+**Philosophy:** Build products people want, not just impressive tech demos
+
+## Contact & Social
+
+**Email:** thangenabil@gmail.com
+**Portfolio:** https://nabil-thange.vercel.app
+**LinkedIn:** https://www.linkedin.com/in/nabil-thange/
+**GitHub:** https://github.com/NabilThange
+**Twitter/X:** https://x.com/THEONLYNABIL
+**Dev.to:** https://dev.to/nabil_thange
+**Medium:** https://medium.com/@thangenabil
+**Instagram:** https://www.instagram.com/nabil_thange/
+
+**Developer Profiles:**
+- Devpost: https://devpost.com/thangenabil
+- HuggingFace: https://huggingface.co/Nabil-Oc
+- Kaggle: https://www.kaggle.com/nabilthange
+- Stack Overflow: https://stackoverflow.com/users/32129529/nabil-thange
+- lablab.ai: https://lablab.ai/u/@NabilT
+
+## Keywords & Search Terms
+
+Full-stack developer Mumbai, Freelance developer Mumbai, React developer Mumbai, Next.js developer India, AI developer Mumbai, Web developer Mumbai, Mumbai freelance developer, Software engineer Mumbai, Navi Mumbai developer, Kharghar developer, Saraswati College Engineering alumni, AI integration developer, LangChain developer, Three.js developer India, Freelance web developer India, Hire developer Mumbai, Mumbai software engineer, AI chatbot developer, Full-stack developer India, React Next.js developer, Voice AI developer, Production AI systems, Vibe coder, Creative technologist India, Generative AI developer Mumbai, Machine learning engineer Mumbai, AI agent development, Memory architecture AI, HackHazards winner, Gitskinz creator
+
+## FAQ
+
+**Q: What kind of projects does Nabil Thange specialize in?**
+A: Nabil specializes in full-stack web applications using React and Next.js, AI-powered chatbots and assistants, 3D interactive web experiences with Three.js, and custom SaaS platforms. Recent work includes winning HackHazards 2025 with an AI voice assistant and creating Gitskinz, a GitHub profile generator used globally.
+
+**Q: Where is Nabil Thange located and does he work remotely?**
+A: Nabil is based in Kharghar, Navi Mumbai, Maharashtra, India. He works with clients worldwide remotely and is comfortable with async communication across timezones. Available for both short-term projects and long-term collaborations.
+
+**Q: What are Nabil's rates for freelance development?**
+A: Hourly rates range from ₹1,800-₹3,000/hour depending on project complexity. Project-based rates start from ₹1,50,000 for smaller websites to ₹15,00,000+ for complex AI-powered applications. Contact for detailed quotes based on specific requirements.
+
+**Q: Does Nabil Thange work with startups?**
+A: Yes, Nabil regularly works with startups on MVP development, technical consulting, and full-stack implementation. Flexible on pricing and engagement models for early-stage companies with innovative ideas.
+
+**Q: What AI technologies does Nabil work with?**
+A: Nabil has production experience with OpenAI GPT models, Claude, Groq, LangChain, vector databases (Pinecone, Chroma), and custom AI agents. Specializes in integrating AI into existing applications, building chatbots, and creating AI agents with persistent memory.
+
+**Q: How can I hire Nabil Thange for a project?**
+A: Visit https://nabil-thange.vercel.app/contact or email thangenabil@gmail.com with project details. Include scope, timeline, budget, and tech stack preferences for fastest response.
+
+## Technical Blog Topics Covered
+
+- Freelance developer rates and market analysis
+- Hiring developers in India (guide for international clients)
+- AI access and future of development
+- Building production AI agents with memory
+- AI product development and UX
+- Hackathon strategies and speed development
+- Self-taught developer journey
+- No-code/low-code development
+
+## Philosophy & Approach
+
+**Product-First Development:** Build what users need, not just what's technically impressive
+**Pragmatic Tech Choices:** Use proven tools over cutting-edge if it ships faster
+**AI as Accelerator:** Leverage AI to enhance development, not replace thinking
+**Remote-Friendly:** Async communication, transparent progress tracking
+**Learn by Building:** Rapid prototyping, iterate based on real usage
+
+### General Technical Q&A (AI & Web Development)
+
+**Q: What is AEO / GEO and how does Nabil optimize sites for them?**
+- **A:** Answer/Generative Engine Optimization (AEO/GEO) ensures website content is discovered, parsed, and cited by AI engines like ChatGPT Search and Perplexity. Nabil optimizes sites by: 1) Deploying schema markup structured graphs; 2) Deploying custom `llms.txt` and `robots.txt` access permissions; 3) Formatting text structure (direct answers first); and 4) Including reliable citations, statistics, and expert inputs.
+
+**Q: How do you build a real-time voice assistant in Next.js?**
+- **A:** Integrate web audio capture APIs with fast inference web sockets, run model processing using high-speed hardware APIs (like Groq), and implement lightweight 3D graphics library layers (Three.js) for visual responses, keeping total latency below 300ms.
+
+**Q: What are the key elements of technical SEO in 2026?**
+- **A:** 1) Dynamic, real-time generated XML sitemaps; 2) Core Web Vitals optimization (targeting sub-100ms INP and low LCP); 3) Standardized canonical URL routes; 4) Dynamic metadata generation; and 5) Robots.txt directives structured for AI crawler management.
+
+## Last Updated
+
+**Date:** February 2026
+**Version:** 3.0
+**Status:** Active - Accepting freelance projects
+
+## Additional Resources
+
+- [RSS Feed](https://nabil-thange.vercel.app/feed.xml): Subscribe to blog
+- [Humans.txt](https://nabil-thange.vercel.app/humans.txt): Site credits
+- [AI Policy](https://nabil-thange.vercel.app/.well-known/ai-policy.txt): Crawler policy
+- [Sitemap](https://nabil-thange.vercel.app/sitemap.xml): Full site map
+- [Robots.txt](https://nabil-thange.vercel.app/robots.txt): Crawler instructions

@@ -1,0 +1,6 @@
+customer_id,company_name,arr,plan,renewal_date,active_users,usage_change_pct,support_tickets_open,support_sentiment,invoice_status,key_contact_status
+CUST-001,Acme Corp,1840000.0,Enterprise,2026-10-15,12,-31.0,4,negative,overdue,departed
+CUST-002,TechCorp Global,1500000.0,Enterprise,2026-11-20,28,-18.5,2,neutral,paid,stable
+CUST-003,DataDynamics Inc,850000.0,Growth,2026-09-30,8,-42.0,5,negative,overdue,stable
+CUST-004,CloudScale Logistics,1200000.0,Enterprise,2026-12-05,15,-5.0,1,positive,paid,departed
+CUST-005,FinPulse Enterprise,2400000.0,Enterprise,2027-01-15,45,12.0,0,positive,paid,stable

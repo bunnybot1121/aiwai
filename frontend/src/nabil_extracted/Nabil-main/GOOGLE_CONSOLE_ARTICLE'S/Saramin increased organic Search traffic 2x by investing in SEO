@@ -1,0 +1,88 @@
+# SEO Investment Case Study | Google Search Central
+
+# Saramin increased organic Search traffic 2x by investing in SEO
+
+Published on April 8, 2020
+
+## Challenge
+
+
+[Saramin](https://www.saramin.co.kr/), one of the largest job
+platforms in Korea, offers job posting recommendations, company and salary information,
+AI-based interviews, and AI-based headhunting services. People come to the Saramin site not
+only to look for jobs and submit applications, but to also gain a variety of information
+related to job searches and receive high-quality AI-based services for interview preparation.
+
+
+In 2015, Saramin registered their site on Google Search Console. In the first year, they
+focused on checking crawling errors and fixed issues to ensure that the Googlebot is crawling
+the site for proper indexing. The task was simple but still resulted in a 15% increase in
+the organic traffic, and Saramin thought more investment in SEO can bring greater success.
+15~%~
+
+Increase in the organic traffic
+
+## Solution
+
+
+The marketers and website owners at Saramin started following the
+[SEO](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) and
+[Search Console guidelines](https://developers.google.com/search/docs/advanced/guidelines/overview)
+more closely and implemented more changes. The goal was to make changes to the site so that
+Google Search would better understand it. The first task involved removing `meta` tags that were
+cluttered with unnecessary and unhelpful keywords. They used canonical URLs and removed
+duplicate content. They explored [the search
+gallery](https://developers.google.com/search/docs/appearance/structured-data/search-gallery) and applied applicable structured data, starting with
+[`JobPosting`](https://developers.google.com/search/docs/appearance/structured-data/job-posting),
+[Breadcrumb](https://developers.google.com/search/docs/appearance/structured-data/breadcrumb), and
+[Estimated salary](https://developers.google.com/search/docs/appearance/structured-data/estimated-salary).
+
+
+When Saramin's marketing team first started looking into SEO, it was a challenge to learn all
+the technical terms and tackle issues that were new to them. So they thoroughly studied the
+Google Search [developer's guide](https://developers.google.com/search/docs/fundamentals/get-started-developers) and
+[Help Center
+articles](https://support.google.com/webmasters) and found answers to their problems. These resources continue to provide
+up-to-date information for issues that they run into.
+
+
+In addition, they used various Google tools offered as they worked on improving their site.
+"Errors on our structured data are dealt with by checking URLs on the
+[Structured
+Data Testing Tool](https://search.google.com/structured-data/testing-tool/u/0/). Other tools like [Mobile Friendly Test](https://search.google.com/test/mobile-friendly), [AMP Test](https://search.google.com/test/amp), and
+[PageSpeed Insight](https://pagespeed.web.dev/) provide us valuable insights for
+making improvements and helping us offer a better experience for our users," said Moon Tae
+Sung, Saramin's SEO Manager who led the SEO initiative at Saramin.
+
+## Results
+
+
+Over the course of the next few months, Saramin saw the red-colored errors on the Search
+Console's Coverage graph gradually turning valid green, and they knew they were headed in the
+right direction. The incremental changes reached a tipping point and the traffic continued to
+rise at a more dramatic speed. In the peak hiring season of September 2019, traffic doubled
+from the previous year.
+102~%~
+
+Increase Year-Over-Year (YOY) in organic traffic from Google Search during the hiring season
+in 2019
+![Breadcrumb structured data in Search Console](https://developers.google.com/static/search/case-studies/images/saramin-breadcrumbs.png)
+
+
+"We are very happy about the traffic increase, but what's more exciting is it also accompanied
+improvement in the quality of the traffic. We saw a 93% increase in the number of new sign
+ups and a 9% increase on the conversion. We believe this means Saramin's optimization work was
+found delightful by our users," said Tae Sung.
+93~%~
+
+Increase in new member sign-ups from organic traffic from Google Search
+9~%~
+
+Increase YOY in conversion rate from organic traffic from Google Search
+
+
+Saramin continues to invest in achieving their SEO goals; they look forward to implementing
+more technologies and features from Google that will help their users understand their
+content better. Tae Sung is enthusiastic about their work ahead and said, "This is only the
+beginning of our story."
+![The mobile usability report in Search Console](https://developers.google.com/static/search/case-studies/images/saramin-mobile-usability.png)

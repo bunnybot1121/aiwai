@@ -1,0 +1,6 @@
+id,customer_name,risk_score,risk_level,playbook,action,outcome,saved_arr
+HIST-001,TechCorp Global,91,critical,Executive Rescue + 15% Retention Offer,Executive Outreach & 15% Discount,Saved,1500000.0
+HIST-002,DataDynamics Inc,89,critical,Standard Email Discount,10% Automated Discount Email,Churned,0.0
+HIST-003,CloudScale Logistics,78,high,CSM Onboarding Check-in,New Executive Sponsor Onboarding,Saved,850000.0
+HIST-004,FinPulse Enterprise,95,critical,Executive Rescue + CSM Technical Sprint,Dedicated Technical Support + Executive Meeting,Saved,2400000.0
+HIST-005,Apex Commerce,82,high,Billing Assistance + CSM Outreach,Payment Plan Restructure,Saved,620000.0

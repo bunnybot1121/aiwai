@@ -1,0 +1,123 @@
+{
+  "name": "SaveFlow Master Churn Rescue Workflow",
+  "version": "1.0.0",
+  "description": "Master end-to-end RocketRide pipeline orchestrating input validation, parallel usage/billing/support/contact specialists, churn scoring, historical memory lookup, playbook selection, policy validator, and human gate routing.",
+  "components": [
+    {
+      "id": "master_input",
+      "provider": "webhook",
+      "config": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "customer_id": { "type": "string" },
+            "company_name": { "type": "string" },
+            "arr": { "type": "number" },
+            "active_users": { "type": "integer" },
+            "usage_change_pct": { "type": "number" },
+            "support_tickets_open": { "type": "integer" },
+            "support_sentiment": { "type": "string" },
+            "invoice_status": { "type": "string" },
+            "key_contact_status": { "type": "string" }
+          },
+          "required": ["customer_id", "company_name", "arr"]
+        }
+      }
+    },
+    {
+      "id": "usage_node",
+      "provider": "subpipe",
+      "config": {
+        "pipeline": "usage_analysis.pipe"
+      },
+      "input": [
+        { "lane": "data", "from": "master_input" }
+      ]
+    },
+    {
+      "id": "billing_node",
+      "provider": "subpipe",
+      "config": {
+        "pipeline": "billing_analysis.pipe"
+      },
+      "input": [
+        { "lane": "data", "from": "master_input" }
+      ]
+    },
+    {
+      "id": "support_node",
+      "provider": "subpipe",
+      "config": {
+        "pipeline": "support_analysis.pipe"
+      },
+      "input": [
+        { "lane": "data", "from": "master_input" }
+      ]
+    },
+    {
+      "id": "contact_node",
+      "provider": "subpipe",
+      "config": {
+        "pipeline": "contact_analysis.pipe"
+      },
+      "input": [
+        { "lane": "data", "from": "master_input" }
+      ]
+    },
+    {
+      "id": "churn_scorer",
+      "provider": "agent_llm",
+      "config": {
+        "system_prompt": "Combine usage, billing, support, contact health into churn risk score, confidence, and structured risk factors."
+      },
+      "input": [
+        { "lane": "usage", "from": "usage_node" },
+        { "lane": "billing", "from": "billing_node" },
+        { "lane": "support", "from": "support_node" },
+        { "lane": "contact", "from": "contact_node" }
+      ]
+    },
+    {
+      "id": "memory_retriever",
+      "provider": "vector_memory",
+      "config": {
+        "collection": "historical_outcomes",
+        "top_k": 3
+      },
+      "input": [
+        { "lane": "query", "from": "churn_scorer" }
+      ]
+    },
+    {
+      "id": "playbook_selector",
+      "provider": "subpipe",
+      "config": {
+        "pipeline": "playbook.pipe"
+      },
+      "input": [
+        { "lane": "churn", "from": "churn_scorer" },
+        { "lane": "memory", "from": "memory_retriever" }
+      ]
+    },
+    {
+      "id": "policy_validator",
+      "provider": "subpipe",
+      "config": {
+        "pipeline": "validator.pipe"
+      },
+      "input": [
+        { "lane": "playbook", "from": "playbook_selector" }
+      ]
+    },
+    {
+      "id": "master_output",
+      "provider": "response",
+      "config": {
+        "laneName": "full_analysis"
+      },
+      "input": [
+        { "lane": "result", "from": "policy_validator" }
+      ]
+    }
+  ]
+}

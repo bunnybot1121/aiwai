@@ -1,0 +1,74 @@
+# SEO/GEO Series Blog Status
+
+| Ch | Slug | Status |
+|----|------|--------|
+| 0 | seo-prompts-2026 | ✅ Done |
+| 1 | how-search-works-2026 | ✅ Done |
+| 2 | seo-fundamentals | ✅ Done |
+| 3 | searcher-intent-seo | ✅ Done |
+| 4 | keyword-research-2026 | ✅ Done |
+| 5 | eeat-google | ✅ Done |
+| 6 | topical-authority-clusters | ✅ Done |
+| 7 | ai-writing-for-seo | ✅ Done |
+| 8 | programmatic-seo | ✅ Done |
+| 9 | answer-first-writing | ✅ Done |
+| 10 | technical-seo-crawling-indexing | ✅ Done |
+| 11 | url-structure-canonicalization | ✅ Done |
+| 12 | core-web-vitals-2026 | ✅ Done |
+| 13 | ai-crawler-javascript | ✅ Done |
+| 14 | ai-crawler-robots-txt | ✅ Done |
+| 15 | hreflang-international-seo | ✅ Done |
+| 16 | structured-data-essentials | ✅ Done |
+| 17 | ecommerce-rich-results-schema | ✅ Done |
+| 18 | answer-engine-optimization | ✅ Done |
+| 19 | geo-llm-discovery | ✅ Done |
+| 20 | entity-seo-knowledge-graph | ✅ Done |
+| 21 | llms-txt | ✅ Done |
+| 22 | chatgpt-seo | ✅ Done |
+| 23 | video-seo-youtube | ✅ Done |
+| 24 | reddit-forum-seo | ✅ Done |
+| 25 | backlinks-2026 | ✅ Done |
+| 26 | author-authority-seo | ✅ Done |
+| 27 | topical-authority-strategy | ✅ Done |
+| 28 | google-search-console-guide | ❌ Not Done |
+| 29 | bing-webmaster-tools | ❌ Not Done |
+| 30 | indexnow | ❌ Not Done |
+| 31 | google-analytics-4-guide | ❌ Not Done |
+| 32 | ai-citation-tracking | ❌ Not Done |
+| 33 | seo-portfolio-case-study | ❌ Not Done |
+| 34 | seo-tools-2026 | ❌ Not Done |
+| 35 | beyond-google-seo | ❌ Not Done |
+| 36 | future-of-search | ❌ Not Done |
+
+**Progress: 28/37 (75.7%)**
+
+Viewed plan.md:1-20
+
+Here is the quick guide to publishing new blogs under the refactored system:
+
+### 1. Create a Markdown File
+Create a new file in the `/content` folder: `content/your-slug-here.md`
+
+### 2. Add Metadata Frontmatter
+Add this block at the very top of your file:
+```yaml
+---
+title: "Your Post Title"
+excerpt: "A short, SEO-optimized summary of your post."
+date: "Feb 2026"
+readTime: "10 min"
+tags: ["SEO", "AEO", "Tech"]
+slug: "your-slug-here"
+---
+```
+
+### 3. Write Your Content
+Write your article using standard Markdown below the metadata block.
+
+### 4. Build or Run
+Start your dev server or trigger a build. The pipeline compiles the markdown automatically:
+```bash
+pnpm dev
+# or
+pnpm build
+```

@@ -1,0 +1,43 @@
+{
+  "name": "SaveFlow Playbook Recommendation Specialist",
+  "version": "1.0.0",
+  "description": "Selects the optimal customer rescue playbook using risk drivers and historical outcome memory.",
+  "components": [
+    {
+      "id": "playbook_input",
+      "provider": "webhook",
+      "config": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "risk_score": { "type": "integer" },
+            "risk_level": { "type": "string" },
+            "reasons": { "type": "array" },
+            "historical_precedents": { "type": "array" }
+          }
+        }
+      }
+    },
+    {
+      "id": "playbook_agent",
+      "provider": "agent_llm",
+      "config": {
+        "system_prompt": "You are the Rescue Playbook Specialist for NovaCloud SaaS. Select the best retention strategy (Monitor, Personal Outreach, CSM Task, Executive Rescue, 15% Retention Offer) by analyzing current evidence and historical intervention outcomes. Output recommended_playbook, proposed_actions list, financial_impact (none/medium/high), and justification.",
+        "temperature": 0.2
+      },
+      "input": [
+        { "lane": "data", "from": "playbook_input" }
+      ]
+    },
+    {
+      "id": "playbook_output",
+      "provider": "response",
+      "config": {
+        "laneName": "rescue_playbook"
+      },
+      "input": [
+        { "lane": "text", "from": "playbook_agent" }
+      ]
+    }
+  ]
+}

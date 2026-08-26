@@ -1,0 +1,230 @@
+{
+  "metadata": {
+    "created": "2025-10-23 17:02:19.406608",
+    "version": "1.0",
+    "focus_areas": [
+      "SEO",
+      "AEO",
+      "GEO",
+      "Technical SEO",
+      "Content Optimization"
+    ]
+  },
+  "core_concepts": {
+    "SEO": {
+      "definition": "Search Engine Optimization - otimização para mecanismos de busca tradicionais",
+      "key_focus": "Rankings em resultados orgânicos, tráfego do site, CTR"
+    },
+    "AEO": {
+      "definition": "Answer Engine Optimization - otimização para motores de resposta AI",
+      "key_focus": "Visibilidade em AI Overviews, featured snippets, respostas diretas",
+      "platforms": [
+        "ChatGPT",
+        "Perplexity",
+        "Claude",
+        "Meta AI",
+        "Google AI Overviews"
+      ]
+    },
+    "GEO": {
+      "definition": "Generative Engine Optimization - otimização para mecanismos generativos",
+      "key_focus": "Citações em respostas AI, visibilidade em conteúdo gerado por IA"
+    }
+  },
+  "best_practices": {
+    "technical_seo": [
+      "Core Web Vitals optimization (LCP ≤2.5s, INP ≤200ms, CLS ≤0.1)",
+      "Mobile-first indexing optimization",
+      "HTTPS and SSL certificates",
+      "XML sitemap optimization",
+      "Robots.txt configuration",
+      "Schema markup implementation",
+      "Site architecture and URL structure",
+      "Internal linking strategy",
+      "Page speed optimization",
+      "Crawlability and indexability"
+    ],
+    "content_optimization": [
+      "E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness)",
+      "Topic clusters and pillar pages",
+      "Answer-first content structure",
+      "Question-based headers",
+      "Conversational tone for voice search",
+      "Long-tail keyword integration",
+      "Semantic keyword usage",
+      "Featured snippet optimization",
+      "Content comprehensiveness",
+      "User intent matching"
+    ],
+    "schema_markup": [
+      "Article Schema",
+      "FAQ Schema",
+      "HowTo Schema",
+      "Product Schema",
+      "LocalBusiness Schema",
+      "Person Schema",
+      "Breadcrumb Schema",
+      "Event Schema",
+      "Review Schema",
+      "Organization Schema"
+    ],
+    "aeo_strategies": [
+      "Lead with direct answers (40-60 words)",
+      "Use inverted pyramid structure",
+      "Format headers as questions",
+      "Include FAQ sections",
+      "Implement structured data",
+      "Optimize for conversational queries",
+      "Create snippable content blocks",
+      "Target long-tail questions",
+      "Answer 'who, what, when, where, why, how' queries",
+      "Optimize for zero-click searches"
+    ],
+    "geo_strategies": [
+      "Use semantically related terms",
+      "Include named entities (tools, people, places)",
+      "Write in natural, conversational tone",
+      "Add statistics and data",
+      "Cite authoritative sources",
+      "Use quotations from experts",
+      "Optimize fluency and readability",
+      "Provide comprehensive topic coverage",
+      "Structure content clearly",
+      "Use lists and tables"
+    ],
+    "voice_search_optimization": [
+      "Focus on conversational keywords",
+      "Target question-based queries",
+      "Optimize for local searches",
+      "Mobile optimization",
+      "Page speed improvement",
+      "Featured snippet targeting",
+      "Natural language processing optimization",
+      "Long-tail keyword focus",
+      "FAQ schema implementation",
+      "Local SEO best practices"
+    ],
+    "video_seo": [
+      "Keyword-rich titles and descriptions",
+      "Video schema markup",
+      "Video transcripts and captions",
+      "Video sitemap creation",
+      "Engaging thumbnails",
+      "Relevant tags",
+      "Place videos at top of page",
+      "Optimize video metadata",
+      "Cross-platform optimization",
+      "Content quality and value"
+    ],
+    "link_building_2025": [
+      "Digital PR and media relationships",
+      "HARO (Help A Reporter Out)",
+      "Quality over quantity focus",
+      "Editorial backlinks",
+      "Guest posting on authority sites",
+      "Relationship-based linking",
+      "Broken link building",
+      "Resource page link building",
+      "Case study creation",
+      "Original research and data"
+    ],
+    "ai_overviews_optimization": [
+      "Structure content with clear hierarchy",
+      "Use ordered/unordered lists",
+      "Target question-based keywords",
+      "Answer questions concisely",
+      "Format with headings properly",
+      "Optimize for long-tail keywords",
+      "Include schema markup",
+      "Lead with answer in first 100 words",
+      "Use semantic keywords",
+      "Maintain E-E-A-T signals"
+    ],
+    "entity_seo": [
+      "Build internal knowledge graph",
+      "Connect to Google's Knowledge Graph",
+      "Use entity-based internal linking",
+      "Implement consistent NAP (Name, Address, Phone)",
+      "Create entity-rich content",
+      "Link entities across pages",
+      "Use Person/Organization schema",
+      "Maintain brand consistency",
+      "Build topical authority",
+      "Establish clear entity relationships"
+    ],
+    "serp_features_optimization": [
+      "Featured snippets targeting",
+      "People Also Ask (PAA) optimization",
+      "Local Pack optimization",
+      "Knowledge Panel strategies",
+      "Image Pack optimization",
+      "Video carousel targeting",
+      "Shopping results optimization",
+      "Rich snippets implementation",
+      "Sitelinks optimization",
+      "Top Stories targeting"
+    ]
+  },
+  "tools_and_platforms": {
+    "content_optimization": [
+      "Surfer SEO",
+      "Clearscope",
+      "MarketMuse",
+      "Frase",
+      "Ahrefs Content Helper",
+      "Dashword",
+      "GrowthBar"
+    ],
+    "keyword_research": [
+      "Ahrefs",
+      "SEMrush",
+      "Google Keyword Planner",
+      "Ubersuggest",
+      "Answer The Public",
+      "KeywordTool.io"
+    ],
+    "technical_seo": [
+      "Google Search Console",
+      "Screaming Frog",
+      "Google PageSpeed Insights",
+      "GTmetrix",
+      "Schema Markup Validator",
+      "Google Rich Results Test"
+    ],
+    "analytics": [
+      "Google Analytics 4",
+      "Google Tag Manager",
+      "Hotjar",
+      "Microsoft Clarity"
+    ]
+  },
+  "metrics_to_track": [
+    "Organic traffic",
+    "Keyword rankings",
+    "Core Web Vitals (LCP, INP, CLS)",
+    "Click-through rate (CTR)",
+    "Bounce rate",
+    "Time on page",
+    "Pages per session",
+    "Conversion rate",
+    "Backlink profile",
+    "Domain authority",
+    "Featured snippet wins",
+    "SERP feature appearances",
+    "AI Overview citations",
+    "Voice search visibility",
+    "Mobile usability score"
+  ],
+  "future_trends_2025": [
+    "AI-powered search dominance",
+    "Zero-click searches increase",
+    "Entity-based SEO importance",
+    "Voice search growth",
+    "Mobile-first mandatory",
+    "Video content priority",
+    "E-E-A-T critical for YMYL",
+    "Semantic search evolution",
+    "Local SEO enhancement",
+    "Programmatic SEO automation"
+  ]
+}

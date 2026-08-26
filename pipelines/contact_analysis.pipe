@@ -1,0 +1,43 @@
+{
+  "name": "SaveFlow Contact & Champion Specialist",
+  "version": "1.0.0",
+  "description": "Detects key contact changes, internal champion departure events, and stakeholder role shifts.",
+  "components": [
+    {
+      "id": "contact_input",
+      "provider": "webhook",
+      "config": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "key_contact_status": { "type": "string" },
+            "champion_departed": { "type": "boolean" },
+            "executive_sponsor": { "type": "string" }
+          },
+          "required": ["key_contact_status"]
+        }
+      }
+    },
+    {
+      "id": "contact_agent",
+      "provider": "agent_llm",
+      "config": {
+        "system_prompt": "You are the Contact Relationship Specialist for NovaCloud SaaS. Evaluate champion departures and key contact instability. Output JSON with contact_health (0-100), champion_lost (boolean), and risk_factors array.",
+        "temperature": 0.2
+      },
+      "input": [
+        { "lane": "data", "from": "contact_input" }
+      ]
+    },
+    {
+      "id": "contact_output",
+      "provider": "response",
+      "config": {
+        "laneName": "contact_analysis"
+      },
+      "input": [
+        { "lane": "text", "from": "contact_agent" }
+      ]
+    }
+  ]
+}

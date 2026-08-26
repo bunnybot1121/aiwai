@@ -1,0 +1,305 @@
+NABIL THANGE - FULL-STACK DEVELOPER IN MUMBAI
+
+QUICK INTRODUCTION
+Nabil Thange is a full-stack developer based in Mumbai, India, specializing in React, Next.js, and AI-powered web applications. Available for freelance projects worldwide.
+
+PERSONAL INFORMATION
+Name: Nabil Salim Thange (Known as: Nabil, Nabil Thange)
+Phone: +91 97570 45188
+Age: 19 years old (3rd Year B.Tech Student)
+Location: Navi Mumbai, Maharashtra, India
+Languages: English (fluent), Hindi (fluent), Marathi (native)
+Email: thangenabil@gmail.com
+Website: https://nabil-thange.vercel.app
+Resume: https://nabil-thange.vercel.app/resume
+
+PROFESSIONAL SUMMARY
+Full-stack developer, UI/UX designer, and AI integration specialist with proven track record in production applications and cybersecurity. Currently Frontend AI Development Intern at FlyRank AI (Feb 2026 - Present). Winner of IIT Hyderabad hackathon (Sentient - cybersecurity tool, ₹60k+ prize) and HackHazards 2025 (NbAIl - AI voice assistant). Creator of GITSKINZ (2,000+ monthly active users, zero paid marketing).
+
+Currently 3rd year B.Tech student at Saraswati College of Engineering (9.3 CGPA). Combines technical expertise in modern web frameworks (React, Next.js, Python) with AI/ML implementation, cybersecurity research, multi-agent systems, and frontend AI development. Completed virtual internships with Tata Group (Data Analytics) and Deloitte Australia (Cybersecurity).
+
+Specializes in delivering full-stack web applications, AI-powered tools, security solutions, frontend AI features, and UI/UX design for startups, enterprises, and international clients.
+
+EDUCATION
+Bachelor of Technology (B.Tech) in Computer Engineering
+Saraswati College of Engineering
+Location: Navi Mumbai, India
+Current Status: 3rd Year Student (Aug 2023 - Present)
+Academic Performance: 9.3 CGPA (First Year)
+Focus Areas: Artificial Intelligence, Machine Learning, Full-Stack Development, Cybersecurity
+
+Higher Secondary Certificate (ISC Board)
+Presentation Convent School
+Location: Mumbai, India
+Completed: 2023
+
+CERTIFICATIONS
+- ISRO Machine Learning Certification (Bharati Antariksh Hackathon)
+- Microsoft SQL Developer Certification (Workshop Completion)
+- Google Gemini API Certification (Write-off Competition)
+
+ACHIEVEMENTS & RECOGNITION
+Major Hackathon Wins:
+- IIT Hyderabad Hackathon Winner (Sentient): ₹60,000+ prize money, Special Valor Award, fully-sponsored on-campus invitation
+- HackHazards 2025 Winner (NbAIl): AI voice assistant with desktop automation
+
+Product Traction:
+- GITSKINZ: 2,000+ monthly active users with 100% organic growth (zero paid marketing)
+- RafRaf International: Sole developer for complete production website (international import/export client)
+
+Academic Excellence:
+- 9.3 CGPA in 1st year B.Tech at Saraswati College of Engineering
+- ISC Board Higher Secondary Certificate (2023)
+
+Professional Experience:
+- Tata Group - Tata iQ Data Analytics Virtual Intern (June 2026)
+- Deloitte Australia Cybersecurity Virtual Intern (June 2026)
+- Freelance Full-Stack Developer for international clients (2024-Present)
+
+Open Source & Community:
+- 53+ public repositories on GitHub
+- Active contributor to developer tooling ecosystem
+- Technical blogger and content creator
+- 40+ hackathon participations
+
+HACKATHONS & COMPETITIONS (Selected)
+Major Events:
+- HackHazards '25 (Winner - AI Voice Assistant)
+- Bharati Antariksh Hackathon (ISRO)
+- Raise Your Hack (World's Biggest AI Hackathon)
+- Quantum Hacks (World's Largest Hackathon by Bolt)
+- IIT Goa CultRang '26 – HackOverFlow
+- Hack with Mumbai 2.0
+- Trae AI IDE: Zero Limits Hackathon
+- NxtWave by OpenAI
+- The AI Championship
+- UIDAI Data Hackathon 2025
+- AMD Slingshot AI for Bharat
+- Grizzly Hacks Fall 2025
+- CODE CRAFTER 3.0
+- CODE ROYAL
+- PromptWars: Virtual
+- Gen AI Exchange Program
+- Innovate4FinLit
+
+College Events:
+- SAAVISHKAR (Saraswati College)
+- SCOE AVISHKAR
+- AXION
+- Techtashan
+- Business Model Development Nexus
+- Galaxium v1
+
+Total: 40+ hackathons, competitions, workshops, and technical events
+
+INTERNSHIP EXPERIENCE
+Tata Group - Tata iQ
+Position: Data Intern
+Responsibilities: Data analysis, business intelligence, data-driven insights
+
+TECHNICAL SKILLS
+
+Frontend Development:
+- React 19, Next.js 16, Vue.js
+- JavaScript ES6+, TypeScript
+- Tailwind CSS, Responsive Design
+- Three.js, React Three Fiber, WebGL
+- Framer Motion, GSAP animations
+
+Backend Development:
+- Node.js, Express
+- Python, Java
+- PostgreSQL, MongoDB, Supabase
+- RESTful APIs, GraphQL
+- OAuth, JWT authentication
+
+AI & Machine Learning:
+- OpenAI GPT, Claude, Groq
+- LangChain, LangGraph
+- AI chatbots, voice AI
+- Vector databases, embeddings
+- AI agent development
+
+Tools & Platforms:
+- Git, GitHub
+- Vercel, Netlify, AWS
+- Docker
+- VS Code, Cursor AI
+- Figma, Blender
+
+FEATURED PROJECTS
+
+1. Sentient - B2B APK/URL Vulnerability Scanner (2026)
+Role: Lead Developer & Security Architect
+Description: Enterprise cybersecurity tool for banking institutions
+Tech Stack: Python, FastAPI, Docker, PostgreSQL, MobSF
+Achievement: Won IIT Hyderabad hackathon - ₹60,000+ prize, Special Valor Award, campus invitation
+Key Features:
+- Automated APK decompilation and vulnerability detection
+- AST-based code indexing (same technique as Claude Code, Codex)
+- GenAI-powered malware analysis reports
+- RBI-guideline-compliant PDF reports for regulatory submission
+Impact: Banks can submit reports directly to regulators
+
+2. ARIA - Autonomous Computer Use Agent (2025)
+Role: System Architect & Lead Developer
+Description: Multi-agent system for autonomous desktop control
+Tech Stack: Python, Docker, Redis, Multi-Agent Systems, VNC
+Architecture: 8 specialized agents with Redis-backed shared memory
+Performance: ~20% accuracy improvement over open-source competitors
+Features: Live VNC desktop control, distributed agent coordination
+
+3. GITSKINZ - GitHub README Profile Generator (2024)
+Role: Founder & Solo Developer
+Description: Platform with 70+ customizable GitHub templates
+Tech Stack: Next.js, React, Netlify
+Traction: 2,000+ monthly active users (100% organic, zero paid marketing)
+Features: Live preview, one-click copy, brutalist design
+URL: https://gitskinz.netlify.app
+
+4. RafRaf International Website (2024-Present)
+Role: Freelance Full-Stack Developer
+Description: Complete production website for import/export company
+Tech Stack: Next.js, React, Figma (UI/UX design)
+Client: RafRaf International (International import/export)
+Scope: End-to-end delivery (design, development, SEO, deployment)
+SEO: Implemented AEO/GEO best practices for global discoverability
+
+5. NbAIl - AI Voice Assistant (2025)  
+Role: AI Engineer & Full-Stack Developer
+Description: AI assistant with voice control and desktop automation
+Tech Stack: Next.js, Three.js, Groq, Voice Recognition
+Achievement: HackHazards 2025 Winner
+Features: Real-time AI, ultra-fast responses, multimodal capabilities
+
+6. Style - AI Fashion Designer (2025)
+Role: AI Engineer
+Description: AI tool generating instant outfit variations
+Tech Stack: AI, Generative Design, Image Processing
+Features: Upload images, visualize combinations
+
+7. Techwiser CMS (2025)
+Role: Full-Stack Developer
+Description: Custom content management system
+Tech Stack: Next.js, Admin Panel, CMS architecture
+Features: Content management, blog publishing
+
+INTERNSHIP EXPERIENCE
+
+FlyRank AI (February 2026 - Present, Remote)
+Position: Frontend AI Development Intern
+- Developing AI-powered frontend features and components
+- Building user interfaces for AI applications
+- Integrating AI capabilities into web applications
+- Frontend architecture and modern React/Next.js development
+
+Tata Group - Tata iQ (June 2026, Virtual)
+Position: Data Analytics Virtual Intern
+Team: Financial Services
+- Performed AI-powered data analytics and strategy development
+- Conducted exploratory data analysis (EDA) using GenAI
+- Proposed no-code delinquency-risk prediction model
+- Developed ethical, compliant AI-driven collections strategy
+
+Deloitte Australia (June 2026, Virtual)
+Position: Cybersecurity Virtual Intern
+- Analyzed web activity logs to investigate security breaches
+- Traced suspicious user activity patterns
+- Applied forensic analysis methodologies
+- Produced detailed breach investigation reports
+
+SERVICES OFFERED
+
+Web Development:
+- Custom web applications (SaaS, e-commerce)
+- Full-stack development (React + Node.js)
+- Next.js applications with SSR
+- Landing pages and marketing sites
+- API development and integration
+
+AI Integration:
+- AI chatbot development
+- LLM integration for applications
+- AI agents with memory systems
+- Voice AI and conversational interfaces
+- Custom AI workflows and automation
+
+Specialized:
+- 3D web experiences (Three.js)
+- Interactive animations
+- UI/UX design and prototyping
+- MVP development for startups
+- Technical consulting
+
+RATES & AVAILABILITY
+Hourly Rate: ₹1,800-₹3,000/hour ($22-$36/hour)
+Project-Based: ₹1,50,000-₹15,00,000+ depending on scope
+Availability: 20-40 hours per week
+Work Style: Remote-first, timezone-flexible
+
+BLOG & WRITING
+Technical articles on web development, AI, and software engineering:
+
+- Freelance Developer Rates in Mumbai 2026 (Feb 2026)
+- How to Hire a Freelance Developer in India (Feb 2026)
+- Will Advanced AI Become a Privilege? (Jan 2026)
+- Building AI Agents That Remember (Jan 2026)
+- Building AI That Doesn't Suck (Dec 2024)
+- The Commerce Kid's Guide to Tech (Nov 2024)
+- Hackathons: Speed-Running Product Development (Oct 2024)
+- Why I Built Gitskinz (Sep 2024)
+
+Blog URL: https://nabil-thange.vercel.app/blog
+
+CONTACT & SOCIAL PROFILES
+
+Portfolio: https://nabil-thange.vercel.app
+Email: thangenabil@gmail.com
+LinkedIn: https://www.linkedin.com/in/nabil-thange/
+GitHub: https://github.com/NabilThange
+Twitter/X: https://x.com/THEONLYNABIL
+Instagram: https://www.instagram.com/nabil_thange/
+
+Developer Platforms:
+- Dev.to: https://dev.to/nabil_thange
+- Devpost: https://devpost.com/thangenabil
+- Medium: https://medium.com/@thangenabil
+- HuggingFace: https://huggingface.co/Nabil-Oc
+- Kaggle: https://www.kaggle.com/nabilthange
+- Stack Overflow: https://stackoverflow.com/users/32129529/nabil-thange
+- lablab.ai: https://lablab.ai/u/@NabilT
+
+WORK PHILOSOPHY
+- Product-first: Build what users need, not just impressive tech
+- Pragmatic choices: Use proven tools if they ship faster
+- AI as accelerator: Enhance development, don't replace thinking
+- Remote-friendly: Async communication, transparent progress
+- Learn by building: Rapid prototyping, iterate on feedback
+
+LOCATION & TIMEZONE
+Based in: Kharghar, Navi Mumbai, Maharashtra, India
+Timezone: IST (UTC+5:30)
+Remote Work: Available for clients worldwide
+Overlap Hours: Flexible for US/EU/Asia timezones
+
+KEYWORDS FOR SEARCH
+Full-stack developer Mumbai, Freelance developer Mumbai, React developer Mumbai, Next.js developer India, AI developer Mumbai, Web developer Mumbai, Software engineer Mumbai, Navi Mumbai developer, Frontend AI developer, AI integration specialist, Saraswati College Engineering, AI chatbot developer, Voice AI developer, Generative AI developer Mumbai, Machine learning engineer Mumbai, Multi-agent systems developer, Cybersecurity developer, APK vulnerability scanning, IIT Hyderabad hackathon winner, HackHazards winner, GITSKINZ creator, FlyRank AI intern, Sentient creator, ARIA developer, Production AI systems, Vibe coder, Creative technologist India, B.Tech computer engineering, 9.3 CGPA student, Python FastAPI developer, Docker specialist, Redis developer, Frontend engineer Mumbai, UI/UX developer India
+
+AVAILABILITY STATUS
+Currently accepting freelance projects and collaborations.
+Specializing in AI integration, modern web applications, and custom development.
+
+Open for:
+- Freelance development projects (short-term and long-term)
+- Technical consulting and code reviews
+- Startup MVP development
+- AI integration and chatbot development
+- Contract work and retainer agreements
+
+Response Time: Within 24 hours for project inquiries
+Contact Method: Email thangenabil@gmail.com or website contact form
+
+LAST UPDATED
+Date: February 2026
+Version: 3.0
+Status: Active - Accepting Projects

@@ -1,0 +1,43 @@
+{
+  "name": "SaveFlow Human Approval & Policy Validator",
+  "version": "1.0.0",
+  "description": "Evaluates confidence score, financial impact, and policy thresholds to determine if an action can run automatically or requires human review.",
+  "components": [
+    {
+      "id": "validator_input",
+      "provider": "webhook",
+      "config": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "risk_score": { "type": "integer" },
+            "confidence": { "type": "number" },
+            "financial_impact": { "type": "string" },
+            "recommended_playbook": { "type": "string" }
+          }
+        }
+      }
+    },
+    {
+      "id": "validator_agent",
+      "provider": "agent_llm",
+      "config": {
+        "system_prompt": "You are the Human Gate & Policy Policy Validator. Rules:\n1. If confidence < 0.70 -> human_approval_required: true (Reason: Low AI Confidence)\n2. If financial_impact == 'high' or retention discount proposed -> human_approval_required: true (Reason: High Financial Impact)\n3. If risk_score >= 85 and playbook includes executive rescue/discount -> human_approval_required: true\n4. Otherwise -> human_approval_required: false (SAFE AUTOMATIC ACTION ALLOWED).\nOutput JSON with human_approval_required (boolean), execution_path ('SAFE_AUTO' or 'HUMAN_GATE'), and policy_reason.",
+        "temperature": 0.0
+      },
+      "input": [
+        { "lane": "data", "from": "validator_input" }
+      ]
+    },
+    {
+      "id": "validator_output",
+      "provider": "response",
+      "config": {
+        "laneName": "validation_result"
+      },
+      "input": [
+        { "lane": "text", "from": "validator_agent" }
+      ]
+    }
+  ]
+}

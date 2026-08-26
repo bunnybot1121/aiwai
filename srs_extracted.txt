@@ -1,0 +1,174 @@
+=== PARAGRAPHS ===
+SOFTWARE REQUIREMENTS SPECIFICATION
+SaveFlow AI
+Churn Rescue Desk — RocketRide Buildathon
+Final MVP Specification
+Source basis: RocketRide Buildathon guide supplied by the team. The guide defines the Churn Rescue Desk as a system that monitors product usage, billing activity, support tone and key-contact changes; learns from healthy/churned accounts and intervention outcomes; scores churn risk; selects response playbooks; performs permitted actions; and routes higher-threshold actions to humans. The guide also requires RocketRide to be load-bearing.
+1. Introduction
+1.1 Purpose
+SaveFlow AI is a web-based retention platform used by a particular SaaS company to protect its recurring revenue. It analyzes that company's customer accounts, identifies customers likely to churn, explains the reasons, recommends a rescue strategy, performs safe actions, routes consequential actions to a human, and records outcomes for future recommendations.
+1.2 Scope
+The buildathon MVP will model one fictional SaaS company, such as NovaCloud, with a realistic customer dataset. The system is not required to integrate with a real enterprise CRM or billing provider for the MVP. The architecture will expose CSV/webhook interfaces so real integrations can be added later.
+1.3 Core Loop
+WATCH → PREDICT → EXPLAIN → DECIDE → ACT → LEARN
+1.4 Target Users
+2. Product Overview
+2.1 Example Company
+For the demo, SaveFlow will operate for a fictional SaaS company named NovaCloud. NovaCloud has thousands of customers and wants to reduce preventable churn. The company supplies customer usage, billing, support and contact-change data to SaveFlow.
+2.2 Example Scenario
+A NovaCloud account shows declining product usage, unresolved support tickets, an overdue invoice and a key contact leaving the company. SaveFlow combines these signals, produces a high churn-risk score with evidence, retrieves similar historical cases, recommends an intervention, and requires human approval before a significant retention discount.
+2.3 System Architecture
+NovaCloud data → SaveFlow Web App → FastAPI backend → RocketRide SDK → RocketRide .pipe workflow → specialist agents → churn decision → memory/retrieval → playbook → validator → automatic action or human approval → outcome database → future recommendations.
+3. Functional Requirements
+4. RocketRide Requirements
+4.1 Load-Bearing Role
+RocketRide shall perform the core AI workflow. It must not be included only as a one-line SDK call or branding element. The .pipe files shall be version-controlled in GitHub.
+4.2 Pipeline
+Input/Webhook → validation
+Parallel Usage, Billing, Support and Contact analysis
+Churn Risk Agent
+Historical memory/retrieval
+Playbook Agent
+Confidence and threshold validator
+Automatic action or Human Gate
+Outcome recording
+4.3 Agents
+4.4 SDK
+The FastAPI backend shall use the RocketRide Python SDK to connect to the runtime, start/use the required pipeline, send account payloads, receive results and terminate executions correctly. The same pipeline should be usable locally and on RocketRide Cloud.
+5. Data Requirements
+6. User Interface
+6.1 Dashboard
+Show total customers, at-risk accounts, critical accounts, ARR at risk, pending approvals, intervention success and recent alerts.
+6.2 Customer Page
+Show account profile, ARR, churn score, confidence, evidence, usage/billing/support/contact health, historical interventions and current recommendation.
+6.3 Human Review
+Show recommendation, evidence, confidence, expected impact and historical context, with Approve, Reject and Escalate controls.
+6.4 Analytics
+Show risk distribution, ARR at risk, saved versus churned accounts, intervention success rate and playbook performance.
+7. Business Rules
+0–39 = Low risk.
+40–69 = Medium risk.
+70–84 = High risk.
+85–100 = Critical risk.
+Low-confidence decisions shall not be automatically executed.
+High-impact financial actions shall require human approval.
+Missing critical evidence shall reduce confidence and may require human review.
+Every intervention shall have an outcome state.
+Historical outcomes shall influence future playbook recommendations.
+8. Non-Functional Requirements
+9. Error Handling
+10. Security
+Use .env for RocketRide/API credentials.
+Commit .env.example but never real secrets.
+Use synthetic/demo customer data for the public buildathon demo.
+Record who approved or rejected a high-impact action.
+Do not expose secrets in logs.
+11. Testing & Acceptance
+Valid CSV batch processes successfully.
+Invalid records do not crash the full batch.
+RocketRide returns structured risk, confidence and evidence.
+High-risk/high-impact action stops at the human gate.
+Approval executes/records the action.
+Rejection prevents the action and records the decision.
+Outcome is stored and retrievable later.
+Historical outcome informs a later recommendation.
+Dashboard shows batch count, runtime and cost.
+All .pipe files are present in GitHub.
+Project runs from a clean clone with .env.example.
+12. MVP Scope
+The MVP focuses on one fictional SaaS company, NovaCloud, and a realistic seeded dataset. It supports CSV batch ingestion, RocketRide AI analysis, churn scoring, explanations, historical memory, playbook recommendation, human approval, intervention tracking and analytics.
+12.1 Out of MVP
+Real Salesforce/HubSpot/Intercom/Stripe integrations.
+Native mobile application.
+Complex enterprise authentication.
+Training a large custom ML model.
+Dozens of dashboards or microservices.
+12.2 Future Scope
+Multi-tenant SaaS deployment.
+CRM, billing and support integrations.
+Real email/calendar automation.
+Advanced predictive ML alongside agent reasoning.
+Automatic playbook optimization from long-term outcomes.
+13. Demo Flow
+Open SaveFlow AI for NovaCloud.
+Show customer base and ARR at risk.
+Run a batch analysis.
+Open a critical customer such as Acme Corp.
+Show a high risk score and the evidence behind it.
+Show RocketRide specialist-agent execution.
+Show historical cases and recommended rescue playbook.
+Trigger a high-impact discount recommendation.
+Show Human Approval Required.
+Approve the action.
+Show intervention recorded and outcome/memory updated.
+14. Final Acceptance Statement
+SaveFlow AI is complete for the buildathon MVP when NovaCloud customer data can enter the web application, RocketRide performs the core multi-stage AI analysis, the system produces explainable churn risk, selects a rescue playbook, knows when a human must approve an action, records the result, and uses outcomes as future knowledge.
+
+=== TABLES ===
+['Item', 'Details']
+['Problem Statement', '#3 — Churn Rescue Desk']
+['Product', 'SaveFlow AI']
+['Target Customer', 'One SaaS company and its customer-success team']
+['Application', 'Web application']
+['AI Engine', 'RocketRide pipelines + RocketRide SDK']
+['Version', '1.0']
+['User', 'Purpose']
+['Customer Success Manager', 'Review at-risk accounts and carry out rescue actions.']
+['Retention/Revenue Manager', 'Monitor revenue at risk and approve high-impact actions.']
+['Administrator', 'Configure thresholds, playbooks and system settings.']
+['Human Reviewer', 'Approve, reject or escalate actions requiring human judgment.']
+['ID', 'Requirement', 'Description']
+['FR-01', 'Company workspace', "Represent the SaaS company's customer base as the primary workspace."]
+['FR-02', 'Customer ingestion', 'Accept customer/account data by CSV and webhook/API.']
+['FR-03', 'Batch analysis', 'Process multiple accounts in one run and report progress, count, runtime and cost.']
+['FR-04', 'Usage analysis', 'Analyze product activity, active users, feature adoption and recent trends.']
+['FR-05', 'Billing analysis', 'Analyze payment status, overdue invoices and renewal information.']
+['FR-06', 'Support analysis', 'Analyze support volume, unresolved issues and support tone.']
+['FR-07', 'Contact analysis', 'Detect important contact/champion changes.']
+['FR-08', 'Churn scoring', 'Produce a 0–100 risk score, risk level, confidence and reasons.']
+['FR-09', 'Historical memory', 'Retrieve relevant previous account/intervention outcomes.']
+['FR-10', 'Playbook selection', 'Recommend a response playbook using current evidence and history.']
+['FR-11', 'Automatic action', 'Execute permitted low-risk actions such as creating a CSM task or preparing outreach.']
+['FR-12', 'Human gate', 'Require approval for actions above configured thresholds.']
+['FR-13', 'Review', 'Allow a reviewer to approve, reject or escalate a proposed action.']
+['FR-14', 'Outcome tracking', 'Record intervention status and eventual outcome.']
+['FR-15', 'Learning', 'Store outcomes for future recommendations.']
+['FR-16', 'Dashboard', 'Show customer count, risk distribution, critical accounts and ARR at risk.']
+['FR-17', 'Customer detail', 'Show evidence, risk, history and recommended action for an account.']
+['FR-18', 'Analytics', 'Show intervention success and playbook performance.']
+['FR-19', 'Failure handling', 'Handle incomplete records, timeouts and low-confidence results without fabricating results.']
+['FR-20', 'Audit trail', 'Log important AI decisions, approvals and actions.']
+['Agent', 'Responsibility']
+['Usage Agent', 'Find usage decline/adoption risk.']
+['Billing Agent', 'Find payment/renewal risk.']
+['Support Agent', 'Find support-related risk and sentiment.']
+['Contact Agent', 'Find relationship/champion changes.']
+['Churn Agent', 'Combine evidence into risk and confidence.']
+['Playbook Agent', 'Select the best rescue strategy.']
+['Validator', 'Decide whether automation is safe or human approval is required.']
+['Entity', 'Key Data']
+['Company', 'company_id, name, settings']
+['Customer', 'customer_id, company_id, name, ARR, plan, renewal date']
+['Usage', 'active users, sessions/logins, feature use, trend']
+['Billing', 'invoice status, overdue amount, renewal status']
+['Support', 'tickets, status, sentiment/tone, topics']
+['Contact', 'key contact, role, change event']
+['Risk Score', 'score, confidence, evidence, timestamp']
+['Intervention', 'playbook, action, approval status, execution status']
+['Outcome', 'saved/churned/pending, result notes, timestamp']
+['Area', 'Requirement']
+['Performance', 'Interactive single-account analysis should complete in reasonable time; batch jobs show progress.']
+['Reliability', 'A bad record shall not terminate the entire batch.']
+['Security', 'Secrets must be in environment variables and never committed.']
+['Auditability', 'AI decisions and human approvals must be recorded.']
+['Explainability', 'Risk must include evidence, not just a number.']
+['Cost', 'Report batch size, runtime and estimated/observed AI cost.']
+['Maintainability', '.pipe files and application code must be version-controlled.']
+['Usability', 'A first-time judge should understand the product without developer explanation.']
+['Failure', 'System Behavior']
+['Missing billing data', 'Continue, lower confidence and identify missing evidence.']
+['Malformed account', 'Mark failed and continue the batch.']
+['Provider timeout', 'Retry when possible; otherwise escalate/fail visibly.']
+['RocketRide unavailable', 'Do not invent an AI result; show failure.']
+['Low confidence', 'Route to human review.']
+['No historical match', 'Use baseline playbook and indicate limited history.']
