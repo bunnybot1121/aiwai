@@ -8,3 +8,4 @@ build/
 .env.production.local
 *.zip
 *.tar.gz
+.rocketride/

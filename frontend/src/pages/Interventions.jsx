@@ -38,20 +38,20 @@ export default function Interventions() {
   };
 
   return (
-    <div className="space-y-6 pb-16 animate-fade-in">
+    <div className="space-y-6 pb-16 text-white">
       
       {/* Title */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E6E8EC] pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#27272A] pb-4">
         <div>
-          <h1 className="text-2xl font-extrabold text-[#111318] tracking-tight">Interventions Tracker</h1>
-          <p className="text-sm text-[#667085]">Track rescue actions and compounding memory results.</p>
+          <h1 className="text-2xl font-extrabold text-white tracking-tight">Interventions Tracker</h1>
+          <p className="text-sm text-[#A1A1AA]">Track rescue actions and compounding memory results.</p>
         </div>
       </div>
 
       {/* Table */}
-      <div className="rounded-xl surface-card overflow-hidden">
+      <div className="rounded-2xl card-mono-dark overflow-hidden">
         <table className="w-full text-left text-xs font-mono">
-          <thead className="bg-[#FAFAFC] text-[#667085] font-bold border-b border-[#E6E8EC]">
+          <thead className="bg-[#090A0B] text-[#A1A1AA] font-bold border-b border-[#27272A]">
             <tr>
               <th className="px-6 py-3.5">ID</th>
               <th className="px-6 py-3.5">Customer</th>
@@ -61,35 +61,35 @@ export default function Interventions() {
               <th className="px-6 py-3.5 text-right">Action</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#E6E8EC] text-[#111318] font-sans">
+          <tbody className="divide-y divide-[#27272A] text-white font-sans">
             {loading ? (
               <tr>
-                <td colSpan={6} className="px-6 py-8 text-center text-[#667085] font-mono">Loading interventions...</td>
+                <td colSpan={6} className="px-6 py-8 text-center text-[#A1A1AA] font-mono">Loading interventions...</td>
               </tr>
             ) : interventions.map((item) => (
-              <tr key={item.id} className="hover:bg-[#FAFAFC] transition-colors">
-                <td className="px-6 py-4 font-mono font-bold text-[#5B4BDB]">{item.id}</td>
+              <tr key={item.id} className="hover:bg-[#18181B] transition-colors">
+                <td className="px-6 py-4 font-mono font-bold text-white">{item.id}</td>
                 <td className="px-6 py-4 font-bold">
-                  <NavLink to={`/customers/${item.customer_id}`} className="hover:text-[#5B4BDB]">
+                  <NavLink to={`/customers/${item.customer_id}`} className="hover:underline text-white">
                     {item.company_name}
                   </NavLink>
-                  <span className="block text-[11px] font-mono text-[#667085] font-normal">₹{item.arr.toLocaleString('en-IN')}</span>
+                  <span className="block text-[11px] font-mono text-[#A1A1AA] font-normal">₹{item.arr.toLocaleString('en-IN')}</span>
                 </td>
-                <td className="px-6 py-4 text-xs text-[#111318] font-medium">{item.recommended_playbook}</td>
+                <td className="px-6 py-4 text-xs text-white font-medium">{item.recommended_playbook}</td>
                 <td className="px-6 py-4 font-mono font-bold">
-                  <span className={`px-2 py-0.5 rounded text-[11px] ${
-                    item.approval_status === 'approved' ? 'bg-[#12B76A]/10 text-[#12B76A]' :
-                    item.approval_status === 'rejected' ? 'bg-[#F04438]/10 text-[#F04438]' :
-                    'bg-[#F79009]/10 text-[#F79009]'
+                  <span className={`px-2 py-0.5 rounded text-[11px] border ${
+                    item.approval_status === 'approved' ? 'bg-white text-[#090A0B] border-white' :
+                    item.approval_status === 'rejected' ? 'bg-[#18181B] text-[#A1A1AA] border-[#27272A]' :
+                    'bg-[#18181B] text-white border-white/50'
                   }`}>
                     {item.approval_status.toUpperCase()}
                   </span>
                 </td>
                 <td className="px-6 py-4 font-mono">
-                  <span className={`px-2 py-0.5 rounded text-[11px] ${
-                    item.outcome_status === 'Saved' ? 'bg-[#12B76A]/10 text-[#12B76A] font-bold' :
-                    item.outcome_status === 'Churned' ? 'bg-[#F04438]/10 text-[#F04438] font-bold' :
-                    'text-[#667085]'
+                  <span className={`px-2 py-0.5 rounded text-[11px] border ${
+                    item.outcome_status === 'Saved' ? 'bg-white text-[#090A0B] border-white font-bold' :
+                    item.outcome_status === 'Churned' ? 'bg-[#18181B] text-[#A1A1AA] border-[#27272A]' :
+                    'text-[#A1A1AA]'
                   }`}>
                     {item.outcome_status}
                   </span>
@@ -97,7 +97,7 @@ export default function Interventions() {
                 <td className="px-6 py-4 text-right">
                   <button
                     onClick={() => setModalItem(item)}
-                    className="px-3 py-1 rounded bg-[#F2F4F7] hover:bg-[#E6E8EC] text-xs font-semibold text-[#111318]"
+                    className="px-3 py-1 rounded-xl bg-white hover:bg-[#E4E4E7] text-xs font-extrabold text-[#090A0B]"
                   >
                     Record outcome
                   </button>
@@ -110,19 +110,19 @@ export default function Interventions() {
 
       {/* Outcome Modal */}
       {modalItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#111318]/40 backdrop-blur-sm">
-          <div className="w-full max-w-md p-6 rounded-xl surface-card space-y-4 shadow-dropdown">
-            <h3 className="font-bold text-lg text-[#111318]">Record Intervention Outcome</h3>
-            <p className="text-xs text-[#667085]">Record result for <strong className="text-[#111318]">{modalItem.company_name}</strong> to update memory store.</p>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+          <div className="w-full max-w-md p-6 rounded-2xl card-mono-dark space-y-4 shadow-2xl">
+            <h3 className="font-bold text-lg text-white">Record Intervention Outcome</h3>
+            <p className="text-xs text-[#A1A1AA]">Record result for <strong className="text-white">{modalItem.company_name}</strong> to update memory store.</p>
 
-            <div className="space-y-3">
-              <span className="text-xs text-[#111318] font-semibold block">Result</span>
+            <div className="space-y-3 font-mono">
+              <span className="text-xs text-white font-semibold block uppercase">Result</span>
               <div className="grid grid-cols-2 gap-3">
                 <button
                   type="button"
                   onClick={() => setOutcome('Saved')}
-                  className={`py-2 rounded-lg border text-xs font-bold transition-all ${
-                    outcome === 'Saved' ? 'bg-[#12B76A]/10 text-[#12B76A] border-[#12B76A]' : 'bg-white border-[#E6E8EC] text-[#667085]'
+                  className={`py-2.5 rounded-xl border text-xs font-bold transition-all ${
+                    outcome === 'Saved' ? 'bg-white text-[#090A0B] border-white' : 'bg-[#090A0B] border-[#27272A] text-[#A1A1AA]'
                   }`}
                 >
                   ✓ CUSTOMER SAVED
@@ -130,8 +130,8 @@ export default function Interventions() {
                 <button
                   type="button"
                   onClick={() => setOutcome('Churned')}
-                  className={`py-2 rounded-lg border text-xs font-bold transition-all ${
-                    outcome === 'Churned' ? 'bg-[#F04438]/10 text-[#F04438] border-[#F04438]' : 'bg-white border-[#E6E8EC] text-[#667085]'
+                  className={`py-2.5 rounded-xl border text-xs font-bold transition-all ${
+                    outcome === 'Churned' ? 'bg-white text-[#090A0B] border-white' : 'bg-[#090A0B] border-[#27272A] text-[#A1A1AA]'
                   }`}
                 >
                   ✕ CHURNED
@@ -142,15 +142,15 @@ export default function Interventions() {
                 placeholder="Optional notes on customer resolution..."
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
-                className="w-full p-3 rounded-lg border border-[#E6E8EC] text-xs text-[#111318] focus:outline-none focus:border-[#5B4BDB] h-24"
+                className="w-full p-3 rounded-xl bg-[#090A0B] border border-[#27272A] text-xs text-white placeholder-[#71717A] focus:outline-none focus:border-white h-24 font-sans"
               />
             </div>
 
             <div className="flex justify-end space-x-3 pt-2">
-              <button onClick={() => setModalItem(null)} className="px-4 py-2 text-xs font-semibold text-[#667085]">
+              <button onClick={() => setModalItem(null)} className="px-4 py-2 text-xs font-semibold text-[#A1A1AA]">
                 Cancel
               </button>
-              <button onClick={handleSaveOutcome} className="px-5 py-2 rounded-lg bg-[#5B4BDB] text-white font-bold text-xs">
+              <button onClick={handleSaveOutcome} className="px-5 py-2.5 rounded-xl bg-white text-[#090A0B] font-extrabold text-xs shadow-md hover:bg-[#E4E4E7]">
                 Save & Update Memory
               </button>
             </div>

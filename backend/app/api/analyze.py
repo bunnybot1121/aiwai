@@ -1,6 +1,6 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.ext.asyncio import AsyncSession
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 from ..database import get_db
 from ..schemas import AnalyzeRequest, BatchAnalyzeRequest
 from ..rocketride.sdk import rocketride_sdk
@@ -23,10 +23,14 @@ async def analyze_single_customer(payload: AnalyzeRequest, db: AsyncSession = De
     return analysis_res
 
 @router.post("/batch")
-async def analyze_batch_customers(payload: Optional[BatchAnalyzeRequest] = None, db: AsyncSession = Depends(get_db)):
+async def analyze_batch_customers(
+    payload: Optional[BatchAnalyzeRequest] = None,
+    count: Optional[int] = Query(None, description="Optional target count for synthetic volume batch processing (e.g., 100, 1000)"),
+    db: AsyncSession = Depends(get_db)
+):
     """
     Executes batch customer churn analysis through RocketRide pipeline across accounts.
     """
     custom_records = [c.dict(exclude_none=True) for c in payload.customers] if (payload and payload.customers) else None
-    batch_res = await batch_service.run_batch_analysis(db, custom_records=custom_records)
+    batch_res = await batch_service.run_batch_analysis(db, custom_records=custom_records, target_count=count)
     return batch_res

@@ -6,10 +6,11 @@ class HistoricalMemoryStore:
     Compounding outcome memory store for RocketRide pipeline.
     Retrieves past customer rescue interventions and their eventual outcomes (Saved vs Churned)
     to inform current playbook selection.
+    Hydrates directly from SQLite database to persist across server restarts.
     """
 
     def __init__(self):
-        # Seed realistic historical outcomes as specified in SRS and Buildathon guide
+        # Initial seed items
         self._memory_items: List[Dict[str, Any]] = [
             {
                 "id": "HIST-001",
@@ -73,6 +74,17 @@ class HistoricalMemoryStore:
             }
         ]
 
+    def hydrate_from_db(self, db_outcomes: List[Dict[str, Any]]):
+        """
+        Rehydrates memory store from SQLite HistoricalOutcome database records on backend startup.
+        Ensures historical outcomes persist across backend server restarts.
+        """
+        existing_ids = {item["id"] for item in self._memory_items}
+        for outcome in db_outcomes:
+            if outcome["id"] not in existing_ids:
+                self._memory_items.append(outcome)
+                existing_ids.add(outcome["id"])
+
     def retrieve_similar_precedents(
         self,
         risk_score: int,
@@ -88,12 +100,10 @@ class HistoricalMemoryStore:
         scored_items = []
         for item in self._memory_items:
             sim = 0.0
-            # Risk score proximity
             score_diff = abs(item["risk_score"] - risk_score)
             sim += max(0, (30 - score_diff) / 30) * 0.4
 
-            # Signal matching
-            signals_str = " ".join(item["signals"]).lower()
+            signals_str = " ".join(item.get("signals", [])).lower()
             if champion_departed and "champion" in signals_str:
                 sim += 0.2
             if usage_change_pct < -20 and "usage" in signals_str:

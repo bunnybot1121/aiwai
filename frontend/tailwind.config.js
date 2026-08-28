@@ -35,7 +35,9 @@ export default {
       },
       fontFamily: {
         sans: ['Geist', 'Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Consolas', 'monospace'],
+        mono: ['Departure Mono', 'DepartureMono', 'Silkscreen', 'Pixelify Sans', 'VT323', 'Space Mono', 'JetBrains Mono', 'Consolas', 'monospace'],
+        pixel: ['Departure Mono', 'DepartureMono', 'Silkscreen', 'Pixelify Sans', 'VT323', 'monospace'],
+        departure: ['Departure Mono', 'DepartureMono', 'monospace'],
       },
       boxShadow: {
         'subtle': '0 4px 20px rgba(16, 24, 40, 0.04)',

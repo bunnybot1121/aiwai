@@ -25,20 +25,20 @@ export default function Customers() {
   };
 
   const getHealthDot = (level) => {
-    if (level === 'CRITICAL') return <span className="text-[#F04438] font-bold">● Critical</span>;
-    if (level === 'HIGH') return <span className="text-[#F79009] font-semibold">● High</span>;
-    if (level === 'MEDIUM') return <span className="text-[#2E90FA] font-medium">● Medium</span>;
-    return <span className="text-[#12B76A] font-medium">● Healthy</span>;
+    if (level === 'CRITICAL') return <span className="text-white font-bold">● Critical</span>;
+    if (level === 'HIGH') return <span className="text-white font-semibold">● High</span>;
+    if (level === 'MEDIUM') return <span className="text-[#A1A1AA] font-medium">● Medium</span>;
+    return <span className="text-[#A1A1AA] font-medium">● Healthy</span>;
   };
 
   return (
-    <div className="space-y-6 pb-16 animate-fade-in">
+    <div className="space-y-6 pb-16 text-white">
       
       {/* Title */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E6E8EC] pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#27272A] pb-4">
         <div>
-          <h1 className="text-2xl font-extrabold text-[#111318] tracking-tight">Customers</h1>
-          <p className="text-sm text-[#667085]">10,000 monitored SaaS customer accounts.</p>
+          <h1 className="text-2xl font-extrabold text-white tracking-tight">Customers</h1>
+          <p className="text-sm text-[#A1A1AA]">10,000 monitored SaaS customer accounts.</p>
         </div>
 
         <div className="flex items-center space-x-2">
@@ -47,12 +47,12 @@ export default function Customers() {
             placeholder="Search customer name or ID..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="px-3.5 py-1.5 rounded-lg bg-white border border-[#E6E8EC] text-xs text-[#111318] focus:outline-none focus:border-[#5B4BDB]"
+            className="px-3.5 py-1.5 rounded-xl bg-[#121316] border border-[#27272A] text-xs text-white placeholder-[#71717A] focus:outline-none focus:border-white"
           />
           <select
             value={riskLevel}
             onChange={(e) => setRiskLevel(e.target.value)}
-            className="px-3 py-1.5 rounded-lg bg-white border border-[#E6E8EC] text-xs text-[#111318] focus:outline-none"
+            className="px-3 py-1.5 rounded-xl bg-[#121316] border border-[#27272A] text-xs text-white focus:outline-none"
           >
             <option value="ALL">All Risk Levels</option>
             <option value="CRITICAL">Critical</option>
@@ -64,9 +64,9 @@ export default function Customers() {
       </div>
 
       {/* Directory Table */}
-      <div className="rounded-xl surface-card overflow-hidden">
+      <div className="rounded-2xl card-mono-dark overflow-hidden">
         <table className="w-full text-left text-xs font-mono">
-          <thead className="bg-[#FAFAFC] text-[#667085] font-bold border-b border-[#E6E8EC]">
+          <thead className="bg-[#090A0B] text-[#A1A1AA] font-bold border-b border-[#27272A]">
             <tr>
               <th className="px-6 py-3.5">Customer</th>
               <th className="px-6 py-3.5">ARR</th>
@@ -77,24 +77,24 @@ export default function Customers() {
               <th className="px-6 py-3.5 text-right">Action</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#E6E8EC] text-[#111318] font-sans">
+          <tbody className="divide-y divide-[#27272A] text-white font-sans">
             {loading ? (
               <tr>
-                <td colSpan={7} className="px-6 py-8 text-center text-[#667085] font-mono">Loading customers...</td>
+                <td colSpan={7} className="px-6 py-8 text-center text-[#A1A1AA] font-mono">Loading customers...</td>
               </tr>
             ) : data?.customers?.map((cust) => (
-              <tr key={cust.id} className="hover:bg-[#FAFAFC] transition-colors">
+              <tr key={cust.id} className="hover:bg-[#18181B] transition-colors">
                 <td className="px-6 py-4 font-bold">
-                  <NavLink to={`/customers/${cust.id}`} className="hover:text-[#5B4BDB]">
+                  <NavLink to={`/customers/${cust.id}`} className="hover:underline text-white">
                     {cust.company_name}
                   </NavLink>
-                  <span className="block text-[11px] font-mono text-[#667085] font-normal">{cust.id}</span>
+                  <span className="block text-[11px] font-mono text-[#A1A1AA] font-normal">{cust.id}</span>
                 </td>
                 <td className="px-6 py-4 font-mono font-bold">${Math.round(cust.arr / 83.0).toLocaleString()}k</td>
                 <td className="px-6 py-4">{getHealthDot(cust.current_risk_level)}</td>
-                <td className="px-6 py-4 font-mono font-bold text-[#111318]">{cust.current_risk_score}%</td>
-                <td className="px-6 py-4 font-mono text-[#667085]">{cust.renewal_date}</td>
-                <td className="px-6 py-4 text-xs text-[#667085]">
+                <td className="px-6 py-4 font-mono font-bold text-white">{cust.current_risk_score}%</td>
+                <td className="px-6 py-4 font-mono text-[#A1A1AA]">{cust.renewal_date}</td>
+                <td className="px-6 py-4 text-xs text-[#A1A1AA]">
                   {cust.key_contact_status === 'departed' ? 'Champion departed' :
                    cust.usage_change_pct < -20 ? 'Usage decline' :
                    cust.invoice_status === 'overdue' ? 'Invoice overdue' : 'Telemetry normal'}
@@ -102,7 +102,7 @@ export default function Customers() {
                 <td className="px-6 py-4 text-right">
                   <NavLink
                     to={`/customers/${cust.id}`}
-                    className="px-3 py-1 rounded bg-[#F2F4F7] hover:bg-[#E6E8EC] text-xs font-semibold text-[#111318]"
+                    className="px-3 py-1 rounded-xl bg-white hover:bg-[#E4E4E7] text-xs font-bold text-[#090A0B]"
                   >
                     Review
                   </NavLink>

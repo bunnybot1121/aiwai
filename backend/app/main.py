@@ -1,10 +1,17 @@
 import os
+from dotenv import load_dotenv
+dotenv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../.env'))
+load_dotenv(dotenv_path=dotenv_path, override=True)
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from sqlalchemy import select
 from .database import init_db, AsyncSessionLocal
+from .models import HistoricalOutcome
 from .services.seed_service import seed_database
+from .rocketride.memory import memory_store
 from .api import customers, analyze, interventions, analytics, webhook
 
 app = FastAPI(
@@ -31,10 +38,34 @@ app.include_router(webhook.router)
 
 @app.on_event("startup")
 async def on_startup():
-    """Initializes DB schema and seeds initial NovaCloud dataset on startup."""
+    """
+    Initializes DB schema, seeds initial NovaCloud dataset,
+    and rehydrates historical outcome memory store from SQLite database on startup.
+    """
     await init_db()
     async with AsyncSessionLocal() as session:
         await seed_database(session)
+
+        # Hydrate Historical Memory Store from SQLite DB
+        res = await session.execute(select(HistoricalOutcome))
+        db_outcomes = res.scalars().all()
+        outcome_dicts = [
+            {
+                "id": o.id,
+                "customer_name": o.customer_name,
+                "risk_score": o.risk_score,
+                "risk_level": o.risk_level,
+                "signals": o.signals_json if isinstance(o.signals_json, list) else [],
+                "playbook": o.playbook,
+                "action": o.action,
+                "outcome": o.outcome,
+                "saved_arr": o.saved_arr,
+                "notes": o.notes
+            }
+            for o in db_outcomes
+        ]
+        memory_store.hydrate_from_db(outcome_dicts)
+        print(f"Memory store successfully rehydrated with {len(outcome_dicts)} SQLite historical outcome records.")
 
 @app.get("/api/health")
 async def health_check():
@@ -43,7 +74,8 @@ async def health_check():
         "status": "healthy",
         "system": "SaveFlow AI",
         "company": "NovaCloud Inc",
-        "rocketride_engine": "online"
+        "rocketride_engine": "online",
+        "workspace_capacity": 10000
     }
 
 # Serve static frontend files if built
