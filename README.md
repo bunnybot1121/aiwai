@@ -1,4 +1,4 @@
-# SaveFlow AI — Churn Rescue Desk 🚀
+# REVIVE — Churn Rescue Desk 🚀
 
 > **RocketRide Buildathon Project** — Autonomous Customer Retention System for NovaCloud SaaS.
 
