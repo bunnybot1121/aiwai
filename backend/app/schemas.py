@@ -34,6 +34,10 @@ class CustomerResponse(BaseModel):
     current_confidence: float
     status: str
     last_analyzed_at: Optional[str] = None
+    ai_risk_score: Optional[int] = None
+    baseline_risk_score: Optional[int] = None
+    risk_disagreement: Optional[bool] = False
+    evidence_confidence: Optional[float] = 0.95
 
     class Config:
         from_attributes = True
@@ -46,15 +50,15 @@ class CustomerListResponse(BaseModel):
     customers: List[CustomerResponse]
 
 class AnalyzeRequest(BaseModel):
-    customer_id: str
-    company_name: Optional[str] = None
-    arr: Optional[float] = None
-    active_users: Optional[int] = None
-    usage_change_pct: Optional[float] = None
-    support_tickets_open: Optional[int] = None
-    support_sentiment: Optional[str] = None
-    invoice_status: Optional[str] = None
-    key_contact_status: Optional[str] = None
+    customer_id: str = Field(..., min_length=1, description="Customer Identifier")
+    company_name: Optional[str] = Field(None, description="Company Name")
+    arr: Optional[float] = Field(None, ge=0.0, description="Annual Recurring Revenue")
+    active_users: Optional[int] = Field(None, ge=0, description="Active Users Count")
+    usage_change_pct: Optional[float] = Field(None, ge=-100.0, le=100.0, description="Usage Change Percentage")
+    support_tickets_open: Optional[int] = Field(None, ge=0, description="Open Support Tickets")
+    support_sentiment: Optional[str] = Field(None, description="Support Conversation Sentiment")
+    invoice_status: Optional[str] = Field(None, description="Invoice Status")
+    key_contact_status: Optional[str] = Field(None, description="Key Contact Status")
 
 class BatchAnalyzeRequest(BaseModel):
     customers: Optional[List[AnalyzeRequest]] = None
@@ -69,6 +73,7 @@ class RecordOutcomeRequest(BaseModel):
 
 class AnalyticsSummary(BaseModel):
     total_customers: int
+    total_customers_in_db: int
     at_risk_customers: int
     critical_customers: int
     arr_at_risk_inr: float
@@ -76,8 +81,20 @@ class AnalyticsSummary(BaseModel):
     pending_approvals: int
     intervention_success_rate: float
     total_interventions: int
-    saved_arr: float
-    churned_arr: float
+    saved_arr_inr: float
+    churned_arr_inr: float
     risk_distribution: Dict[str, int]
     playbook_performance: List[Dict[str, Any]]
     recent_alerts: List[Dict[str, Any]]
+
+class BenchmarkMetricsResponse(BaseModel):
+    dataset_name: str
+    total_benchmark_accounts: int
+    accuracy: float
+    precision: float
+    recall: float
+    f1_score: float
+    high_risk_capture_rate_pct: float
+    arr_at_risk_captured_inr: float
+    confusion_matrix: Dict[str, int]
+    data_leakage_prevented: bool

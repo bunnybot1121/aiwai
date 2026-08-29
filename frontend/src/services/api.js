@@ -48,7 +48,10 @@ export async function fetchInterventions(approval_status = 'all', outcome_status
 export async function approveIntervention(id, reviewer = 'Customer Success Lead', notes = '') {
   const res = await fetch(`${API_BASE}/interventions/${id}/approve`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 
+      'Content-Type': 'application/json',
+      'X-Reviewer-Token': 'revive_cs_lead_secret_2026'
+    },
     body: JSON.stringify({ reviewer, notes }),
   });
   if (!res.ok) throw new Error('Failed to approve intervention');
@@ -58,7 +61,10 @@ export async function approveIntervention(id, reviewer = 'Customer Success Lead'
 export async function rejectIntervention(id, reviewer = 'Customer Success Lead', notes = '') {
   const res = await fetch(`${API_BASE}/interventions/${id}/reject`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 
+      'Content-Type': 'application/json',
+      'X-Reviewer-Token': 'revive_cs_lead_secret_2026'
+    },
     body: JSON.stringify({ reviewer, notes }),
   });
   if (!res.ok) throw new Error('Failed to reject intervention');
@@ -68,7 +74,10 @@ export async function rejectIntervention(id, reviewer = 'Customer Success Lead',
 export async function escalateIntervention(id, reviewer = 'Customer Success Lead', notes = '') {
   const res = await fetch(`${API_BASE}/interventions/${id}/escalate`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 
+      'Content-Type': 'application/json',
+      'X-Reviewer-Token': 'revive_cs_lead_secret_2026'
+    },
     body: JSON.stringify({ reviewer, notes }),
   });
   if (!res.ok) throw new Error('Failed to escalate intervention');

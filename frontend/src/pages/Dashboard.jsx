@@ -96,8 +96,8 @@ export default function Dashboard({ onOpenBatchModal }) {
           {/* Customers Monitored */}
           <ScrollReveal delay={0.1} className="p-8 rounded-2xl card-mono-dark space-y-2">
             <span className="text-xs text-[#A1A1AA] font-bold block uppercase tracking-widest">Customers monitored</span>
-            <p className="text-4xl lg:text-5xl font-black text-white tracking-tighter">10,000</p>
-            <span className="text-xs text-[#A1A1AA] block font-mono pt-1">Active Revive accounts</span>
+            <p className="text-4xl lg:text-5xl font-black text-white tracking-tighter">{data?.total_customers_in_db || 119}</p>
+            <span className="text-xs text-[#A1A1AA] block font-mono pt-1">Active database accounts</span>
           </ScrollReveal>
 
           {/* Accounts at Risk */}
@@ -110,15 +110,15 @@ export default function Dashboard({ onOpenBatchModal }) {
           {/* Revenue at Risk */}
           <ScrollReveal delay={0.3} className="p-8 rounded-2xl card-mono-dark space-y-2 border-white/40 bg-[#18181B]">
             <span className="text-xs text-white font-bold block uppercase tracking-widest">Revenue at risk</span>
-            <p className="text-4xl lg:text-5xl font-black text-white tracking-tighter">$221k</p>
-            <span className="text-xs text-[#A1A1AA] font-mono block pt-1 font-bold">₹18.4L ARR</span>
+            <p className="text-4xl lg:text-5xl font-black text-white tracking-tighter">${Math.round(data.arr_at_risk_usd / 1000)}k</p>
+            <span className="text-xs text-[#A1A1AA] font-mono block pt-1 font-bold">₹{Math.round(data.arr_at_risk_inr / 100000) / 10}L ARR</span>
           </ScrollReveal>
 
           {/* Intervention Success */}
           <ScrollReveal delay={0.4} className="p-8 rounded-2xl card-mono-dark space-y-2">
             <span className="text-xs text-[#A1A1AA] font-bold block uppercase tracking-widest">Intervention success</span>
             <div className="flex items-baseline space-x-2">
-              <p className="text-4xl lg:text-5xl font-black text-white tracking-tighter">84.5%</p>
+              <p className="text-4xl lg:text-5xl font-black text-white tracking-tighter">{data.intervention_success_rate || 84.5}%</p>
               <span className="text-xs font-bold text-white flex items-center">
                 <ArrowUpRight className="w-3.5 h-3.5 text-white" /> 8.2%
               </span>
@@ -132,28 +132,49 @@ export default function Dashboard({ onOpenBatchModal }) {
         <ScrollReveal delay={0.5} className="p-8 rounded-2xl card-mono-dark space-y-4">
           <div className="flex items-center justify-between text-xs font-semibold text-[#A1A1AA]">
             <span className="uppercase tracking-wider">CUSTOMER HEALTH DISTRIBUTION</span>
-            <span className="font-mono text-white">10,000 Total Monitored Accounts</span>
+            <span className="font-mono text-white">{data?.total_customers_in_db || 119} Total Monitored Accounts</span>
           </div>
 
           {/* Distribution Bar */}
           <div className="w-full h-3 rounded-full bg-[#18181B] border border-[#27272A] overflow-hidden flex">
-            <div className="bg-emerald-500 h-full transition-all duration-500" style={{ width: '99.65%' }} title="Healthy: 9,965"></div>
-            <div className="bg-amber-400 h-full transition-all duration-500" style={{ width: '0.22%' }} title="At Risk: 22"></div>
-            <div className="bg-rose-500 h-full transition-all duration-500" style={{ width: '0.13%' }} title="Critical: 13"></div>
+            <div 
+              className="bg-emerald-500 h-full transition-all duration-500" 
+              style={{ width: `${((data?.risk_distribution?.LOW || 74) / (data?.total_customers_in_db || 119) * 100).toFixed(1)}%` }} 
+              title={`Healthy: ${data?.risk_distribution?.LOW || 74}`}
+            ></div>
+            <div 
+              className="bg-[#A1A1AA] h-full transition-all duration-500" 
+              style={{ width: `${((data?.risk_distribution?.MEDIUM || 9) / (data?.total_customers_in_db || 119) * 100).toFixed(1)}%` }} 
+              title={`Medium: ${data?.risk_distribution?.MEDIUM || 9}`}
+            ></div>
+            <div 
+              className="bg-amber-400 h-full transition-all duration-500" 
+              style={{ width: `${((data?.risk_distribution?.HIGH || 27) / (data?.total_customers_in_db || 119) * 100).toFixed(1)}%` }} 
+              title={`High Risk: ${data?.risk_distribution?.HIGH || 27}`}
+            ></div>
+            <div 
+              className="bg-rose-500 h-full transition-all duration-500" 
+              style={{ width: `${((data?.risk_distribution?.CRITICAL || 9) / (data?.total_customers_in_db || 119) * 100).toFixed(1)}%` }} 
+              title={`Critical: ${data?.risk_distribution?.CRITICAL || 9}`}
+            ></div>
           </div>
 
-          <div className="flex items-center justify-between text-xs pt-1 font-mono">
+          <div className="flex items-center justify-between text-xs pt-1 font-mono flex-wrap gap-2">
             <span className="flex items-center space-x-1.5 text-emerald-400 font-semibold">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50"></span>
-              <span>Healthy: <strong>9,965</strong></span>
+              <span>Healthy (Low): <strong>{data?.risk_distribution?.LOW || 74} clients</strong></span>
+            </span>
+            <span className="flex items-center space-x-1.5 text-zinc-300 font-semibold">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#A1A1AA]"></span>
+              <span>Medium Risk: <strong>{data?.risk_distribution?.MEDIUM || 9} clients</strong></span>
             </span>
             <span className="flex items-center space-x-1.5 text-amber-400 font-semibold">
               <span className="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-sm shadow-amber-400/50"></span>
-              <span>At risk: <strong>22</strong></span>
+              <span>High Risk: <strong>{data?.risk_distribution?.HIGH || 27} clients</strong></span>
             </span>
-            <span className="flex items-center space-x-1.5 text-rose-400 font-bold">
-              <span className="w-2.5 h-2.5 rounded-full bg-rose-500 shadow-sm shadow-rose-500/50 animate-pulse"></span>
-              <span>Critical: <strong>13</strong></span>
+            <span className="flex items-center space-x-1.5 text-rose-400 font-semibold">
+              <span className="w-2.5 h-2.5 rounded-full bg-rose-500 shadow-sm shadow-rose-500/50"></span>
+              <span>Critical: <strong>{data?.risk_distribution?.CRITICAL || 9} clients</strong></span>
             </span>
           </div>
         </ScrollReveal>

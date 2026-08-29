@@ -6,13 +6,13 @@ export default function DAGVisualizer({ dagNodes = [], executionPath = 'HUMAN_AP
 
   const defaultNodes = [
     { id: 'validator_input', label: 'Input Validator', type: 'validator', status: 'success', latency_ms: 12, output: 'Schema & Telemetry verified' },
-    { id: 'usage_agent', label: 'Usage Specialist', type: 'specialist', status: 'success', latency_ms: 45, output: 'Usage Health 32/100 (-31% drop)' },
-    { id: 'billing_agent', label: 'Billing Specialist', type: 'specialist', status: 'success', latency_ms: 38, output: 'Invoice Overdue 45 Days' },
-    { id: 'support_agent', label: 'Support Sentiment', type: 'specialist', status: 'success', latency_ms: 52, output: '4 Unresolved Tickets (Negative)' },
-    { id: 'contact_agent', label: 'Contact Champion', type: 'specialist', status: 'success', latency_ms: 30, output: 'Primary Champion Departed' },
-    { id: 'churn_scorer', label: 'Master Churn Scorer', type: 'aggregator', status: 'success', latency_ms: 68, output: 'Risk Score 94% (CRITICAL)' },
-    { id: 'memory_store', label: 'Vector Memory Store', type: 'memory', status: 'success', latency_ms: 25, output: 'Retrieved 3 Precedent Outcomes' },
-    { id: 'playbook_agent', label: 'Rescue Playbook', type: 'playbook', status: 'success', latency_ms: 40, output: 'Executive Rescue & 15% Discount' },
+    { id: 'usage_agent', label: 'Usage Specialist', type: 'specialist', status: 'success', latency_ms: 25, output: 'Usage decline (-35%)' },
+    { id: 'billing_agent', label: 'Billing Specialist', type: 'specialist', status: 'success', latency_ms: 20, output: 'Invoice Overdue' },
+    { id: 'support_agent', label: 'Support Sentiment', type: 'specialist', status: 'success', latency_ms: 22, output: '4 Unresolved Tickets (Negative)' },
+    { id: 'contact_agent', label: 'Contact Champion', type: 'specialist', status: 'success', latency_ms: 18, output: 'Primary Champion Departed' },
+    { id: 'ai_risk_analyst', label: 'Groq AI Risk Analyst (GPT-OSS 120B)', type: 'aggregator', status: 'success', latency_ms: 180, output: 'Groq Churn Risk 94% (CRITICAL)' },
+    { id: 'memory_store', label: 'Vector Precedent Store', type: 'memory', status: 'success', latency_ms: 25, output: 'Retrieved 3 Precedent Outcomes' },
+    { id: 'playbook_agent', label: 'Rescue Playbook', type: 'playbook', status: 'success', latency_ms: 30, output: 'Executive Rescue & 15% Offer' },
     { id: 'policy_validator', label: 'Human Policy Gate', type: 'gate', status: 'warning', latency_ms: 18, output: 'Human Approval Required' }
   ];
 

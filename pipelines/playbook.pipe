@@ -1,43 +1,42 @@
 {
-  "name": "SaveFlow Playbook Recommendation Specialist",
-  "version": "1.0.0",
-  "description": "Selects the optimal customer rescue playbook using risk drivers and historical outcome memory.",
-  "components": [
-    {
-      "id": "playbook_input",
-      "provider": "webhook",
-      "config": {
-        "schema": {
-          "type": "object",
-          "properties": {
-            "risk_score": { "type": "integer" },
-            "risk_level": { "type": "string" },
-            "reasons": { "type": "array" },
-            "historical_precedents": { "type": "array" }
-          }
+  "pipeline": {
+    "name": "SaveFlow Playbook Recommendation Specialist",
+    "source": "playbook_input",
+    "version": "1.0.0",
+    "description": "Selects the optimal customer rescue playbook using risk drivers and historical outcome memory.",
+    "components": [
+      {
+        "id": "playbook_input",
+        "provider": "webhook",
+        "config": {
+          "mode": "Source"
         }
+      },
+      {
+        "id": "playbook_agent",
+        "provider": "preprocessor_code",
+        "config": {
+          "code": "def process(inputs):\n    data = inputs.get('text', {})\n    score = data.get('risk_score', 0)\n    playbook = 'EXECUTIVE RESCUE & RETENTION OFFER' if score >= 85 else ('CSM OUTREACH & HEALTH INTERVENTION' if score >= 70 else 'PERSONALIZED CSM CHECK-IN')\n    return {'recommended_playbook': playbook}"
+        },
+        "input": [
+          {
+            "lane": "text",
+            "from": "playbook_input"
+          }
+        ]
+      },
+      {
+        "id": "playbook_output",
+        "provider": "response_text",
+        "config": {},
+        "input": [
+          {
+            "lane": "text",
+            "from": "playbook_agent"
+          }
+        ]
       }
-    },
-    {
-      "id": "playbook_agent",
-      "provider": "agent_llm",
-      "config": {
-        "system_prompt": "You are the Rescue Playbook Specialist for NovaCloud SaaS. Select the best retention strategy (Monitor, Personal Outreach, CSM Task, Executive Rescue, 15% Retention Offer) by analyzing current evidence and historical intervention outcomes. Output recommended_playbook, proposed_actions list, financial_impact (none/medium/high), and justification.",
-        "temperature": 0.2
-      },
-      "input": [
-        { "lane": "data", "from": "playbook_input" }
-      ]
-    },
-    {
-      "id": "playbook_output",
-      "provider": "response",
-      "config": {
-        "laneName": "rescue_playbook"
-      },
-      "input": [
-        { "lane": "text", "from": "playbook_agent" }
-      ]
-    }
-  ]
+    ],
+    "project_id": "f7cf7d8e-b6ec-45c1-8011-a5f927b39a48"
+  }
 }

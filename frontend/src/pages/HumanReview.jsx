@@ -90,16 +90,31 @@ export default function HumanReview() {
                 </ul>
               </div>
 
-              {/* WHY & EXPECTED IMPACT */}
+              {/* WHY & ACTION REMEDIES */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
-                <div className="p-4 rounded-xl bg-[#090A0B] border border-[#27272A] space-y-1">
-                  <span className="text-[#A1A1AA] font-bold block uppercase">WHY</span>
-                  <ul className="text-white space-y-1">
-                    <li>• Usage down 31%</li>
-                    <li>• 4 unresolved support tickets</li>
-                    <li>• Invoice overdue 45 days</li>
-                    <li>• Primary champion departed</li>
-                  </ul>
+                <div className="p-4 rounded-xl bg-[#090A0B] border border-[#27272A] space-y-2">
+                  <span className="text-[#A1A1AA] font-bold block uppercase tracking-wider">RISK REASONS & TURNAROUND ACTIONS</span>
+                  <div className="space-y-2">
+                    {(item.reasons_json || ['Usage down 31%', '4 unresolved support tickets', 'Invoice overdue 45 days', 'Primary champion departed']).map((reason, idx) => {
+                      const rLower = String(reason).lower ? String(reason).lower() : String(reason).toLowerCase();
+                      const action = rLower.includes('usage') ? 'Product Re-onboarding Sprint & Feature Workshop' :
+                                     rLower.includes('invoice') || rLower.includes('overdue') ? '14-Day Billing Grace Extension & Payment Restructure' :
+                                     rLower.includes('ticket') || rLower.includes('support') ? 'Tier-3 Engineering SLA Support Escalation' :
+                                     rLower.includes('champion') || rLower.includes('departed') ? 'Executive Stakeholder Mapping & Leadership Alignment Sync' :
+                                     'Proactive CSM Health Review & Account Alignment Sync';
+                      return (
+                        <div key={idx} className="p-2.5 rounded-lg bg-[#121316] border border-[#27272A] space-y-1">
+                          <div className="flex items-center space-x-1.5 text-white font-bold">
+                            <span className="w-1.5 h-1.5 rounded-full bg-rose-500 flex-shrink-0"></span>
+                            <span>{reason}</span>
+                          </div>
+                          <div className="text-[11px] text-emerald-400 font-semibold pl-3">
+                            ↳ Remedy: {action}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
 
                 <div className="p-4 rounded-xl bg-[#090A0B] border border-[#27272A] space-y-2">

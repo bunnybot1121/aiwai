@@ -1,0 +1,26 @@
+account_id,company_name,arr,plan,active_users,usage_change_pct,support_tickets_open,support_sentiment,invoice_status,key_contact_status,retrospective_churn_label
+RAVEN-001,Apex Global Analytics,150000.0,Enterprise,3,-38.5,5,negative,overdue,departed,1
+RAVEN-002,Vanguard Cloud Systems,85000.0,Growth,18,12.0,0,positive,paid,stable,0
+RAVEN-003,Hyperion Logistics,220000.0,Enterprise,4,-42.0,6,negative,overdue,departed,1
+RAVEN-004,BlueWave BioTech,65000.0,Scale,14,5.5,1,neutral,paid,stable,0
+RAVEN-005,Quantum Financials,310000.0,Enterprise,2,-29.0,4,frustrated,overdue,stable,1
+RAVEN-006,Starlight Media,95000.0,Growth,22,18.0,0,positive,paid,stable,0
+RAVEN-007,Nexus Retail Ops,140000.0,Enterprise,5,-33.0,3,negative,paid,departed,1
+RAVEN-008,Crestview Software,78000.0,Scale,11,-4.0,1,neutral,paid,stable,0
+RAVEN-009,InfraScale Systems,260000.0,Enterprise,3,-45.0,7,negative,overdue,departed,1
+RAVEN-010,AeroTech Labs,110000.0,Growth,16,8.0,0,positive,paid,stable,0
+RAVEN-011,Matrix Pay,185000.0,Enterprise,4,-31.0,4,negative,overdue,stable,1
+RAVEN-012,Zenith Data,92000.0,Scale,19,15.0,1,positive,paid,stable,0
+RAVEN-013,Beacon Networks,175000.0,Enterprise,5,-27.0,2,frustrated,paid,departed,1
+RAVEN-014,Orion Health,125000.0,Growth,13,-8.0,1,neutral,paid,stable,0
+RAVEN-015,Pinnacle Cyber,290000.0,Enterprise,2,-50.0,6,negative,overdue,departed,1
+RAVEN-016,Velocity Commerce,88000.0,Scale,15,4.0,0,positive,paid,stable,0
+RAVEN-017,Solstice AI,210000.0,Enterprise,4,-36.0,5,negative,overdue,stable,1
+RAVEN-018,Atlas Group,105000.0,Growth,20,9.0,1,neutral,paid,stable,0
+RAVEN-019,Nova Infrastructure,240000.0,Enterprise,3,-40.0,4,negative,paid,departed,1
+RAVEN-020,Omni Systems,98000.0,Scale,12,-2.0,0,positive,paid,stable,0
+RAVEN-021,TechPulse Global,160000.0,Enterprise,3,-35.0,5,negative,overdue,departed,1
+RAVEN-022,Skyline Analytics,79000.0,Growth,17,11.0,0,positive,paid,stable,0
+RAVEN-023,CyberGuard Inc,205000.0,Enterprise,4,-28.0,3,frustrated,overdue,stable,1
+RAVEN-024,Precision Data,68000.0,Scale,14,6.0,1,neutral,paid,stable,0
+RAVEN-025,Apex Networks,300000.0,Enterprise,2,-48.0,6,negative,overdue,departed,1

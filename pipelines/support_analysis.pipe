@@ -1,44 +1,42 @@
 {
-  "name": "SaveFlow Support & Sentiment Analysis Specialist",
-  "version": "1.0.0",
-  "description": "Analyzes support ticket volume, unresolved issues, customer complaints, and sentiment tone.",
-  "components": [
-    {
-      "id": "support_input",
-      "provider": "webhook",
-      "config": {
-        "schema": {
-          "type": "object",
-          "properties": {
-            "support_tickets_open": { "type": "integer" },
-            "support_sentiment": { "type": "string" },
-            "unresolved_days": { "type": "integer" },
-            "recent_ticket_topics": { "type": "array" }
-          },
-          "required": ["support_tickets_open", "support_sentiment"]
+  "pipeline": {
+    "name": "SaveFlow Support & Sentiment Analysis Specialist",
+    "source": "support_input",
+    "version": "1.0.0",
+    "description": "Analyzes support ticket volume, unresolved issues, customer complaints, and sentiment tone.",
+    "components": [
+      {
+        "id": "support_input",
+        "provider": "webhook",
+        "config": {
+          "mode": "Source"
         }
+      },
+      {
+        "id": "support_agent",
+        "provider": "preprocessor_code",
+        "config": {
+          "code": "def process(inputs):\n    data = inputs.get('text', {})\n    tickets = int(data.get('support_tickets_open', 0))\n    health = max(0, 100 - (tickets * 14))\n    return {'support_health': health}"
+        },
+        "input": [
+          {
+            "lane": "text",
+            "from": "support_input"
+          }
+        ]
+      },
+      {
+        "id": "support_output",
+        "provider": "response_text",
+        "config": {},
+        "input": [
+          {
+            "lane": "text",
+            "from": "support_agent"
+          }
+        ]
       }
-    },
-    {
-      "id": "support_agent",
-      "provider": "agent_llm",
-      "config": {
-        "system_prompt": "You are the Support & Sentiment Specialist for NovaCloud SaaS. Evaluate support friction, unresolved tickets, and communication sentiment. Output JSON with support_health (0-100), sentiment (negative/neutral/positive), and risk_factors array.",
-        "temperature": 0.2
-      },
-      "input": [
-        { "lane": "data", "from": "support_input" }
-      ]
-    },
-    {
-      "id": "support_output",
-      "provider": "response",
-      "config": {
-        "laneName": "support_analysis"
-      },
-      "input": [
-        { "lane": "text", "from": "support_agent" }
-      ]
-    }
-  ]
+    ],
+    "project_id": "822640f4-2eda-45f5-9c3d-fa841a289805"
+  }
 }

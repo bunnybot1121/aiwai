@@ -1,44 +1,42 @@
 {
-  "name": "SaveFlow Usage Analysis Specialist",
-  "version": "1.0.0",
-  "description": "Analyzes NovaCloud product activity, active user decay, feature adoption, and login velocity.",
-  "components": [
-    {
-      "id": "usage_input",
-      "provider": "webhook",
-      "config": {
-        "schema": {
-          "type": "object",
-          "properties": {
-            "active_users": { "type": "integer" },
-            "usage_change_pct": { "type": "number" },
-            "feature_adoption_rate": { "type": "number" },
-            "login_frequency_per_week": { "type": "number" }
-          },
-          "required": ["active_users", "usage_change_pct"]
+  "pipeline": {
+    "name": "SaveFlow Usage Analysis Specialist",
+    "source": "usage_input",
+    "version": "1.0.0",
+    "description": "Analyzes NovaCloud product activity, active user decay, feature adoption, and login velocity.",
+    "components": [
+      {
+        "id": "usage_input",
+        "provider": "webhook",
+        "config": {
+          "mode": "Source"
         }
+      },
+      {
+        "id": "usage_agent",
+        "provider": "preprocessor_code",
+        "config": {
+          "code": "def process(inputs):\n    data = inputs.get('text', {})\n    pct = float(data.get('usage_change_pct', 0))\n    health = max(0, min(100, int(100 + (pct * 2.2))))\n    return {'usage_health': health, 'trend': 'declining' if pct < -10 else 'stable'}"
+        },
+        "input": [
+          {
+            "lane": "text",
+            "from": "usage_input"
+          }
+        ]
+      },
+      {
+        "id": "usage_output",
+        "provider": "response_text",
+        "config": {},
+        "input": [
+          {
+            "lane": "text",
+            "from": "usage_agent"
+          }
+        ]
       }
-    },
-    {
-      "id": "usage_agent",
-      "provider": "agent_llm",
-      "config": {
-        "system_prompt": "You are the Usage Analysis Specialist for NovaCloud SaaS Churn Rescue Desk. Evaluate product usage drop, session decay, and feature adoption. Output JSON with usage_health (0-100), usage_trend (declining/stable/growing), and risk_factors array.",
-        "temperature": 0.2
-      },
-      "input": [
-        { "lane": "data", "from": "usage_input" }
-      ]
-    },
-    {
-      "id": "usage_output",
-      "provider": "response",
-      "config": {
-        "laneName": "usage_analysis"
-      },
-      "input": [
-        { "lane": "text", "from": "usage_agent" }
-      ]
-    }
-  ]
+    ],
+    "project_id": "695016d9-c5c2-4ebf-a761-5678a4b645df"
+  }
 }

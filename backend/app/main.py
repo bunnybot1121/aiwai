@@ -1,5 +1,7 @@
 import os
+import asyncio
 from dotenv import load_dotenv
+
 dotenv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../.env'))
 load_dotenv(dotenv_path=dotenv_path, override=True)
 
@@ -12,7 +14,7 @@ from .database import init_db, AsyncSessionLocal
 from .models import HistoricalOutcome
 from .services.seed_service import seed_database
 from .rocketride.memory import memory_store
-from .api import customers, analyze, interventions, analytics, webhook
+from .api import customers, analyze, interventions, analytics, webhook, benchmark
 
 app = FastAPI(
     title="SaveFlow AI — Churn Rescue Desk Backend",
@@ -35,6 +37,8 @@ app.include_router(analyze.router)
 app.include_router(interventions.router)
 app.include_router(analytics.router)
 app.include_router(webhook.router)
+app.include_router(benchmark.router)
+
 
 @app.on_event("startup")
 async def on_startup():
@@ -67,16 +71,30 @@ async def on_startup():
         memory_store.hydrate_from_db(outcome_dicts)
         print(f"Memory store successfully rehydrated with {len(outcome_dicts)} SQLite historical outcome records.")
 
+from .rocketride.sdk import HAS_ROCKETRIDE_PACKAGE, RocketRideClient
+
 @app.get("/api/health")
 async def health_check():
-    """Health check endpoint."""
+    """Health check endpoint testing real engine connectivity."""
+    rr_engine = "offline"
+    uri = os.environ.get("ROCKETRIDE_URI", "wss://api.rocketride.ai")
+    apikey = os.environ.get("ROCKETRIDE_APIKEY")
+    
+    if HAS_ROCKETRIDE_PACKAGE and RocketRideClient is not None and apikey:
+        try:
+            async with asyncio.timeout(3.0):
+                async with RocketRideClient(uri=uri, auth=apikey) as client:
+                    rr_engine = f"online ({uri})"
+        except Exception as e:
+            rr_engine = f"degraded ({type(e).__name__})"
+
     return {
         "status": "healthy",
         "system": "SaveFlow AI",
         "company": "NovaCloud Inc",
-        "rocketride_engine": "online",
-        "workspace_capacity": 10000
+        "rocketride_engine": rr_engine
     }
+
 
 # Serve static frontend files if built
 frontend_dist = os.path.join(os.path.dirname(__file__), "../../frontend/dist")

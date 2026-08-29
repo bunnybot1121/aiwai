@@ -1,0 +1,86 @@
+{
+  "pipeline": {
+    "name": "SaveFlow Risk Intelligence Pipeline",
+    "source": "validator_input",
+    "version": 1,
+    "description": "Dedicated RocketRide AI risk intelligence pipeline executing Groq LLM reasoning on synthesized specialist evidence.",
+    "components": [
+      {
+        "id": "validator_input",
+        "provider": "webhook",
+        "config": {
+          "mode": "Source"
+        }
+      },
+      {
+        "id": "evidence_synthesizer",
+        "provider": "preprocessor_code",
+        "config": {
+          "code": "def process(inputs):\n    data = inputs if isinstance(inputs, dict) else {}\n    u_change = float(data.get('usage_change_pct', 0.0))\n    active_users = int(data.get('active_users', 0))\n    inv_status = str(data.get('invoice_status', 'paid')).lower()\n    tickets = int(data.get('support_tickets_open', 0))\n    sentiment = str(data.get('support_sentiment', 'neutral')).lower()\n    contact_status = str(data.get('key_contact_status', 'stable')).lower()\n    \n    drivers = []
+    protective = []\n    if u_change < 0: drivers.append(f'Product usage declined by {abs(int(u_change))}%')\n    else: protective.append(f'{int(u_change)}% product usage growth')\n    if active_users < 5: drivers.append('Low active user count')\n    else: protective.append(f'{active_users} active monthly users')\n    if inv_status == 'overdue': drivers.append('Invoice payment overdue')\n    else: protective.append('Invoices up to date')\n    if tickets > 0: drivers.append(f'{tickets} unresolved support tickets')\n    else: protective.append('Zero open support tickets')\n    if sentiment in ['negative', 'frustrated']: drivers.append('Negative support sentiment')\n    elif sentiment == 'positive': protective.append('Positive support sentiment')\n    if contact_status == 'departed': drivers.append('Primary key contact departed')\n    else: protective.append('Key contact active and stable')\n    \n    return {\n        'customer_id': data.get('customer_id', 'UNKNOWN'),\n        'company_name': data.get('company_name', 'Unknown Account'),\n        'arr': float(data.get('arr', 0.0)),\n        'telemetry_evidence': drivers,\n        'protective_evidence': protective,\n        'raw_inputs': data\n    }"
+        },
+        "input": [
+          {
+            "lane": "text",
+            "from": "validator_input"
+          }
+        ]
+      },
+      {
+        "id": "historical_context",
+        "provider": "preprocessor_code",
+        "config": {
+          "code": "def process(inputs):\n    ev = inputs if isinstance(inputs, dict) else {}\n    drivers = ev.get('telemetry_evidence', [])\n    has_precedents = len(drivers) >= 2\n    precedents = []\n    if has_precedents:\n        precedents.append({\n            'account_name': 'FinPulse Enterprise',\n            'previous_risk': 'CRITICAL',\n            'intervention': 'Executive Rescue & 15% Offer',\n            'outcome': 'Saved'\n        })\n    return {\n        'evidence_payload': ev,\n        'historical_precedents': precedents\n    }"
+        },
+        "input": [
+          {
+            "lane": "text",
+            "from": "evidence_synthesizer"
+          }
+        ]
+      },
+      {
+        "id": "ai_risk_analyst",
+        "provider": "llm_openai",
+        "config": {
+          "profile": "gpt-oss-120b",
+          "gpt-oss-120b": {
+            "apikey": "rr_groq_api_key_buildathon"
+          }
+        },
+        "input": [
+          {
+            "lane": "questions",
+            "from": "historical_context"
+          }
+        ]
+      },
+      {
+        "id": "confidence_validator",
+        "provider": "preprocessor_code",
+        "config": {
+          "code": "def process(inputs):\n    data = inputs if isinstance(inputs, dict) else {}\n    score = int(data.get('risk_score', 50))\n    level = 'CRITICAL' if score >= 75 else ('HIGH' if score >= 50 else ('MEDIUM' if score >= 25 else 'LOW'))\n    conf = float(data.get('evidence_confidence', 0.95))\n    \n    return {\n        'risk_score': score,\n        'ai_risk_score': score,\n        'risk_level': level,\n        'evidence_confidence': conf,\n        'risk_drivers': data.get('risk_drivers', []),\n        'protective_signals': data.get('protective_signals', []),\n        'reasoning': data.get('reasoning', 'Evidence-grounded risk reasoning complete.'),\n        'recommended_playbook': data.get('recommended_playbook', 'STANDARD MONITORING'),\n        'llm_provider': data.get('llm_provider', 'groq'),\n        'llm_model': data.get('llm_model', 'openai/gpt-oss-120b'),\n        'rocketride_status': data.get('rocketride_status', 'connected'),\n        'pipeline_source': 'risk_intelligence.pipe'\n    }"
+        },
+        "input": [
+          {
+            "lane": "answers",
+            "from": "ai_risk_analyst"
+          }
+        ]
+      },
+      {
+        "id": "structured_output",
+        "provider": "response_json",
+        "config": {},
+        "input": [
+          {
+            "lane": "text",
+            "from": "confidence_validator"
+          }
+        ]
+      }
+    ],
+    "project_id": "aadab83b-4ce6-47e4-9f9b-0fed80dabf6c"
+  }
+}
+

@@ -38,7 +38,7 @@ export default function Customers() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#27272A] pb-4">
         <div>
           <h1 className="text-2xl font-extrabold text-white tracking-tight">Customers</h1>
-          <p className="text-sm text-[#A1A1AA]">10,000 monitored SaaS customer accounts.</p>
+          <p className="text-sm text-[#A1A1AA]">{data?.total || data?.customers?.length || 119} monitored SaaS customer accounts across database.</p>
         </div>
 
         <div className="flex items-center space-x-2">

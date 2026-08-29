@@ -37,6 +37,45 @@ async def get_db():
             await session.close()
 
 async def init_db():
-    """Initializes database tables."""
+    """Initializes database tables and ensures new columns exist."""
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
+        
+        # SQLite schema migration check for Customer table
+        if "sqlite" in DATABASE_URL:
+            from sqlalchemy import text
+            res = await conn.execute(text("PRAGMA table_info(customers)"))
+            cols = [row[1] for row in res.fetchall()]
+            
+            new_cols = [
+                ("ai_risk_score", "INTEGER DEFAULT 0"),
+                ("baseline_risk_score", "INTEGER DEFAULT 0"),
+                ("risk_disagreement", "BOOLEAN DEFAULT 0"),
+                ("evidence_confidence", "FLOAT DEFAULT 0.95"),
+                ("risk_drivers", "TEXT"),
+                ("protective_signals", "TEXT"),
+                ("reasoning", "TEXT"),
+                ("specialist_evidence", "TEXT"),
+                ("rocketride_execution_id", "VARCHAR"),
+                ("rocketride_pipeline", "VARCHAR"),
+                ("llm_provider", "VARCHAR"),
+                ("llm_model", "VARCHAR"),
+                ("fallback_used", "BOOLEAN DEFAULT 0")
+            ]
+            
+            for col_name, col_type in new_cols:
+                if col_name not in cols:
+                    try:
+                        await conn.execute(text(f"ALTER TABLE customers ADD COLUMN {col_name} {col_type}"))
+                    except Exception as e:
+                        print(f"[DB MIGRATION] Skipping customers.{col_name}: {e}")
+
+            # SQLite schema migration check for risk_scores table
+            res_rs = await conn.execute(text("PRAGMA table_info(risk_scores)"))
+            cols_rs = [row[1] for row in res_rs.fetchall()]
+            for col_name, col_type in new_cols:
+                if col_name not in cols_rs:
+                    try:
+                        await conn.execute(text(f"ALTER TABLE risk_scores ADD COLUMN {col_name} {col_type}"))
+                    except Exception as e:
+                        print(f"[DB MIGRATION] Skipping risk_scores.{col_name}: {e}")

@@ -36,6 +36,21 @@ class Customer(Base):
     current_confidence = Column(Float, default=0.95)
     status = Column(String, default="active") # active, saved, churned
 
+    # AI Risk Intelligence extensions
+    ai_risk_score = Column(Integer, nullable=True)
+    baseline_risk_score = Column(Integer, nullable=True)
+    risk_disagreement = Column(Boolean, default=False)
+    evidence_confidence = Column(Float, default=0.95)
+    risk_drivers = Column(JSON, nullable=True)
+    protective_signals = Column(JSON, nullable=True)
+    reasoning = Column(Text, nullable=True)
+    specialist_evidence = Column(JSON, nullable=True)
+    rocketride_execution_id = Column(String, nullable=True)
+    rocketride_pipeline = Column(String, nullable=True)
+    llm_provider = Column(String, default="groq")
+    llm_model = Column(String, default="openai/gpt-oss-120b")
+    fallback_used = Column(Boolean, default=False)
+
     risk_scores = relationship("RiskScore", back_populates="customer", cascade="all, delete-orphan")
     interventions = relationship("Intervention", back_populates="customer", cascade="all, delete-orphan")
 
@@ -47,12 +62,29 @@ class RiskScore(Base):
     risk_score = Column(Integer, nullable=False)
     risk_level = Column(String, nullable=False)
     confidence = Column(Float, nullable=False)
+    
+    # AI Risk Intelligence fields
+    ai_risk_score = Column(Integer, nullable=True)
+    baseline_risk_score = Column(Integer, nullable=True)
+    risk_disagreement = Column(Boolean, default=False)
+    evidence_confidence = Column(Float, default=0.95)
+    risk_drivers_json = Column(JSON, nullable=True)
+    protective_signals_json = Column(JSON, nullable=True)
+    reasoning = Column(Text, nullable=True)
+    
     reasons_json = Column(JSON, nullable=False)
     specialists_json = Column(JSON, nullable=True)
     dag_nodes_json = Column(JSON, nullable=True)
+    
+    rocketride_execution_id = Column(String, nullable=True)
+    rocketride_pipeline = Column(String, nullable=True)
+    llm_provider = Column(String, default="groq")
+    llm_model = Column(String, default="openai/gpt-oss-120b")
+    fallback_used = Column(Boolean, default=False)
     created_at = Column(DateTime, default=datetime.utcnow)
 
     customer = relationship("Customer", back_populates="risk_scores")
+
 
 class Intervention(Base):
     __tablename__ = "interventions"

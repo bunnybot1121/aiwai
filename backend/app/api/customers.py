@@ -34,3 +34,25 @@ async def get_customer(customer_id: str, db: AsyncSession = Depends(get_db)):
     if not customer:
         raise HTTPException(status_code=404, detail=f"Customer {customer_id} not found")
     return customer
+
+@router.get("/{customer_id}/history")
+async def get_customer_history_endpoint(customer_id: str, db: AsyncSession = Depends(get_db)):
+    """
+    Get temporal risk history time-series for a customer.
+    """
+    history = await customer_service.get_customer_history(db, customer_id)
+    return {
+        "customer_id": customer_id,
+        "total_records": len(history),
+        "history": [
+            {
+                "id": h.id,
+                "risk_score": h.risk_score,
+                "risk_level": h.risk_level,
+                "confidence": h.confidence,
+                "created_at": h.created_at.isoformat() if h.created_at else None
+            }
+            for h in history
+        ]
+    }
+

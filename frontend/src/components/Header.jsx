@@ -59,7 +59,7 @@ export default function Header({ onOpenBatchModal, pendingApprovalsCount = 12 })
                   <div className="flex items-center justify-between text-xs font-bold text-white">
                     <span>Revive SaaS</span>
                     <span className="px-2 py-0.5 rounded text-[10px] bg-white text-[#090A0B] font-mono">
-                      10,000 Accounts Monitored
+                      119 Accounts Monitored
                     </span>
                   </div>
                   <p className="text-[11px] text-[#A1A1AA]">
@@ -79,7 +79,7 @@ export default function Header({ onOpenBatchModal, pendingApprovalsCount = 12 })
                 </NavLink>
 
                 <div className="pt-2 border-t border-[#27272A] flex items-center justify-between text-[11px] font-mono text-[#A1A1AA]">
-                  <span>Pipeline: master_churn.pipe</span>
+                  <span>Pipeline: master_churn_workflow.pipe</span>
                   <Sparkles className="w-3 h-3 text-white" />
                 </div>
               </div>

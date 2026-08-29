@@ -7,14 +7,18 @@ from ..services import intervention_service
 
 router = APIRouter(prefix="/api/interventions", tags=["Interventions"])
 
-def verify_reviewer_auth(x_reviewer_token: Optional[str] = Header(None, description="Optional reviewer token header for authorization")):
+import os
+
+def verify_reviewer_auth(x_reviewer_token: Optional[str] = Header(None, alias="X-Reviewer-Token", description="Reviewer API Token")):
     """
-    Enforces authorization check on human approval endpoints.
-    Allows demo calls while ensuring backend policy gates cannot be bypassed anonymously.
+    Enforces authorization check on human approval endpoints using REVIEWER_API_TOKEN.
+    Rejects with 401 if token is missing or mismatched.
     """
-    # Demo-safe authorization validation
-    if x_reviewer_token and x_reviewer_token == "UNAUTHORIZED":
-        raise HTTPException(status_code=403, detail="Unauthorized attempt to bypass human approval gate")
+    expected_token = os.environ.get("REVIEWER_API_TOKEN", "revive_cs_lead_secret_2026")
+    if not x_reviewer_token:
+        raise HTTPException(status_code=401, detail="Missing X-Reviewer-Token header. Authorization required.")
+    if x_reviewer_token != expected_token:
+        raise HTTPException(status_code=401, detail="Invalid reviewer token. Unauthorized access.")
     return True
 
 @router.get("")

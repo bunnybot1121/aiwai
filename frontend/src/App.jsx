@@ -62,7 +62,7 @@ function MainLayout() {
           <div className="flex items-center space-x-4">
             <span>Revive Workspace</span>
             <span>•</span>
-            <span className="text-emerald-600 font-bold">10,000 Accounts Monitored</span>
+            <span className="text-emerald-600 font-bold">119 Accounts Monitored</span>
           </div>
         </div>
       </footer>

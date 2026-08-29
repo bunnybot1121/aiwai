@@ -69,7 +69,7 @@ export default function BatchModal({ isOpen, onClose, onBatchCompleted }) {
         <div className="flex items-center justify-between border-b border-[#27272A] pb-4">
           <div>
             <h3 className="font-extrabold text-lg text-white">RocketRide Batch Analysis</h3>
-            <p className="text-xs text-[#A1A1AA]">Execute master_churn.pipe workflow across 10,000 accounts</p>
+            <p className="text-xs text-[#A1A1AA]">Execute master_churn.pipe workflow across 119 database accounts</p>
           </div>
           <button onClick={onClose} className="text-[#A1A1AA] hover:text-white">
             <X className="w-5 h-5" />
@@ -84,7 +84,7 @@ export default function BatchModal({ isOpen, onClose, onBatchCompleted }) {
           </div>
           <div>
             <span className="text-[#A1A1AA] block">Account Volume</span>
-            <span className="font-bold text-white">10,000 Accounts</span>
+            <span className="font-bold text-white">119 Accounts</span>
           </div>
           <div>
             <span className="text-[#A1A1AA] block">Pipeline File</span>

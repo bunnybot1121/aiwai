@@ -78,3 +78,14 @@ async def get_customer_by_id(db: AsyncSession, customer_id: str):
     """Retrieves a single customer profile by ID."""
     result = await db.execute(select(Customer).filter_by(id=customer_id))
     return result.scalars().first()
+
+async def get_customer_history(db: AsyncSession, customer_id: str):
+    """Retrieves temporal RiskScore history for a customer ordered by creation time."""
+    from ..models import RiskScore
+    result = await db.execute(
+        select(RiskScore)
+        .filter_by(customer_id=customer_id)
+        .order_by(asc(RiskScore.created_at))
+    )
+    return result.scalars().all()
+

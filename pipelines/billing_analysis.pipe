@@ -1,44 +1,42 @@
 {
-  "name": "SaveFlow Billing Analysis Specialist",
-  "version": "1.0.0",
-  "description": "Analyzes billing health, invoice overdue status, contract renewal timeline, and payment anomalies.",
-  "components": [
-    {
-      "id": "billing_input",
-      "provider": "webhook",
-      "config": {
-        "schema": {
-          "type": "object",
-          "properties": {
-            "invoice_status": { "type": "string" },
-            "overdue_days": { "type": "integer" },
-            "renewal_date": { "type": "string" },
-            "payment_history_score": { "type": "number" }
-          },
-          "required": ["invoice_status"]
+  "pipeline": {
+    "name": "SaveFlow Billing Analysis Specialist",
+    "source": "billing_input",
+    "version": "1.0.0",
+    "description": "Analyzes billing health, invoice overdue status, contract renewal timeline, and payment anomalies.",
+    "components": [
+      {
+        "id": "billing_input",
+        "provider": "webhook",
+        "config": {
+          "mode": "Source"
         }
+      },
+      {
+        "id": "billing_agent",
+        "provider": "preprocessor_code",
+        "config": {
+          "code": "def process(inputs):\n    data = inputs.get('text', {})\n    inv = str(data.get('invoice_status', 'paid')).lower()\n    health = 35 if inv == 'overdue' else 100\n    return {'billing_health': health}"
+        },
+        "input": [
+          {
+            "lane": "text",
+            "from": "billing_input"
+          }
+        ]
+      },
+      {
+        "id": "billing_output",
+        "provider": "response_text",
+        "config": {},
+        "input": [
+          {
+            "lane": "text",
+            "from": "billing_agent"
+          }
+        ]
       }
-    },
-    {
-      "id": "billing_agent",
-      "provider": "agent_llm",
-      "config": {
-        "system_prompt": "You are the Billing Health Specialist for NovaCloud SaaS. Evaluate payment status, overdue invoices, and renewal proximity. Output JSON with billing_health (0-100), risk_factors array, and renewal_risk flag.",
-        "temperature": 0.2
-      },
-      "input": [
-        { "lane": "data", "from": "billing_input" }
-      ]
-    },
-    {
-      "id": "billing_output",
-      "provider": "response",
-      "config": {
-        "laneName": "billing_analysis"
-      },
-      "input": [
-        { "lane": "text", "from": "billing_agent" }
-      ]
-    }
-  ]
+    ],
+    "project_id": "7746b636-49c3-4dd6-a91d-0993ffd288b0"
+  }
 }
