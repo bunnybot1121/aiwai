@@ -9,3 +9,4 @@ build/
 *.zip
 *.tar.gz
 .rocketride/
+*.db
